@@ -37,6 +37,14 @@ var repo_nav = {};
       name: 'Facebook'
     },
     {
+      url: 'https://github.com/moderntribe/events-filterbar',
+      name: 'Filterbar'
+    },
+    {
+      url: 'https://github.com/moderntribe/events-importer-ical',
+      name: 'Importer: iCal'
+    },    
+    {
       url: 'https://github.com/moderntribe/events-community-tickets',
       name: 'Tickets: Community'
     },
