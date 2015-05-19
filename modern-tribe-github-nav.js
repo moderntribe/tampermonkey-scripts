@@ -243,7 +243,7 @@ var repo_nav = {};
     }
 
     my.$nav.append( '<a id="bork-central-issues-link" class="header-nav-link" href="https://central.tri.be/projects/premium-plugins/issues?query_id=144">My Central Issues</a>' );
-    my.$nav.append( '<a id="bork-pr-link" class="header-nav-link" href="https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+sort%3Aupdated-desc+repo%3Amoderntribe%2Fevents-pro+repo%3Amoderntribe%2Fthe-events-calendar+repo%3Amoderntribe%2Fevents-tickets-edd+repo%3Amoderntribe%2Fevents-tickets-woo+repo%3Amoderntribe%2Fevents-tickets-wpec+repo%3Amoderntribe%2Fevents-tickets-shopp+repo%3Amoderntribe%2Fevents-community+repo%3Amoderntribe%2Fevents-community-tickets+repo%3Amoderntribe%2Fevents-eventbrite+repo%3Amoderntribe%2Fevents-facebook+repo%3Aevents-filterbar+repo%3Aevents-importer-ical">MT PRs</a>' );
+    my.$nav.append( '<a id="bork-pr-link" class="header-nav-link" href="https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+sort%3Aupdated-desc+repo%3Amoderntribe%2Fevents-pro+repo%3Amoderntribe%2Fthe-events-calendar+repo%3Amoderntribe%2Fevents-tickets-edd+repo%3Amoderntribe%2Fevents-tickets-woo+repo%3Amoderntribe%2Fevents-tickets-wpec+repo%3Amoderntribe%2Fevents-tickets-shopp+repo%3Amoderntribe%2Fevents-community+repo%3Amoderntribe%2Fevents-community-tickets+repo%3Amoderntribe%2Fevents-eventbrite+repo%3Amoderntribe%2Fevents-facebook+repo%3Amoderntribe%2Fevents-filterbar+repo%3Amoderntribe%2Fevents-importer-ical+">MT PRs</a>' );
     my.$nav.append( my.$nav_repo );
     my.$nav.append( my.$nav_repo_container );
     my.$nav_repo_container.append( my.$nav_repo_menu );
