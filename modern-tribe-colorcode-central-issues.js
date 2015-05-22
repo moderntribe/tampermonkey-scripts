@@ -12,6 +12,8 @@ var central_issue_colors = {};
 
 ( function( $, my ) {
     my.init = function() {
+        $( 'head' ).append( '<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">' );
+        
         my.$issues = $( 'tr.issue' );
         
         my.$issues.each( function() {
@@ -79,22 +81,24 @@ var central_issue_colors = {};
                 'color': text
             } );
             
-            color = 'transparent';
-            text = '#000';
+            var icon = null;
 
             switch ( $tracker.text() ) {
                 case 'Bug':
-                    color = '#fff6f6';
+                    icon = 'bug';
                     break;
                 case 'Feature':
-                    color = '#def0fd';
+                    icon = 'star-o';
+                    break;
+                case 'Support':
+                    icon = 'life-ring';
                     break;
             }
             
             $tracker.css( {
-                'background-color': color,
-                'color': text
+                'text-align': 'center'
             } );
+            $tracker.html( '<i class="fa fa-' + icon + '"></i>' );
         } );
     };
     
