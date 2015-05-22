@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 ( function( $ ) {
-    $( '.wiki' ).append( '<button id="TBD" type="button" style="font-size:1.4rem;">TBD, Mother effer!!!</button>' );
+    $( '.wiki' ).append( '<button id="TBD" type="button" style="font-size:1.4rem;">OMG TBD THIS</button>' );
     var $tbd = $( '#TBD' );
 
     $( document ).on( 'click', '#TBD', function( e ) {
