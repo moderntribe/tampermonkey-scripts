@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Adds anchor tags to some links in central
 // @author       Matthew Batchelder
-// @include      /^https:\/\/central.tri.be(\/.*)?/
+// @include      /^https:\/\/central.tri.be(\/.*)*/
 // @grant        none
 // ==/UserScript==
 
