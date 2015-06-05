@@ -12,3 +12,15 @@ $( '.issue-title-link.issue-nwo-link' ).each( function() {
     var $el = $( this );
     $el.html( $el.html().replace( /moderntribe\//, '' ) );
 } );
+
+$( '.issue-title-link.js-navigation-open' ).each( function() {
+  var $el = $( this );
+  var jqxhr = $.get( $el.attr( 'href' ) );
+  jqxhr.done( function( data ) {
+    var $page = $( data );
+    var $author = $page.find( '.pull-header-username' );
+    var $meta = $el.closest( '.js-issue-row' ).find( '.issue-meta' );
+    $meta.prepend( '<span class="tribe-by"></span>' );
+    $meta.find( '.tribe-by' ).append( 'by: ' ).append( $author );
+  } );
+});
