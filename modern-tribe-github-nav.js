@@ -53,19 +53,19 @@ var repo_nav = {};
       name: 'Tickets: Community'
     },
     {
-      url: 'https://github.com/moderntribe/events-community-edd',
+      url: 'https://github.com/moderntribe/events-tickets-edd',
       name: 'Tickets: EDD'
     },
     {
-      url: 'https://github.com/moderntribe/events-community-shopp',
+      url: 'https://github.com/moderntribe/events-tickets-shopp',
       name: 'Tickets: Shopp'
     },
     {
-      url: 'https://github.com/moderntribe/events-community-woo',
+      url: 'https://github.com/moderntribe/events-tickets-woo',
       name: 'Tickets: Woo'
     },
     {
-      url: 'https://github.com/moderntribe/events-community-wpec',
+      url: 'https://github.com/moderntribe/events-tickets-wpec',
       name: 'Tickets: WPEC'
     },
     {
@@ -74,6 +74,10 @@ var repo_nav = {};
     {
       url: 'https://github.com/moderntribe/eventscalendarpro.com',
       name: 'TEC.com'
+    },
+    {
+      url: 'https://github.com/moderntribe/tribe-plugin-packager',
+      name: 'Plugin packager'
     },
     {
       url: 'https://github.com/jbrinley/docker-config',
@@ -247,7 +251,7 @@ var repo_nav = {};
     }
 
     my.$nav.append( '<a id="bork-central-issues-link" class="header-nav-link" href="https://central.tri.be/projects/premium-plugins/issues?query_id=144">My Central Issues</a>' );
-    my.$nav.append( '<a id="bork-pr-link" class="header-nav-link" href="https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+sort%3Aupdated-desc+repo%3Amoderntribe%2Fevents-pro+repo%3Amoderntribe%2Fthe-events-calendar+repo%3Amoderntribe%2Fevents-tickets-edd+repo%3Amoderntribe%2Fevents-tickets-woo+repo%3Amoderntribe%2Fevents-tickets-wpec+repo%3Amoderntribe%2Fevents-tickets-shopp+repo%3Amoderntribe%2Fevents-community+repo%3Amoderntribe%2Fevents-community-tickets+repo%3Amoderntribe%2Fevents-eventbrite+repo%3Amoderntribe%2Fevents-facebook+repo%3Amoderntribe%2Fevents-filterbar+repo%3Amoderntribe%2Fevents-importer-ical+repo%3Amoderntribe%2Fadvanced-post-manager+">MT PRs</a>' );
+    my.$nav.append( '<a id="bork-pr-link" class="header-nav-link" href="https://github.com/pulls?utf8=%E2%9C%93&q=is%3Aopen+is%3Apr+sort%3Aupdated-desc+repo%3Amoderntribe%2Fevents-pro+repo%3Amoderntribe%2Fthe-events-calendar+repo%3Amoderntribe%2Fevents-tickets-edd+repo%3Amoderntribe%2Fevents-tickets-woo+repo%3Amoderntribe%2Fevents-tickets-wpec+repo%3Amoderntribe%2Fevents-tickets-shopp+repo%3Amoderntribe%2Fevents-community+repo%3Amoderntribe%2Fevents-community-tickets+repo%3Amoderntribe%2Fevents-eventbrite+repo%3Amoderntribe%2Fevents-facebook+repo%3Amoderntribe%2Fevents-filterbar+repo%3Amoderntribe%2Fevents-importer-ical+repo%3Amoderntribe%2Ftribe-plugin-packager+">MT PRs</a>' );
     my.$nav.append( my.$nav_repo );
     my.$nav.append( my.$nav_repo_container );
     my.$nav_repo_container.append( my.$nav_repo_menu );
