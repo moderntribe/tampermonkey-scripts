@@ -3,7 +3,7 @@
 // @namespace    central.tri.be
 // @version      0.1
 // @description  Adds custom navigation to GitHub and Central
-// @author       Matthew Batchelder
+// @author       Matthew Batchelder & Gustavo Bordoni
 // @match        https://github.com
 // @include      /^https:\/\/github.com\/.*/
 // @include      /^https:\/\/central.tri.be(\/.*)?/
@@ -103,152 +103,233 @@ var repo_nav = {};
 
   my.init = function() {
     my.build_styles();
-
     my.build_nav();
+      
     if ( $( 'body' ).hasClass( 'theme-Moderntribe' ) ) {
-      my.init_central();
+        my.$header = $( '#breadcrumb' );
     } else {
-      my.init_github();
+        my.$header = $( '.main-content' );
+        
+        my.link_commit_refs();
     }
     my.$header.before( my.$nav_wrapper );
 
-    $( document ).on( 'click', '#bork-nav-repo-link', function( e ) {
+    my.$nav_wrapper.on( 'click', '.dropdown:not(.active)', function( e ) {
       e.preventDefault();
-      my.$nav_repo_container.toggle();
+      $( this ).toggleClass( 'active' );
     } );
-  };
 
-  my.init_github = function() {
-    my.$header = $( '[role="banner"].header' );
-  };
+    $( document ).on( 'click', function ( e ) {
+      var $actives = my.$nav_wrapper.find( '.dropdown.active' ),
+          target = e.currentTarget === document ? e.target : e.currentTarget,
+          $parents = $( target ).parents(),
+          $this = $( target );
+        console.log( $this );
 
-  my.init_central = function() {
-    my.$header = $( document.getElementById( 'top-menu' ) );
-    my.$styles.append(
-      '#wrapper {' +
-      '  background: #fff url("/plugin_assets/redmine_shane_and_peter_design/images/header-other.jpg") no-repeat center 79px;' +
-      '}' +
-      '#bork-nav {' +
-      '  background-color: #fff;' +
-      '}' +
-      '#bork-nav .container {' +
-      '  margin-left: 32px;' +
-      '}' +
-      '#bork-nav a {' +
-      '  color: #333;' +
-      '  font-size: 13px;' +
-      '  font-weight: bold;' +
-      '}' +
-      '#bork-nav .dropdown-menu-content {' +
-      '  display: none;' +
-      '}' +
-      '#bork-nav .dropdown-menu>li>a:hover {' +
-      '  color: #fff;' +
-      '  text-decoration: none;' +
-      '  background-color: #4183c4;' +
-      '}' +
-      '#bork-nav .header-nav-link {' +
-      '  display: inline-block;' +
-      '  padding: 4px 8px;' +
-      '  font-size: 13px;' +
-      '  font-weight: bold;' +
-      '  line-height: 20px;' +
-      '  color: #333;' +
-      '}' +
-      '#bork-nav .dropdown-menu {' +
-      '  position: absolute;' +
-      '  top: 100%;' +
-      '  z-index: 100;' +
-      '  width: 160px;' +
-      '  margin-top: 2px;' +
-      '  margin-left: -80px;' +
-      '  padding-top: 5px;' +
-      '  padding-bottom: 5px;' +
-      '  list-style: none;' +
-      '  background-color: #fff;' +
-      '  background-clip: padding-box;' +
-      '  border: 1px solid rgba(0,0,0,0.15);' +
-      '  border-radius: 4px;' +
-      '  box-shadow: 0 3px 12px rgba(0,0,0,0.15);' +
-      '}' +
-      '.dropdown-divider {' +
-      '  height: 1px;' +
-      '  margin: 8px 1px;' +
-      '  background-color: #e5e5e5;' +
-      '}' +
-      '#bork-nav .dropdown-menu:before {' +
-      '  position: absolute;' +
-      '  top: -16px;' +
-      '  display: inline-block;' +
-      '  content: "";' +
-      '  border: 8px solid transparent;' +
-      '  border-bottom-color: #ccc;' +
-      '  border-bottom-color: rgba(0,0,0,0.15);' +
-      '}' +
-      '#bork-nav .dropdown-menu:after {' +
-      '  position: absolute;' +
-      '  top: -14px;' +
-      '  display: inline-block;' +
-      '  content: "";' +
-      '  border: 7px solid transparent;' +
-      '  border-bottom-color: #fff;' +
-      '}' +
-      '#bork-nav .dropdown-menu>li>a {' +
-      '  display: block;' +
-      '  font-weight: normal;' +
-      '  padding: 4px 10px 4px 1rem;' +
-      '  color: #333;' +
-      '  white-space: nowrap;' +
-      '  overflow: hidden;' +
-      '  text-overflow: ellipsis;' +
-      '  background: none;' +
-      '}' +
-      '#top-menu .dropdown-menu>li {' +
-      '  float: none;' +
-      '  font-size: 13px;' +
-      '}' +
-      ''
-    );
+      if ( ! $this.is( '.dropdown' ) && $actives.length !== 0 && ! $actives.is( target ) ) {
+          $actives.removeClass( 'active' );
+      }
+    } );
   };
 
   my.build_styles = function() {
     $( 'head' ).append( '<style id="bork-nav-styles"/>' );
     my.$styles = $( document.getElementById( 'bork-nav-styles' ) );
 
-    my.$styles.html(
-      '#bork-nav {' +
-      '  background: #f5f5f5;' +
-      '  padding: .5rem .5rem 0;' +
-      '  position: relative;' +
-      '}' +
-      '#bork-nav .container {' +
-      '  position: relative;' +
-      '}' +
-      '#bork-nav-repo {' +
-      '  left: 270px;' +
-      '}' +
-      '#bork-nav-repo>li>a {' +
-      '  padding-left: 1rem;' +
-      '}' +
-      '#bork-nav-repo:before, #bork-nav-repo:after {' +
-      '  left: .5rem;' +
-      '}' +
-      '#bork-nav .header-nav-link {' +
-      '  display: inline-block;' +
-      '}' +
-      '#bork-nav .container > a:first-child {' +
-      '  padding-left: 0;' +
-      '}' +
-      ''
-    );
+    my.$styles.html( [
+      '.tribe-header {',
+        'margin-bottom: 0;',
+      '}',
+
+      '.tribe-header .pagehead-nav {',
+        'float:left;',
+      '}',
+
+      '.tribe-header .pagehead-nav-item {',
+        'margin-left: 0;',
+        'margin-right: 21px;',
+        'border-bottom: 2px solid transparent;',
+      '}',
+
+      '.tribe-header .pagehead-nav-item > a {',
+        'color: inherit;',
+        'text-decoration: none;',
+      '}',
+
+      '.tribe-header .pagehead-nav-item:hover {',
+        'color: #333;',
+        'border-bottom-color: #d26911;',
+      '}',
+
+      '.tribe-header .dropdown.active .dropdown-menu-content {',
+        'display: block;',
+      '}',
+
+      '.tribe-header .dropdown .dropdown-menu {',
+        'right: -4px;',
+        'margin-top: -10px;',
+      '}',
+        
+      '.tribe-header .dropdown {',
+        'cursor: pointer;',
+      '}',
+        
+    // Central Specific
+    '.theme-Moderntribe .tribe-header.pagehead {',
+        'position: relative;',
+        'padding-top: 20px;',
+        'padding-bottom: 20px;',
+        'margin-bottom: 20px;',
+        'border-bottom: 1px solid #eee;',
+    '}',
+        
+    '.theme-Moderntribe .tribe-header .container:after {',
+        'display: table;',
+        'clear: both;',
+        'content: "";',
+    '}', 
+
+    '.theme-Moderntribe .tribe-header .container:before {',
+        'display: table;',
+        'content: "";',
+    '}',
+
+    '.theme-Moderntribe #top-menu {',
+        'height: auto;',
+        'display: table;',
+        'width: 100%;',
+    '}',
+        
+    '.theme-Moderntribe .pagehead-nav {',
+        'margin-bottom: -20px',
+    '}',
+
+    '.theme-Moderntribe .pagehead-nav-item {',
+        'float: left;',
+        'padding: 6px 10px 21px;',
+        'margin-left: 20px;',
+        'font-size: 14px;',
+        'color: #767676;',
+    '}',
+
+    '.theme-Moderntribe .pagehead-nav-item:hover {',
+        'color: #333;',
+        'text-decoration: none',
+    '}',
+
+    '.theme-Moderntribe .pagehead-nav-item.selected {',
+        'color: #333;',
+        'border-bottom: 2px solid #d26911',
+    '}',
+        
+    '.theme-Moderntribe .dropdown-menu-content {',
+        'display: none;',
+        'position: relative;',
+    '}',
+        
+    '.theme-Moderntribe #top-menu .dropdown-menu {',
+        'position: absolute;',
+        'top: 100%;',
+        'left: 0;',
+        'z-index: 100;',
+        'width: 160px;',
+        'margin-top: 2px;',
+        'padding-top: 5px;',
+        'padding-bottom: 5px;',
+        'background-color: #fff;',
+        'background-clip: padding-box;',
+        'border: 1px solid rgba(0,0,0,0.15);',
+        'border-radius: 4px;',
+        'box-shadow: 0 3px 12px rgba(0,0,0,0.15)',
+    '}',
+        
+    '.theme-Moderntribe #top-menu .dropdown-menu-sw {',
+        'left: auto;',
+        'right: -14px;',
+        'margin-top: 12px;',
+    '}',
+        
+    '.theme-Moderntribe .dropdown-menu:before {',
+        'position: absolute;',
+        'display: inline-block;',
+        'content: "";',
+        'border: 8px solid transparent;',
+        'border-bottom-color: rgba(0,0,0,0.15)',
+    '}',
+
+    '.theme-Moderntribe .dropdown-menu-sw:before {',
+        'top: -16px;',
+        'left: auto;',
+        'right: 9px;',
+    '}',
+        
+    '.theme-Moderntribe .dropdown-menu:after {',
+        'position: absolute;',
+        'display: inline-block;',
+        'content: "";',
+        'border: 7px solid transparent;',
+        'border-bottom-color: #fff',
+    '}',
+        
+    '.theme-Moderntribe .dropdown-menu-sw:after {',
+        'top: -14px;',
+        'left: auto;',
+        'right: 10px;',
+    '}',
+
+    '.theme-Moderntribe .dropdown-item {',
+        'display: block;',
+        'padding: 4px 10px 4px 15px;',
+        'color: #333;',
+        'white-space: nowrap;',
+        'overflow: hidden;',
+        'text-overflow: ellipsis',
+    '}',
+        
+    '.theme-Moderntribe .active {',
+        'display: block;',
+    '}',    
+        
+    '.theme-Moderntribe .dropdown-item:hover,',
+    '.theme-Moderntribe .dropdown-item.zeroclipboard-is-hover {',
+        'color: #fff;',
+        'text-decoration: none;',
+        'background-color: #4078c0;',
+    '}',
+        
+    '.theme-Moderntribe .dropdown-caret {',
+        'display: inline-block;',
+        'width: 0;',
+        'height: 0;',
+        'content: "";',
+        'vertical-align: -2px;',
+        'border: 4px solid;',
+        'border-right-color: transparent;',
+        'border-left-color: transparent;',
+        'border-bottom-color: transparent;',
+    '}',
+        
+    '.theme-Moderntribe .dropdown-divider {',
+        'height: 1px;',
+        'margin: 8px 1px;',
+        'background-color: #e5e5e5;',
+    '}',
+        
+    '' ].join( "\n" ) );
   };
 
   my.build_nav = function() {
-    my.$nav_wrapper = $( '<div id="bork-nav"/>' );
-    my.$nav = $( '<div class="container clearfix" />' );
-    my.$nav_repo = $( '<a href="#" id="bork-nav-repo-link" class="header-nav-link js-menu-target">Repos</a>' );
-    my.$nav_repo_container = $( '<div id="bork-nav-repo-container" class="dropdown-menu-content js-menu-content"/>' );
-    my.$nav_repo_menu = $( '<ul id="bork-nav-repo" class="dropdown-menu dropdown-menu-ne"/>' );
+    my.$nav_wrapper = $( '<div class="pagehead tribe-header"/>' );
+    my.$container = $( '<div class="container"/>' );
+
+    my.$nav = $( '<nav class="pagehead-nav" role="navigation" />' );
+    my.$repos = $( '<div class="pagehead-nav-item dropdown js-menu-container">' );
+    my.$repos_menu_content = $( '<div class="dropdown-menu-content js-menu-content"/>' );
+    my.$repos_menu = $( '<ul class="dropdown-menu dropdown-menu-sw"/>' );
+    
+    my.$repos.append( '<span class="octicon octicon-repo"></span> Repositories <span class="dropdown-caret"></span>' );
+    my.$repos_menu_content.append( my.$repos_menu );
+    my.$repos.append( my.$repos_menu_content );
 
     for ( var i in my.repo_menu ) {
       if ( ! my.repo_menu.hasOwnProperty( i ) ) {
@@ -256,21 +337,36 @@ var repo_nav = {};
       }
 
       if ( 'undefined' !== typeof my.repo_menu[ i ].divider ) {
-        my.$nav_repo_menu.append( '<li class="dropdown-divider" />' );
+        my.$repos_menu.append( '<div class="dropdown-divider" />' );
       } else {
-        my.$nav_repo_menu.append( '<li><a href="' + my.repo_menu[ i ].url + '">' + my.repo_menu[ i ].name + '</a></li>' );
+        my.$repos_menu.append( $( '<a>').attr( { 
+          href: my.repo_menu[ i ].url,
+          'class': 'dropdown-item',
+        } ).text( my.repo_menu[ i ].name ) );
       }
     }
 
-    my.$nav.append( '<a id="bork-central-issues-link" class="header-nav-link" href="https://central.tri.be/projects/premium-plugins/issues?query_id=1028">My Central Issues</a>' );
-    my.$nav.append( '<a id="bork-pr-link" class="header-nav-link" href="http://bit.ly/1VRKeXv">MT PRs</a>' );
-    my.$nav.append( my.$nav_repo );
-    my.$nav.append( my.$nav_repo_container );
-    my.$nav_repo_container.append( my.$nav_repo_menu );
-    my.$nav_wrapper.append( my.$nav );
+    my.$nav.append( '<a class="pagehead-nav-item" href="https://central.tri.be/projects/premium-plugins/issues?query_id=1028"><span class="octicon octicon-issue-opened"></span> Central Issues</a>' );
+    my.$nav.append( '<a class="pagehead-nav-item" href="http://bit.ly/1VRKeXv"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
+
+    my.$nav.append( my.$repos );
+
+    my.$container.append( my.$nav );
+    my.$nav_wrapper.append( my.$container );
   };
 
-  $( function() {
-  my.init();
-  } );
+  my.link_commit_refs = function() {
+    var repo = $( '.entry-title' ).find( 'a' ).eq( -1 ).text();
+    $( '.commit-ref' ).each( function () {
+      var $ref = $( this ),
+          $branch = $ref.children(),
+          branch = $branch.text(),
+          link = 'https://github.com/moderntribe/' + repo + '/tree/' + branch,
+          $link = $( '<a>' ).attr( 'href', link ).append( $branch );
+      
+      $ref.html( $link );
+    } );
+  };
+
+  $( my.init );
 } )( jQuery, repo_nav );
