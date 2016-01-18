@@ -102,10 +102,13 @@ var mt_uservoice = {};
         '  background: #fff;',
         '  border: 1px solid #b3b3b3;',
         '  border-radius: 5px;',
-        '  float: right;',
         '  padding: .25rem;',
+        '  position: absolute;',
+        '  right: 55px;',
+        '  top: 12px;',
+        '}',
+        '#activity-stream .hentry {',
         '  position: relative;',
-        '  top: -2.5rem;',
         '}',
     '' ].join( "\n" ) );
   };
