@@ -29,7 +29,7 @@ var mt_uservoice = {};
           }
       } );
       
-      $activity_stream.find( '.hfeed h3.entry-title a' ).each( function() {
+      $activity_stream.find( '.hfeed .hentry:not(.supported) h3.entry-title a' ).each( function() {
           var $el = $( this );
           var href = $el.attr( 'href' );
           var $article = $el.closest( 'article' );
@@ -40,10 +40,16 @@ var mt_uservoice = {};
           jqxhr.done( function( data ) {
               var $html = $( data );
               var breadcrumbs = $html.find( '.breadcrumbs' ).html();
-              if ( ! breadcrumbs ) {
-                  return;
+              if ( breadcrumbs ) {
+                  $footer.prepend( '<div class="tribe-breadcrumbs">' + breadcrumbs + ' @ </div>' );
               }
-              $footer.prepend( '<div class="tribe-breadcrumbs"> ' + breadcrumbs + ' @ </div>' );
+              
+              var $chicklet = $html.find( '.vote_chicklet .chicklet' );
+              var votes = $chicklet.find( 'strong' ).html();
+              
+              if ( votes ) {
+                  $footer.prepend( '<div class="tribe-votes">' + votes + ' Votes</div>' );
+              }
           } );
       } );
       
@@ -91,6 +97,15 @@ var mt_uservoice = {};
         '  float: left;',
         '  line-height: 14px;',
         '  margin-right: .25rem;',
+        '}',
+        '.tribe-votes {',
+        '  background: #fff;',
+        '  border: 1px solid #b3b3b3;',
+        '  border-radius: 5px;',
+        '  float: right;',
+        '  padding: .25rem;',
+        '  position: relative;',
+        '  top: -2.5rem;',
         '}',
     '' ].join( "\n" ) );
   };
