@@ -88,8 +88,8 @@ var repo_nav = {};
       name: 'TEC.com'
     },
     {
-      url: 'https://github.com/moderntribe/tribe-plugin-packager',
-      name: 'Plugin packager'
+      url: 'https://github.com/moderntribe/tribe-product-utils',
+      name: 'Product utils'
     },
     {
       url: 'https://github.com/jbrinley/docker-config',
