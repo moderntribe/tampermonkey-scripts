@@ -347,7 +347,7 @@ var repo_nav = {};
     }
 
     my.$nav.append( '<a class="pagehead-nav-item" href="https://central.tri.be/projects/premium-plugins/issues?query_id=1028"><span class="octicon octicon-issue-opened"></span> Central Issues</a>' );
-    my.$nav.append( '<a class="pagehead-nav-item" href="http://bit.ly/1VRKeXv"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
+    my.$nav.append( '<a class="pagehead-nav-item" href="http://bit.ly/1p0RtOb"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
 
     my.$nav.append( my.$repos );
 
