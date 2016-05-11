@@ -12,8 +12,15 @@
 
 var repo_nav = {};
 
-( function( $, my ) {
+( function( my ) {
   'use strict';
+  var $;
+
+  if ( 'undefined' !== typeof require ) {
+    $ = require("github/jquery")["default"];
+  } else {
+    $ = jQuery;
+  }
 
   my.repo_menu = [
     {
@@ -59,7 +66,7 @@ var repo_nav = {};
     {
       url: 'https://github.com/moderntribe/events-importer-ical',
       name: 'Importer: iCal'
-    },    
+    },
     {
       url: 'https://github.com/moderntribe/events-community-tickets',
       name: 'Tickets: Community'
@@ -104,12 +111,12 @@ var repo_nav = {};
   my.init = function() {
     my.build_styles();
     my.build_nav();
-      
+
     if ( $( 'body' ).hasClass( 'theme-Moderntribe' ) ) {
         my.$header = $( '#breadcrumb' );
     } else {
         my.$header = $( '.main-content' );
-        
+
         my.link_commit_refs();
     }
     my.$header.before( my.$nav_wrapper );
@@ -169,11 +176,11 @@ var repo_nav = {};
         'right: -4px;',
         'margin-top: -10px;',
       '}',
-        
+
       '.tribe-header .dropdown {',
         'cursor: pointer;',
       '}',
-        
+
     // Central Specific
     '.theme-Moderntribe .tribe-header.pagehead {',
         'position: relative;',
@@ -182,12 +189,12 @@ var repo_nav = {};
         'margin-bottom: 20px;',
         'border-bottom: 1px solid #eee;',
     '}',
-        
+
     '.theme-Moderntribe .tribe-header .container:after {',
         'display: table;',
         'clear: both;',
         'content: "";',
-    '}', 
+    '}',
 
     '.theme-Moderntribe .tribe-header .container:before {',
         'display: table;',
@@ -199,7 +206,7 @@ var repo_nav = {};
         'display: table;',
         'width: 100%;',
     '}',
-        
+
     '.theme-Moderntribe .pagehead-nav {',
         'margin-bottom: -20px',
     '}',
@@ -221,12 +228,12 @@ var repo_nav = {};
         'color: #333;',
         'border-bottom: 2px solid #d26911',
     '}',
-        
+
     '.theme-Moderntribe .dropdown-menu-content {',
         'display: none;',
         'position: relative;',
     '}',
-        
+
     '.theme-Moderntribe #top-menu .dropdown-menu {',
         'position: absolute;',
         'top: 100%;',
@@ -242,13 +249,13 @@ var repo_nav = {};
         'border-radius: 4px;',
         'box-shadow: 0 3px 12px rgba(0,0,0,0.15)',
     '}',
-        
+
     '.theme-Moderntribe #top-menu .dropdown-menu-sw {',
         'left: auto;',
         'right: -14px;',
         'margin-top: 12px;',
     '}',
-        
+
     '.theme-Moderntribe .dropdown-menu:before {',
         'position: absolute;',
         'display: inline-block;',
@@ -262,7 +269,7 @@ var repo_nav = {};
         'left: auto;',
         'right: 9px;',
     '}',
-        
+
     '.theme-Moderntribe .dropdown-menu:after {',
         'position: absolute;',
         'display: inline-block;',
@@ -270,7 +277,7 @@ var repo_nav = {};
         'border: 7px solid transparent;',
         'border-bottom-color: #fff',
     '}',
-        
+
     '.theme-Moderntribe .dropdown-menu-sw:after {',
         'top: -14px;',
         'left: auto;',
@@ -285,18 +292,18 @@ var repo_nav = {};
         'overflow: hidden;',
         'text-overflow: ellipsis',
     '}',
-        
+
     '.theme-Moderntribe .active {',
         'display: block;',
-    '}',    
-        
+    '}',
+
     '.theme-Moderntribe .dropdown-item:hover,',
     '.theme-Moderntribe .dropdown-item.zeroclipboard-is-hover {',
         'color: #fff;',
         'text-decoration: none;',
         'background-color: #4078c0;',
     '}',
-        
+
     '.theme-Moderntribe .dropdown-caret {',
         'display: inline-block;',
         'width: 0;',
@@ -308,13 +315,13 @@ var repo_nav = {};
         'border-left-color: transparent;',
         'border-bottom-color: transparent;',
     '}',
-        
+
     '.theme-Moderntribe .dropdown-divider {',
         'height: 1px;',
         'margin: 8px 1px;',
         'background-color: #e5e5e5;',
     '}',
-        
+
     '' ].join( "\n" ) );
   };
 
@@ -326,7 +333,7 @@ var repo_nav = {};
     my.$repos = $( '<div class="pagehead-nav-item dropdown js-menu-container">' );
     my.$repos_menu_content = $( '<div class="dropdown-menu-content js-menu-content"/>' );
     my.$repos_menu = $( '<ul class="dropdown-menu dropdown-menu-sw"/>' );
-    
+
     my.$repos.append( '<span class="octicon octicon-repo"></span> Repositories <span class="dropdown-caret"></span>' );
     my.$repos_menu_content.append( my.$repos_menu );
     my.$repos.append( my.$repos_menu_content );
@@ -339,7 +346,7 @@ var repo_nav = {};
       if ( 'undefined' !== typeof my.repo_menu[ i ].divider ) {
         my.$repos_menu.append( '<div class="dropdown-divider" />' );
       } else {
-        my.$repos_menu.append( $( '<a>').attr( { 
+        my.$repos_menu.append( $( '<a>').attr( {
           href: my.repo_menu[ i ].url,
           'class': 'dropdown-item',
         } ).text( my.repo_menu[ i ].name ) );
@@ -363,10 +370,10 @@ var repo_nav = {};
           branch = $branch.text(),
           link = 'https://github.com/moderntribe/' + repo + '/tree/' + branch,
           $link = $( '<a>' ).attr( 'href', link ).append( $branch );
-      
+
       $ref.html( $link );
     } );
   };
 
   $( my.init );
-} )( jQuery, repo_nav );
+} )( repo_nav );
