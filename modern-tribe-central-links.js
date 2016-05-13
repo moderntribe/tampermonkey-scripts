@@ -12,7 +12,7 @@ var central_links = {};
 
 ( function( $, my ) {
     my.init = function() {
-        my.$headings = $( 'table.attributes' ).find( 'th:contains(Pull Request:), th:contains(Forum threads:), th:contains(User Story:), th:contains(UserVoice Threads:)' );
+        my.$headings = $( 'table.attributes' ).find( 'th:contains(Pull Request:), th:contains(Forum Threads:), th:contains(User Story:), th:contains(UserVoice Threads:)' );
 
         my.$headings.each( function() {
             var $this = $( this ),
