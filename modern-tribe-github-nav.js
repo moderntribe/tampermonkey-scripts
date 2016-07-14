@@ -115,7 +115,7 @@ var repo_nav = {};
     if ( $( 'body' ).hasClass( 'theme-Moderntribe' ) ) {
         my.$header = $( '#breadcrumb' );
     } else {
-        my.$header = $( '.main-content' );
+        my.$header = $( '#start-of-content' );
 
         my.link_commit_refs();
     }
