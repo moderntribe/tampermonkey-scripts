@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Central issue summary test
+// @name         Central issue summary
 // @namespace    http://central.tri.be/
 // @version      0.2.2
 // @description  Generate a ticket summary from visible tickets
