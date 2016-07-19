@@ -145,8 +145,6 @@
                 text_color = 'color:' + my.statuses[ i ].text + ';';
             }
 
-            console.log( '.' + my.statuses[ i ].code, $rows.length );
-
             my.addBubble( $rows.length, my.statuses[ i ].name, my.statuses[ i ].code, my.statuses[ i ].color, text_color );
         }
 
