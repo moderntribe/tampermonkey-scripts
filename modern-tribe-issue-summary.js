@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Central issue summary
 // @namespace    http://central.tri.be/
-// @version      0.2.2
+// @version      0.2.3
 // @description  Generate a ticket summary from visible tickets
 // @author       Matthew Batchelder & Nick Pelton
 // @include      /https?:\/\/central.tri.be\/projects\/[^\/]+\/issues\/?/
@@ -10,9 +10,7 @@
 
 ( function( $ ) {
     var my = {};
-    my.$summary_container = $( '<div class="tribe-status-summary"/>' );
-    my.$titleBar = $( '#content .title-bar' );
-
+    
     // Bubble template
     my.TLP = '';
     my.TLP += '<div class="tribe-status {class_name}" style="border:1px solid #eee;border-radius:5px;box-shadow:0 0 3px 0px rgba( 0, 0, 0, 0.1 );display:inline-block;margin:.25rem;text-align:center;">';
@@ -119,6 +117,12 @@
     ];
 
     my.init = function() {
+
+        // Clear any existing summary
+        $('.tribe-status-summary').remove();
+
+        my.$summary_container = $( '<div class="tribe-status-summary"/>' );
+        my.$titleBar = $( '#content .title-bar' );
         this.$issues = $('#issue-list');
         var issue_count = this.$issues.find( 'tr.issue' ).length;
 
@@ -186,6 +190,23 @@
     };
 
     $( function() {
+
+        // If page is update by Ajax, re-run our script
+        var target = document.querySelector('#content');
+
+        // create an observer instance
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                my.init();
+            });
+        });
+
+        // configuration of the observer:
+        var config = { attributes: true, childList: true, characterData: true };
+
+        // pass in the target node, as well as the observer options
+        observer.observe(target, config);
+
         my.init();
     } );
 } )( jQuery );
