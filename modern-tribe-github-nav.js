@@ -148,22 +148,22 @@ var repo_nav = {};
         'margin-bottom: 0;',
       '}',
 
-      '.tribe-header .pagehead-nav {',
+      '.tribe-header .underline-nav {',
         'float:left;',
       '}',
 
-      '.tribe-header .pagehead-nav-item {',
+      '.tribe-header .underline-nav-item {',
         'margin-left: 0;',
         'margin-right: 21px;',
         'border-bottom: 2px solid transparent;',
       '}',
 
-      '.tribe-header .pagehead-nav-item > a {',
+      '.tribe-header .underline-nav-item > a {',
         'color: inherit;',
         'text-decoration: none;',
       '}',
 
-      '.tribe-header .pagehead-nav-item:hover {',
+      '.tribe-header .underline-nav-item:hover {',
         'color: #333;',
         'border-bottom-color: #d26911;',
       '}',
@@ -207,11 +207,11 @@ var repo_nav = {};
         'width: 100%;',
     '}',
 
-    '.theme-Moderntribe .pagehead-nav {',
+    '.theme-Moderntribe .underline-nav {',
         'margin-bottom: -20px',
     '}',
 
-    '.theme-Moderntribe .pagehead-nav-item {',
+    '.theme-Moderntribe .underline-nav-item {',
         'float: left;',
         'padding: 6px 10px 21px;',
         'margin-left: 20px;',
@@ -219,12 +219,12 @@ var repo_nav = {};
         'color: #767676;',
     '}',
 
-    '.theme-Moderntribe .pagehead-nav-item:hover {',
+    '.theme-Moderntribe .underline-nav-item:hover {',
         'color: #333;',
         'text-decoration: none',
     '}',
 
-    '.theme-Moderntribe .pagehead-nav-item.selected {',
+    '.theme-Moderntribe .underline-nav-item.selected {',
         'color: #333;',
         'border-bottom: 2px solid #d26911',
     '}',
@@ -329,8 +329,8 @@ var repo_nav = {};
     my.$nav_wrapper = $( '<div class="pagehead tribe-header"/>' );
     my.$container = $( '<div class="container"/>' );
 
-    my.$nav = $( '<nav class="pagehead-nav" role="navigation" />' );
-    my.$repos = $( '<div class="pagehead-nav-item dropdown js-menu-container">' );
+    my.$nav = $( '<nav class="underline-nav" role="navigation" />' );
+    my.$repos = $( '<div class="underline-nav-item dropdown js-menu-container">' );
     my.$repos_menu_content = $( '<div class="dropdown-menu-content js-menu-content"/>' );
     my.$repos_menu = $( '<ul class="dropdown-menu dropdown-menu-sw"/>' );
 
@@ -353,8 +353,8 @@ var repo_nav = {};
       }
     }
 
-    my.$nav.append( '<a class="pagehead-nav-item" href="https://central.tri.be/projects/premium-plugins/issues?query_id=1028"><span class="octicon octicon-issue-opened"></span> Central Issues</a>' );
-    my.$nav.append( '<a class="pagehead-nav-item" href="http://bit.ly/1ZQGtj8"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
+    my.$nav.append( '<a class="underline-nav-item" href="https://central.tri.be/projects/premium-plugins/issues?query_id=1028"><span class="octicon octicon-issue-opened"></span> Central Issues</a>' );
+    my.$nav.append( '<a class="underline-nav-item" href="http://bit.ly/1ZQGtj8"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
 
     my.$nav.append( my.$repos );
 
