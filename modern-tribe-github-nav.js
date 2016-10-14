@@ -52,43 +52,34 @@ var repo_nav = {};
       name: 'Community'
     },
     {
+      url: 'https://github.com/moderntribe/events-community-tickets',
+      name: 'Community Tickets'
+    },
+    {
       url: 'https://github.com/moderntribe/events-eventbrite',
       name: 'Eventbrite'
+    },
+    {
+      url: 'https://github.com/moderntribe/events-filterbar',
+      name: 'Filter Bar'
+    },
+    {
+      divider: true
     },
     {
       url: 'https://github.com/moderntribe/events-facebook',
       name: 'Facebook'
     },
     {
-      url: 'https://github.com/moderntribe/events-filterbar',
-      name: 'Filterbar'
-    },
-    {
       url: 'https://github.com/moderntribe/events-importer-ical',
       name: 'Importer: iCal'
     },
     {
-      url: 'https://github.com/moderntribe/events-community-tickets',
-      name: 'Tickets: Community'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-tickets-edd',
-      name: 'Tickets: EDD'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-tickets-shopp',
-      name: 'Tickets: Shopp'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-tickets-woo',
-      name: 'Tickets: Woo'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-tickets-wpec',
-      name: 'Tickets: WPEC'
-    },
-    {
       divider: true
+    },
+    {
+      url: 'https://github.com/moderntribe/event-aggregator-site',
+      name: 'Event Aggregator'
     },
     {
       url: 'https://github.com/moderntribe/eventscalendarpro.com',
@@ -354,7 +345,7 @@ var repo_nav = {};
     }
 
     my.$nav.append( '<a class="underline-nav-item" href="https://central.tri.be/projects/premium-plugins/issues?query_id=1028"><span class="octicon octicon-issue-opened"></span> Central Issues</a>' );
-    my.$nav.append( '<a class="underline-nav-item" href="http://bit.ly/1ZQGtj8"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
+    my.$nav.append( '<a class="underline-nav-item" href="http://bit.ly/2dbY8DG"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
 
     my.$nav.append( my.$repos );
 
