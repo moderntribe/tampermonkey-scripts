@@ -22,82 +22,139 @@ var repo_nav = {};
     $ = jQuery;
   }
 
-  my.repo_menu = [
+  my.menu = [
     {
-      url: 'https://github.com/moderntribe/the-events-calendar',
-      name: 'TEC'
+      name: 'Central',
+      icon: 'octicon-issue-opened',
+      children: [
+        {
+          url: 'https://central.tri.be/projects/premium-plugins/issues?query_id=1028',
+          name: 'My Tickets'
+        },
+        {
+          url: 'https://central.tri.be/projects/premium-plugins/issues?query_id=598',
+          title: 'Current Release',
+          name: 'Current Major'
+        },
+        {
+          url: 'https://central.tri.be/projects/premium-plugins/issues?query_id=924',
+          title: 'Maintenance Release',
+          name: 'Maintenance'
+        },
+        {
+          url: 'https://central.tri.be/projects/premium-plugins/issues?query_id=585',
+          title: 'Next Release',
+          name: 'Next Major'
+        },
+        {
+          url: 'https://central.tri.be/projects/premium-plugins/issues?query_id=1767',
+          title: 'Next Maintenance Release',
+          name: 'Next Maintenance'
+        },
+        {
+          url: 'https://central.tri.be/projects/premium-plugins/issues?query_id=1261',
+          title: 'Hotfix Release',
+          name: 'Hotfix'
+        },
+        {
+          divider: true
+        },
+        {
+          url: 'https://central.tri.be/time_entries/report?criterias%5B%5D=member&period_type=1&period=current_month&columns=week&criterias%5B%5D=issue',
+          name: 'This Months Tickets'
+        },
+        {
+          url: 'https://central.tri.be/time_entries/report?criterias%5B%5D=member&period_type=2&from=2016-06-01&to=&columns=week&criterias%5B%5D=',
+          name: 'Week by Week'
+        }
+      ]
     },
     {
-      url: 'https://github.com/moderntribe/events-pro',
-      name: 'TEC Pro'
+      url: 'http://bit.ly/2dbY8DG',
+      name: 'Pull Requests',
+      icon: 'octicon-git-pull-request'
     },
     {
-      url: 'https://github.com/moderntribe/tribe-common',
-      name: 'Tribe Common'
+      name: 'Repositories',
+      icon: 'octicon-repo',
+      children: [
+        {
+          url: 'https://github.com/moderntribe/the-events-calendar',
+          name: 'TEC'
+        },
+        {
+          url: 'https://github.com/moderntribe/events-pro',
+          name: 'TEC Pro'
+        },
+        {
+          url: 'https://github.com/moderntribe/tribe-common',
+          name: 'Tribe Common'
+        },
+        {
+          url: 'https://github.com/moderntribe/event-tickets',
+          name: 'Event Tickets'
+        },
+        {
+          url: 'https://github.com/moderntribe/event-tickets-plus',
+          name: 'Event Tickets Plus'
+        },
+        {
+          url: 'https://github.com/moderntribe/advanced-post-manager',
+          name: 'APM'
+        },
+        {
+          url: 'https://github.com/moderntribe/events-community',
+          name: 'Community'
+        },
+        {
+          url: 'https://github.com/moderntribe/events-community-tickets',
+          name: 'Community Tickets'
+        },
+        {
+          url: 'https://github.com/moderntribe/events-eventbrite',
+          name: 'Eventbrite'
+        },
+        {
+          url: 'https://github.com/moderntribe/events-filterbar',
+          name: 'Filter Bar'
+        },
+        {
+          divider: true
+        },
+        {
+          url: 'https://github.com/moderntribe/events-facebook',
+          name: 'Facebook'
+        },
+        {
+          url: 'https://github.com/moderntribe/events-importer-ical',
+          name: 'Importer: iCal'
+        },
+        {
+          divider: true
+        },
+        {
+          url: 'https://github.com/moderntribe/event-aggregator-site',
+          name: 'Event Aggregator'
+        },
+        {
+          url: 'https://github.com/moderntribe/eventscalendarpro.com',
+          name: 'TEC.com'
+        },
+        {
+          url: 'https://github.com/moderntribe/tribe-product-utils',
+          name: 'Product utils'
+        },
+        {
+          url: 'https://github.com/jbrinley/docker-config',
+          name: 'Docker config'
+        },
+        {
+          url: 'https://github.com/bordoni/tec-forum-support',
+          name: 'Support snippets'
+        }
+      ]
     },
-    {
-      url: 'https://github.com/moderntribe/event-tickets',
-      name: 'Event Tickets'
-    },
-    {
-      url: 'https://github.com/moderntribe/event-tickets-plus',
-      name: 'Event Tickets Plus'
-    },
-    {
-      url: 'https://github.com/moderntribe/advanced-post-manager',
-      name: 'APM'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-community',
-      name: 'Community'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-community-tickets',
-      name: 'Community Tickets'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-eventbrite',
-      name: 'Eventbrite'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-filterbar',
-      name: 'Filter Bar'
-    },
-    {
-      divider: true
-    },
-    {
-      url: 'https://github.com/moderntribe/events-facebook',
-      name: 'Facebook'
-    },
-    {
-      url: 'https://github.com/moderntribe/events-importer-ical',
-      name: 'Importer: iCal'
-    },
-    {
-      divider: true
-    },
-    {
-      url: 'https://github.com/moderntribe/event-aggregator-site',
-      name: 'Event Aggregator'
-    },
-    {
-      url: 'https://github.com/moderntribe/eventscalendarpro.com',
-      name: 'TEC.com'
-    },
-    {
-      url: 'https://github.com/moderntribe/tribe-product-utils',
-      name: 'Product utils'
-    },
-    {
-      url: 'https://github.com/jbrinley/docker-config',
-      name: 'Docker config'
-    },
-    {
-      url: 'https://github.com/bordoni/tec-forum-support',
-      name: 'Support snippets'
-    }
-  ];
+  ]
 
   my.init = function() {
     my.build_styles();
@@ -321,31 +378,38 @@ var repo_nav = {};
     my.$container = $( '<div class="container"/>' );
 
     my.$nav = $( '<nav class="underline-nav" role="navigation" />' );
-    my.$repos = $( '<div class="underline-nav-item dropdown js-menu-container">' );
-    my.$repos_menu_content = $( '<div class="dropdown-menu-content js-menu-content"/>' );
-    my.$repos_menu = $( '<ul class="dropdown-menu dropdown-menu-sw"/>' );
+    $.each( my.menu, function( index, item ) {
+      if ( 'undefined' !== typeof item.children ) {
+        var $item = $( '<div class="underline-nav-item dropdown js-menu-container">' ),
+            $container = $( '<div class="dropdown-menu-content js-menu-content"/>' ),
+            $submenu = $( '<ul class="dropdown-menu dropdown-menu-sw"/>' );
 
-    my.$repos.append( '<span class="octicon octicon-repo"></span> Repositories <span class="dropdown-caret"></span>' );
-    my.$repos_menu_content.append( my.$repos_menu );
-    my.$repos.append( my.$repos_menu_content );
+        $item.append( '<span class="octicon "></span> ' + item.name + ' <span class="dropdown-caret"></span>' );
+        $container.append( $submenu );
+        $item.append( $container );
 
-    for ( var i in my.repo_menu ) {
-      if ( ! my.repo_menu.hasOwnProperty( i ) ) {
-        continue;
-      }
+        $.each( item.children, function ( key, sub_item ) {
+          if ( 'undefined' !== typeof sub_item.divider ) {
+            $submenu.append( '<div class="dropdown-divider" />' );
+          } else {
+            var $link = $( '<a>').attr( {
+              href: sub_item.url,
+              'class': 'dropdown-item',
+            } ).text( sub_item.name );
+            if ( 'undefined' !== typeof sub_item.title ) {
+              $link.attr( 'title', sub_item.title );
+            }
 
-      if ( 'undefined' !== typeof my.repo_menu[ i ].divider ) {
-        my.$repos_menu.append( '<div class="dropdown-divider" />' );
+            $submenu.append( $link );
+          }
+        } );
+
+        my.$nav.append( $item );
       } else {
-        my.$repos_menu.append( $( '<a>').attr( {
-          href: my.repo_menu[ i ].url,
-          'class': 'dropdown-item',
-        } ).text( my.repo_menu[ i ].name ) );
+        var $link = $( '<a>' ).attr( { 'class': 'underline-nav-item', 'href': item.url } ).text( item.name ).append( $( '<span class="octicon octicon-git-pull-request">' ) );
+        my.$nav.append( $link );
       }
-    }
-
-    my.$nav.append( '<a class="underline-nav-item" href="https://central.tri.be/projects/premium-plugins/issues?query_id=1028"><span class="octicon octicon-issue-opened"></span> Central Issues</a>' );
-    my.$nav.append( '<a class="underline-nav-item" href="http://bit.ly/2dbY8DG"><span class="octicon octicon-git-pull-request"></span> Pull Requests</a>' );
+    } );
 
     my.$nav.append( my.$repos );
 
