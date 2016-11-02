@@ -41,6 +41,11 @@
 
     my.statuses = [
         {
+            code: 'status-1',
+            name: 'Pending Estimate',
+            color: '#fffff6'
+        },
+        {
             code: 'status-2',
             name: 'Proposed',
             color: '#fffff6'
@@ -56,60 +61,70 @@
             color: '#bfd4f2'
         },
         {
+            code: 'status-5',
+            name: 'Design QA',
+            color: '#fad8c7'
+        },
+        {
+            code: 'status-6',
+            name: 'Pending QA',
+            color: '#fad8c7'
+        },
+         {
             code: 'status-7',
+            name: 'Pending Manager',
+            color: '#76dbdf'
+        },
+         {
+            code: 'status-8',
             name: 'Pending Code Review',
             color: '#bfe5bf'
         },
-        {
+         {
             code: 'status-9',
+            name: 'Pending Documentation',
+            color: '#bfe5bf'
+        },
+        {
+            code: 'status-10',
             name: 'Pending Merge',
             color: '#009800',
             text: '#fff'
         },
-        {
-            code: 'status-6',
-            name: 'Pending Manager',
-            color: '#76dbdf'
-        },
-        {
-            code: 'status-12',
-            name: 'Pending Customer',
-            color: '#e2c688'
-        },
-        {
-            code: 'status-25',
-            name: 'On Hold',
-            color: '#dbc7e3'
-        },
-        {
-            code: 'status-13',
-            name: 'Pending Final Signoff',
-            color: '#ccbfa2'
-        },
-        {
-            code: 'status-5',
-            name: 'Pending QA',
-            color: '#fad8c7'
-        },
-        {
-            code: 'status-10',
+          {
+            code: 'status-11',
             name: 'Pending Smoketest',
             color: '#e9b398'
         },
         {
-            code: 'status-26',
-            name: 'Complete',
-            color: '#91be9c',
-            text: '#fff'
-        },
-        {
-            code: 'status-11',
+            code: 'status-12',
             name: 'Pending Release',
             color: '#7e987b',
             text: '#fff'
         },
         {
+            code: 'status-13',
+            name: 'Pending Customer',
+            color: '#e2c688'
+        },
+         {
+            code: 'status-14',
+            name: 'Pending Final Signoff',
+            color: '#ccbfa2'
+        },
+        {
+            code: 'status-26',
+            name: 'On Hold',
+            color: '#dbc7e3'
+        },
+        {
             code: 'status-27',
+            name: 'Complete',
+            color: '#91be9c',
+            text: '#fff'
+        },
+        {
+            code: 'status-28',
             name: 'Declined',
             color: '#969696',
             text: '#fff'
