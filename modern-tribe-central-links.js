@@ -5,6 +5,8 @@
 // @description  Adds anchor tags to some links in central
 // @author       You
 // @include        /^https:\/\/central.tri.be(\/.*)?/
+// @require      http://soapbox.github.io/linkifyjs/js/linkify/linkify.min.js
+// @require      http://soapbox.github.io/linkifyjs/js/linkify/linkify-jquery.min.js
 // @grant        none
 // ==/UserScript==
 
@@ -12,31 +14,32 @@ var central_links = {};
 
 ( function( $, my ) {
     my.init = function() {
-        my.$headings = $( 'table.attributes' ).find( 'th:contains(Pull Request:), th:contains(Forum Threads:), th:contains(User Story:), th:contains(UserVoice Threads:)' );
+        my.build_styles();
 
+        my.$headings = $( 'table.attributes' ).find( 'th:contains(Pull Request:), th:contains(Forum Threads:), th:contains(User Story:), th:contains(UserVoice Threads:)' );
         my.$headings.each( function() {
             var $this = $( this ),
-                $link_cell = $this.next( 'td' ),
-                link = $link_cell.html();
+                $link_cell = $this.next( 'td' );
 
-            if ( ! link ) {
-                return;
-            }
+            $link_cell.linkify({
+                target: "_blank"
+            });
 
-            var links;
-            if ( link.indexOf( '<br>' ) ) {
-                links = link.split( '<br>' );
-            } else {
-                links = link.split( ' ' );
-            }
-
-            for ( var i in links ) {
-                links[i] = String( links[i] ).replace( /(http[^\n <]+)/, '<a href="$1" target="_blank">$1</a>' );
-            }
-
-            $link_cell.html( links.join( '<br>' ) );
+            $link_cell.find( 'a' ).append( '<br>' );
         } );
     };
+
+    my.build_styles = function() {
+        $( 'head' ).append( '<style id="tribe-anchor-tags-styles"/>' );
+        my.$styles = $( document.getElementById( 'tribe-anchor-tags-styles' ) );
+
+        my.$styles.html( [
+          '.attachments .files a {',
+            'display: inline-block;',
+          '}',
+
+        '' ].join( "\n" ) );
+      };
 
     $( function() {
         my.init();
