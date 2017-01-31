@@ -418,17 +418,28 @@ var repo_nav = {};
   };
 
   my.link_commit_refs = function() {
-    var repo = $( '.entry-title' ).find( 'a' ).eq( -1 ).text();
+    var $refs = $( '.repohead-details-container h1' ).find( 'span, strong' ),
+        $repo = $refs.filter( '[itemprop="name"]' ).find( 'a' ),
+        repo = $repo.attr( 'href' ),
+        author = $refs.filter( '[itemprop="author"]' ).text();
+
     $( '.commit-ref' ).each( function () {
       var $ref = $( this ),
-          $branch = $ref.children(),
-          branch = $branch.text(),
-          link = 'https://github.com/moderntribe/' + repo + '/tree/' + branch,
-          $link = $( '<a>' ).attr( 'href', link ).append( $branch );
+          $items = $ref.find( 'span' ),
+          branch = $items.eq( -1 ).text();
 
-      $ref.html( $link );
+      if ( $items.length > 1 ) {
+          var user_link = 'https://github.com/' + $items.eq( 0 ).text();
+          $items.eq( 0 ).replaceWith( $( '<a>' ).attr( 'href', user_link ).append( $items.eq( 0 )[0].outerHTML ) );
+
+          repo = repo.replace( author, $items.eq( 0 ).text() );
+      }
+
+      var link = 'https://github.com' + repo + '/tree/' + branch,
+          $link = $( '<a>' ).attr( 'href', link ).append( $items.eq( -1 )[0].outerHTML );
+
+      $items.eq( -1 ).replaceWith( $link );
     } );
-  };
 
   $( my.init );
 } )( repo_nav );
