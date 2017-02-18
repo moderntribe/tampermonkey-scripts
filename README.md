@@ -30,3 +30,7 @@ Auto-uncheck the "email all" checkbox so I only send an email when I _really_ wa
 ### `modern-tribe-uservoice.js`
 
 Tweaks the UserVoice UI by throwing out portions of the interface that we don't care about; resizing stuff; and other small tweaks.
+
+### `modern-tribe-central-projects-filter.js`
+
+Adds an Alfred-like textbox to the Projects dropdown to live filter the list
