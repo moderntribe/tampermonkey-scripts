@@ -25,6 +25,8 @@ var filter = function(value){
     });
 }
 
+
+
 var add_field = function() {
     var search_field = $('<input/>').attr({ type: 'text', id: 'test', name: 'test'});
     var li = $('<li />').append(search_field);
@@ -34,7 +36,13 @@ var add_field = function() {
     li.css('text-align', 'center');
     li.attr('data-project-filter', 1);
 
-    search_field.keyup(function(){ filter(this.value); });
+    search_field.keyup(function(e){
+        if (e.which !== 13) filter(this.value);
+        else{
+            var link = container.find('li:visible').eq(1).find('a').first();
+            if (link.length) window.location = link.attr('href');
+        }
+    });
 
     container.prepend(li);
 };
