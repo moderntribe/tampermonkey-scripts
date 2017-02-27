@@ -137,6 +137,10 @@ var repo_nav = {};
           name: 'Event Aggregator'
         },
         {
+          url: 'https://github.com/moderntribe/pue-service',
+          name: 'PUE Service'
+        },
+        {
           url: 'https://github.com/moderntribe/eventscalendarpro.com',
           name: 'TEC.com'
         },
