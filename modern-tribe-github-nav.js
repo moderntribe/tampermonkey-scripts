@@ -7,6 +7,7 @@
 // @match        https://github.com
 // @include      /^https:\/\/github.com\/.*/
 // @include      /^https:\/\/central.tri.be(\/.*)?/
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
 // @grant        none
 // ==/UserScript==
 
@@ -183,8 +184,7 @@ var repo_nav = {};
           target = e.currentTarget === document ? e.target : e.currentTarget,
           $parents = $( target ).parents(),
           $this = $( target );
-        console.log( $this );
-
+      
       if ( ! $this.is( '.dropdown' ) && $actives.length !== 0 && ! $actives.is( target ) ) {
           $actives.removeClass( 'active' );
       }
