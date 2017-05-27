@@ -1,15 +1,68 @@
 // ==UserScript==
 // @name         Central issue summary
 // @namespace    http://central.tri.be/
-// @version      0.2.4
+// @version      0.2.5
 // @description  Generate a ticket summary from visible tickets
-// @author       Matthew Batchelder & Nick Pelton
-// @include      /https?:\/\/central.tri.be\/projects\/[^\/]+\/issues\/?/
+// @author       Matthew Batchelder, Nick Pelton & Gustavo Bordoni
+// @include      /https?:\/\/central.tri.be\/(projects\/)*[^\/]*\/?issues\/?/
 // @grant        none
 // ==/UserScript==
 
 ( function( $ ) {
     var my = {};
+
+    my.statuses_colors = {
+        'Design QA': {
+            color: '#fad8c7'
+        },
+        'Proposed': {
+            color: '#fffff6'
+        },
+        'New': {
+            color: '#ffffe2'
+        },
+        'In Progress': {
+            color: '#bfd4f2'
+        },
+        'Pending Code Review': {
+            color: '#bfe5bf'
+        },
+        'Pending Merge': {
+            color: '#009800',
+            text: '#fff'
+        },
+        'Pending Manager': {
+            color: '#76dbdf'
+        },
+        'Pending Customer': {
+            color: '#e2c688'
+        },
+        'On Hold': {
+            color: '#dbc7e3'
+        },
+        'Pending Final Signoff': {
+            color: '#ccbfa2'
+        },
+        'Pending QA': {
+            color: '#fad8c7'
+        },
+        'Pending Smoketest': {
+            color: '#e9b398'
+        },
+        'Declined': {
+            color: '#969696',
+            text: '#fff'
+        },
+        'Pending Release': {
+            color: '#7e987b'
+        },
+        'Complete': {
+            color: '#91be9c'
+        },
+        'Pending Estimate': {
+            color: '#ffc2a0'
+        }
+    };
 
     // Bubble template
     my.TLP = `
@@ -48,89 +101,12 @@
         my.$summary_container.append( $template );
     };
 
-    my.statuses = [
-        {
-            code: 'status-33',
-            name: 'Design QA',
-            color: '#fad8c7'
-        },
-        {
-            code: 'status-2',
-            name: 'Proposed',
-            color: '#fffff6'
-        },
-        {
-            code: 'status-3',
-            name: 'New',
-            color: '#ffffe2'
-        },
-        {
-            code: 'status-4',
-            name: 'In Progress',
-            color: '#bfd4f2'
-        },
-        {
-            code: 'status-8',
-            name: 'Pending Code Review',
-            color: '#bfe5bf'
-        },
-        {
-            code: 'status-9',
-            name: 'Pending Merge',
-            color: '#009800',
-            text: '#fff'
-        },
-        {
-            code: 'status-7',
-            name: 'Pending Manager',
-            color: '#76dbdf'
-        },
-        {
-            code: 'status-',
-            name: 'Pending Customer',
-            color: '#e2c688'
-        },
-        {
-            code: 'status-26',
-            name: 'On Hold',
-            color: '#dbc7e3'
-        },
-        {
-            code: 'status-13',
-            name: 'Pending Final Signoff',
-            color: '#ccbfa2'
-        },
-        {
-            code: 'status-6',
-            name: 'Pending QA',
-            color: '#fad8c7'
-        },
-        {
-            code: 'status-11',
-            name: 'Pending Smoketest',
-            color: '#e9b398',
-            text: '#fff'
-        },
-        {
-            code: 'status-28',
-            name: 'Declined',
-            color: '#969696',
-            text: '#fff'
-        },
-        {
-            code: 'status-12',
-            name: 'Pending Release',
-            color: '#7e987b'
-        },
-        {
-            code: 'status-27',
-            name: 'Complete',
-            color: '#91be9c',
-            text: '#fff'
-        }
-    ];
+
+    my.statuses = {};
 
     my.build_styles = function() {
+        $( 'head' ).append( '<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">' );
+
         $( 'head' ).append( '<style id="tribe-ticket-status-styles"/>' );
         my.$styles = $( document.getElementById( 'tribe-ticket-status-styles' ) );
 
@@ -158,7 +134,18 @@
         my.build_styles();
 
         my.$table = $( 'table.list.issues' );
-        my.$table_rows = my.$table.find( 'tr.issue' );
+        my.$issues = my.$table.find( 'tr.issue' );
+
+        // Create a list of Status Names by Code
+        my.$table.find( 'td.status' ).each( function(){
+            var
+                $this = $( this ),
+                $row = $this.parents( 'tr' ).eq( 0 ),
+                code = $row.attr( 'class' ).match( /status\-[0-9]+/g )[0],
+                name = $this.text();
+
+            my.statuses[ code ] = name;
+        } );
 
         $( document ).on( 'keyup keydown', function ( e ) {
             my.shift = 16 === e.keyCode && ! my.shift;
@@ -168,10 +155,10 @@
         $( document ).on( 'click', '.tribe-status.tribe-clickable', function ( event ) {
             var $this = $( this ),
                 data = $this.data( 'bubble' ),
-                $rows = my.$table_rows,
+                $rows = my.$issues,
                 filter = '';
 
-            my.$table_rows.hide();
+            my.$issues.hide();
 
             if ( my.ctrl ) {
                 $this.toggleClass( 'tribe-active' );
@@ -191,8 +178,6 @@
                 }
             }
 
-            console.log( filter );
-
             if ( filter ) {
                 $rows.filter( filter ).show();
             } else {
@@ -205,8 +190,7 @@
 
         my.$summary_container = $( '<div class="tribe-status-summary"/>' );
         my.$titleBar = $( '#content .title-bar' );
-        this.$issues = $('#issue-list');
-        var issue_count = this.$issues.find( 'tr.issue' ).length;
+        var issue_count = my.$table.find( 'tr.issue' ).length;
 
         if ( ! issue_count ) {
             return;
@@ -216,23 +200,22 @@
         var $summary = $( '<div class="tribe-summary-text">Issue count: ' + issue_count + '</div>' );
         my.$summary_container.append( $summary );
 
-
         // Ticket Summary
-        for ( var i in my.statuses ) {
-            var $rows = this.$issues.find( 'tr.' + my.statuses[ i ].code );
+        $.each( my.statuses, function( code, name ) {
+            var $rows = my.$table.find( 'tr.' + code );
 
-            if ( ! $rows.length ) {
-                continue;
+            if ( ! $rows.length || 'undefined' === typeof my.statuses_colors[ name ] ) {
+                return;
             }
 
             var text_color = '';
 
-            if ( 'undefined' !== my.statuses[ i ].text ) {
-                text_color = 'color:' + my.statuses[ i ].text + ';';
+            if ( 'undefined' !== typeof my.statuses_colors[ name ].text ) {
+                text_color = 'color:' + my.statuses_colors[ name ].text + ';';
             }
 
-            my.addBubble( $rows.length, my.statuses[ i ].name, my.statuses[ i ].code, my.statuses[ i ].color, text_color );
-        }
+            my.addBubble( $rows.length, name, code, my.statuses_colors[ name ].color, text_color );
+        } );
 
         // Estimate summary
         var that = this;
@@ -241,7 +224,7 @@
         if ( that.$rows.length ) {
 
             that.estimates = 0;
-            $.each(this.$rows, function(index, $object){
+            $.each( this.$rows, function(index, $object){
                 val = ( parseFloat( $($object).html() ) || 0 );
                 that.estimates += val;
             });
@@ -268,6 +251,62 @@
         // Add to DOM
         my.$summary_container.find('.tribe-status:first' ).css( { 'margin-left': '0' } );
         my.$titleBar.append( my.$summary_container );
+
+        my.color_code();
+    };
+
+    my.color_code = function() {
+        my.$issues.each( function() {
+            var $issue = $( this );
+            var $status = $issue.find( '.status' );
+            var $tracker = $issue.find( '.tracker' );
+            var name = $status.text();
+            var color = 'transparent';
+            var text = '#000';
+
+            if ( 'undefined' === typeof my.statuses_colors[ name ] ) {
+                // Marks undefined Status so we can add colors later on
+                console.log( 'Undefined Status in this Query:', name );
+                return;
+            }
+
+            if ( 'undefined' !== typeof my.statuses_colors[ name ].text ) {
+                text = my.statuses_colors[ name ].text;
+            }
+
+            if ( 'undefined' !== typeof my.statuses_colors[ name ].color ) {
+                color = my.statuses_colors[ name ].color;
+            }
+
+            $status.css( {
+                'background-color': color,
+                'text-align': 'center',
+                'color': text
+            } );
+
+            var icon = null;
+
+            switch ( $tracker.text() ) {
+                case 'Bug':
+                    icon = 'bug';
+                    break;
+                case 'Feature':
+                    icon = 'star-o';
+                    break;
+                case 'Support':
+                    icon = 'life-ring';
+                    break;
+                case 'Task':
+                    icon = 'sticky-note-o';
+                    break;
+            }
+
+            $tracker
+                .css( {
+                    'text-align': 'center'
+                } )
+                .html( '<i class="fa fa-' + icon + '"></i>' );
+        } );
     };
 
     $( function() {
