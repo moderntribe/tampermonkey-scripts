@@ -12,8 +12,6 @@ var central_issue_colors = {};
 
 ( function( $, my ) {
     my.init = function() {
-        $( 'head' ).append( '<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">' );
-        
         my.$issues = $( 'tr.issue' );
         
         my.$issues.each( function() {
