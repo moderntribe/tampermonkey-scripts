@@ -105,8 +105,6 @@
     my.statuses = {};
 
     my.build_styles = function() {
-        $( 'head' ).append( '<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">' );
-
         $( 'head' ).append( '<style id="tribe-ticket-status-styles"/>' );
         my.$styles = $( document.getElementById( 'tribe-ticket-status-styles' ) );
 
