@@ -60,7 +60,8 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
         var to   = obj.formatDate( new Date() );
         var clocking = {
             day: [],
-            total: 0
+            total: 0,
+            currentWeekTotal: null
         };
 
         for ( var dateCounter = obj.numDays - 1; dateCounter >= 0; dateCounter-- ) {
@@ -88,6 +89,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 
                 var item  = data.time_entries[ i ];
                 var hours = parseFloat( item.hours );
+                var date  = new Date( item.spent_on );
 
                 // if we aren't tracking this day, skip it
                 if ( 'undefined' === typeof clocking.day[ item.spent_on ] ) {
@@ -96,6 +98,10 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 
                 clocking.day[ item.spent_on ] += hours;
                 clocking.total                += hours;
+
+                if ( null !== clocking.currentWeekTotal || 0 === date.getDay() ) {
+                    clocking.currentWeekTotal += hours;
+                }
             }
 
             obj.clockingTracker( clocking );
@@ -170,6 +176,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
             $tracker.append( '<div class="tracker-message ' + messageSeverity +'">' + message + '</div>' );
         }
 
+        $tracker.append( '<div class="tracker-current-week">' + clocking.currentWeekTotal.toFixed( 2 ) + ' hour(s) clocked since Monday</div>' );
     };
 
     obj.formatDate = function( d ) {
@@ -208,6 +215,12 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 #clocking-tracker .tracker-message.severity-high b,
 #clocking-tracker .tracker-message.severity-high i {
   color: #c30c0c;
+}
+
+#clocking-tracker .tracker-current-week {
+  color: #ccc;
+  font-size: 0.7rem;
+  text-align: center;
 }
 
 #clocking-tracker .tracker-days {
