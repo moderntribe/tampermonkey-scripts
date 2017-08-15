@@ -44,8 +44,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
         goalHours: goal_hours,
         workDays: work_days,
         numDays: 7,
-        failLevel: 0,
-        stripeBackground: 'https://i.imgur.com/nfuevmb.png'
+        failLevel: 0
     };
 
     obj.init = function() {
