@@ -149,7 +149,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
                 title   += ' This day is too old to clock to.';
             }
 
-            $days.prepend( '<div class="tracker-day' + classes + '" title="' + $.trim( title ) + '"><div class="tracker-hours">' + hoursClocked + '</div><div class="tracker-date">' + day + '</div></div>' );
+            $days.append( '<div class="tracker-day' + classes + '" title="' + $.trim( title ) + '"><div class="tracker-hours">' + hoursClocked + '</div><div class="tracker-date">' + day + '</div></div>' );
         }
 
         var message = '';
