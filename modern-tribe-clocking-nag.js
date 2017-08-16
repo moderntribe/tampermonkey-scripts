@@ -11,7 +11,7 @@
 /**
  * SET YOUR GOAL HOURS FOR THE DAY
  */
-var central_clocking_nag_goal_hours = 7;
+var central_clocking_nag_goal_hours = 7.5;
 
 /**
  * SET YOUR WORK DAYS
@@ -123,12 +123,13 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
      */
     obj.fetchData = function( fromTo ) {
         var url   = 'https://central.tri.be/time_entries.json?from=' + fromTo.from + '&to=' + fromTo.to + '&user_id=' + obj.userId;
-
-        var jqxhr = $.ajax( {
+        var args  = {
             dataType: 'json',
             type: 'GET',
             url: url
-        } );
+        };
+
+        var jqxhr = $.ajax( args );
 
         jqxhr.done( function( data ) {
             for ( var i in data.time_entries ) {
@@ -189,6 +190,9 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
      */
     obj.clockingTracker = function( clocking ) {
         var $header = $( document.getElementById( 'top-menu' ) );
+        if ( ! $header.length ) {
+            $header = $( '.navbar' );
+        }
         $header.after( '<div id="clocking-tracker"><div class="tracker-days"/></div>' );
 
         var $tracker   = $( document.getElementById( 'clocking-tracker' ) );
@@ -256,6 +260,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
         }
 
         $tracker.append( '<div class="tracker-current-week">' + clocking.currentWeekTotal.toFixed( 2 ) + ' hour(s) clocked since Monday</div>' );
+        $tracker.fadeIn( 'fast' );
     };
 
     /**
@@ -279,6 +284,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 #clocking-tracker {
   background: #fcfcfc;
   border-bottom: #eee;
+  display: none;
   padding: 0.5rem 1rem;
   width: auto;
 }
