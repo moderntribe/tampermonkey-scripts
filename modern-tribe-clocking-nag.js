@@ -9,11 +9,6 @@
 // ==/UserScript==
 
 /**
- * SET YOUR CENTRAL USER ID HERE
- */
-var central_clocking_nag_user_id = 652;
-
-/**
  * SET YOUR GOAL HOURS FOR THE DAY
  */
 var central_clocking_nag_goal_hours = 7;
@@ -31,7 +26,7 @@ var central_clocking_nag_goal_hours = 7;
  */
 var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 
-( function( $, user_id, goal_hours, work_days ) {
+( function( $, goal_hours, work_days ) {
     'use strict';
 
     Number.prototype.padLeft = function( base, chr ) {
@@ -40,45 +35,99 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
     };
 
     var obj = {
-        userId: user_id,
+        userId: null,
         goalHours: goal_hours,
         workDays: work_days,
         numDays: 7,
-        failLevel: 0
-    };
-
-    obj.init = function() {
-        obj.buildStyles();
-
-        var d     = new Date();
-        d.setDate( d.getDate() - obj.numDays + 1 );
-
-        var from = obj.formatDate( d );
-
-        d = new Date();
-
-        var to   = obj.formatDate( new Date() );
-        var clocking = {
+        failLevel: 0,
+        batch: [],
+        batchSize: 4,
+        datesToFetch: [],
+        clocking: {
             day: [],
             total: 0,
             currentWeekTotal: null
-        };
+        }
+    };
 
+    /**
+     * Initializes the clocking nav
+     */
+    obj.init = function() {
+        // grab ID from page
+        if ( null === obj.userId ) {
+            var userId = $( document.getElementById( 'account-nav' ) ).find( '.last-child a[href^="/users/"]' ).attr( 'href' ).replace( '/users/', '' );
+            obj.userId = parseInt( userId, 10 );
+        }
+
+        obj.buildStyles();
+        obj.generateDates();
+        obj.generateBatches();
+        obj.fetchBatches();
+    };
+    
+    /**
+     * Generate dates that we'll be fetching
+     */
+    obj.generateDates = function() {
         for ( var dateCounter = obj.numDays - 1; dateCounter >= 0; dateCounter-- ) {
             var tempDate = new Date();
             tempDate.setDate( tempDate.getDate() - dateCounter );
-            clocking.day[ obj.formatDate( tempDate ) ] = 0;
+            tempDate = obj.formatDate( tempDate );
+            obj.clocking.day[ tempDate ] = 0;
+            obj.datesToFetch.push( tempDate );
         }
+    };
+    
+    /**
+     * Splits date ranges into chunks that Central can handle and triggers the fetch process
+     */
+    obj.generateBatches = function() {
+        var fromTo = { from: null, to: null };
+        for ( var i = 0; obj.datesToFetch.length; i++ ) {
+            var date = obj.datesToFetch.shift();
 
-        var url   = 'https://central.tri.be/time_entries.json?period_type=2&from=' + from + '&to=' + to + '&columns=day&user_id=' + obj.userId;
+            if ( null === fromTo.from ) {
+                fromTo.from = date;
+            }
+
+            if ( ! obj.datesToFetch.length ) {
+                fromTo.to = date;
+            }
+
+            if ( ( obj.batchSize - 1 ) === i % obj.batchSize || ! obj.datesToFetch.length ) {
+                fromTo.to = date;
+
+                obj.batch.push( $.extend( {}, fromTo ) );
+
+                fromTo = { from: null, to: null };
+            }
+        }
+    };
+    
+    /**
+     * Fetches the batches
+     */
+    obj.fetchBatches = function() {
+        for ( var i in obj.batch ) {
+            if ( ! obj.batch.hasOwnProperty( i ) ) {
+                continue;
+            }
+            
+            obj.fetchData( obj.batch[ i ] );
+        }
+    };
+
+    /**
+     * Fetches a batch date range and adjusts data accordingly
+     */
+    obj.fetchData = function( fromTo ) {
+        var url   = 'https://central.tri.be/time_entries.json?from=' + fromTo.from + '&to=' + fromTo.to + '&user_id=' + obj.userId;
 
         var jqxhr = $.ajax( {
             dataType: 'json',
             type: 'GET',
-            url: url,
-            headers: {
-                Accept: 'text/javascript, text/html, application/xml, text/xml, */*'
-            }
+            url: url
         } );
 
         jqxhr.done( function( data ) {
@@ -92,22 +141,29 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
                 var date  = new Date( item.spent_on );
 
                 // if we aren't tracking this day, skip it
-                if ( 'undefined' === typeof clocking.day[ item.spent_on ] ) {
+                if ( 'undefined' === typeof obj.clocking.day[ item.spent_on ] ) {
                     continue;
                 }
 
-                clocking.day[ item.spent_on ] += hours;
-                clocking.total                += hours;
+                obj.clocking.day[ item.spent_on ] += hours;
+                obj.clocking.total                += hours;
 
-                if ( null !== clocking.currentWeekTotal || 0 === date.getDay() ) {
-                    clocking.currentWeekTotal += hours;
+                if ( null !== obj.clocking.currentWeekTotal || 0 === date.getDay() ) {
+                    obj.clocking.currentWeekTotal += hours;
                 }
             }
 
-            obj.clockingTracker( clocking );
+            obj.batch.shift();
+            
+            if ( ! obj.batch.length ) {
+                obj.clockingTracker( obj.clocking );
+            }
         } );
     };
 
+    /**
+     * Generates the clocking tracker UI
+     */
     obj.clockingTracker = function( clocking ) {
         var $header = $( document.getElementById( 'top-menu' ) );
         $header.after( '<div id="clocking-tracker"><div class="tracker-days"/></div>' );
@@ -178,7 +234,10 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 
         $tracker.append( '<div class="tracker-current-week">' + clocking.currentWeekTotal.toFixed( 2 ) + ' hour(s) clocked since Monday</div>' );
     };
-
+    
+    /**
+     * Formats date into YYYY-MM-DD
+     */
     obj.formatDate = function( d ) {
         return [
             d.getFullYear(),
@@ -187,6 +246,9 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
         ].join('-');
     };
 
+    /**
+     * Adds CSS for clocking tracker
+     */
     obj.buildStyles = function() {
         $( 'head' ).append( '<style id="tribe-clocking-tracker-styles"/>' );
         obj.$styles = $( document.getElementById( 'tribe-clocking-tracker-styles' ) );
@@ -322,4 +384,4 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
     $( function() {
         obj.init();
     } );
-} )( jQuery, central_clocking_nag_user_id, central_clocking_nag_goal_hours, central_clocking_nag_work_days );
+} )( jQuery, central_clocking_nag_goal_hours, central_clocking_nag_work_days );
