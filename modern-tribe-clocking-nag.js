@@ -332,6 +332,7 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
   padding: 1rem 1rem 0.5rem;
   text-align: center;
   width: 14%;
+  color: #24292e;
 }
 
 #clocking-tracker .non-work-day {
