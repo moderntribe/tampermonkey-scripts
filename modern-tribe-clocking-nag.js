@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Clocking Nag
 // @namespace    https://central.tri.be/
-// @version      0.1
+// @version      0.1.1
 // @description  Nag about clocking right in Central
 // @author       Matthew Batchelder
 // @include      /https?:\/\/central(dev)?.tri.be/
@@ -213,6 +213,8 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
             var isWorkDay    = true;
             var hoursClocked = parseFloat( clocking.day[ i ] ).toFixed( 2 );
             var title        = '';
+            var dateInURL    = date.getFullYear() + '-' + ( date.getMonth() + 1 ) + '-' + date.getDate();
+            var dayDetailsLink = 'https://central.tri.be/time_entries?from=' + dateInURL + '&to=' + dateInURL + '&user_id=' + obj.userId;
 
             if ( -1 === $.inArray( date.getDay(), obj.workDays ) ) {
                 // not a work day!
@@ -238,7 +240,9 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
                 title   += ' This day is too old to clock to.';
             }
 
-            $days.append( '<div class="tracker-day' + classes + '" title="' + $.trim( title ) + '"><div class="tracker-hours">' + hoursClocked + '</div><div class="tracker-date">' + day + '</div></div>' );
+            var $day = '<a href="' + dayDetailsLink + '" class="tracker-day' + classes + '" title="' + $.trim( title ) + '"><span class="tracker-hours">' + hoursClocked + '</span><span class="tracker-date">' + day + '</span></a>';
+
+            $days.append( $day );
         }
 
         var message = '';
@@ -343,11 +347,13 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
 }
 
 #clocking-tracker .tracker-hours {
+  display: block;
   font-size: 1.1rem;
   margin-bottom: .5rem;
 }
 
 #clocking-tracker .tracker-date {
+  display: block;
   color: #999;
   font-size: 0.7rem;
 }
