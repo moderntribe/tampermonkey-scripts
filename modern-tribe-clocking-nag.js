@@ -122,7 +122,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
      * Fetches a batch date range and adjusts data accordingly
      */
     obj.fetchData = function( fromTo ) {
-        var url   = 'https://central.tri.be/time_entries.json?from=' + fromTo.from + '&to=' + fromTo.to + '&user_id=' + obj.userId;
+        var url   = 'https://central.tri.be/time_entries.json?sort=spent_on&from=' + fromTo.from + '&to=' + fromTo.to + '&user_id=' + obj.userId;
         var args  = {
             dataType: 'json',
             type: 'GET',
@@ -139,7 +139,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 
                 var item  = data.time_entries[ i ];
                 var hours = parseFloat( item.hours );
-                var date  = new Date( item.spent_on );
+                var date  = new Date( item.spent_on + ' 00:01' );
 
                 // if we aren't tracking this day, skip it
                 if ( 'undefined' === typeof obj.clocking.day[ item.spent_on ] ) {
@@ -171,7 +171,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
                 continue;
             }
 
-            var date   = new Date( i );
+            var date   = new Date( i + ' 00:01' );
             currentDay = date.getDay();
 
             if ( 0 === currentDay ) {
@@ -209,7 +209,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
             var day     = i.split( '-' );
             day         = day[1] + '/' + day[2];
 
-            var date         = new Date( i );
+            var date         = new Date( i + ' 00:01' );
             var isWorkDay    = true;
             var hoursClocked = parseFloat( clocking.day[ i ] ).toFixed( 2 );
             var title        = '';
