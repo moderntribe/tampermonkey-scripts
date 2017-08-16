@@ -65,7 +65,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
         obj.generateBatches();
         obj.fetchBatches();
     };
-    
+
     /**
      * Generate dates that we'll be fetching
      */
@@ -78,7 +78,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
             obj.datesToFetch.push( tempDate );
         }
     };
-    
+
     /**
      * Splits date ranges into chunks that Central can handle and triggers the fetch process
      */
@@ -104,7 +104,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
             }
         }
     };
-    
+
     /**
      * Fetches the batches
      */
@@ -113,7 +113,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
             if ( ! obj.batch.hasOwnProperty( i ) ) {
                 continue;
             }
-            
+
             obj.fetchData( obj.batch[ i ] );
         }
     };
@@ -147,18 +147,41 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 
                 obj.clocking.day[ item.spent_on ] += hours;
                 obj.clocking.total                += hours;
-
-                if ( null !== obj.clocking.currentWeekTotal || 0 === date.getDay() ) {
-                    obj.clocking.currentWeekTotal += hours;
-                }
             }
 
             obj.batch.shift();
-            
+
             if ( ! obj.batch.length ) {
+                obj.calculateWeekTotal();
                 obj.clockingTracker( obj.clocking );
             }
         } );
+    };
+
+    /**
+     * Calculates the current week's total
+     */
+    obj.calculateWeekTotal = function() {
+        var currentDay        = null;
+        var encounteredMonday = false;
+
+        for ( var i in obj.clocking.day ) {
+            if ( ! obj.clocking.day.hasOwnProperty( i ) ) {
+                continue;
+            }
+
+            var date   = new Date( i );
+            currentDay = date.getDay();
+
+            if ( 0 === currentDay ) {
+                encounteredMonday = true;
+                obj.clocking.currentWeekTotal = obj.clocking.day[ i ];
+            } else if ( ! encounteredMonday ) {
+                continue;
+            } else {
+                obj.clocking.currentWeekTotal += obj.clocking.day[ i ];
+            }
+        }
     };
 
     /**
@@ -234,7 +257,7 @@ var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
 
         $tracker.append( '<div class="tracker-current-week">' + clocking.currentWeekTotal.toFixed( 2 ) + ' hour(s) clocked since Monday</div>' );
     };
-    
+
     /**
      * Formats date into YYYY-MM-DD
      */
