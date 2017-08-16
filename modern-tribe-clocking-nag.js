@@ -16,15 +16,15 @@ var central_clocking_nag_goal_hours = 7.5;
 /**
  * SET YOUR WORK DAYS
  *
- * 0 = Monday
- * 1 = Tuesday
- * 2 = Wednesday
- * 3 = Thursday
- * 4 = Friday
- * 5 = Saturday
- * 6 = Sunday
+ * 0 = Sunday
+ * 1 = Monday
+ * 2 = Tuesday
+ * 3 = Wednesday
+ * 4 = Thursday
+ * 5 = Friday
+ * 6 = Saturday
  */
-var central_clocking_nag_work_days = [ 0, 1, 2, 3, 4 ];
+var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
 
 ( function( $, goal_hours, work_days ) {
     'use strict';
