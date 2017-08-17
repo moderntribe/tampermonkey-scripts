@@ -409,8 +409,8 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
     font-size: 0.6rem;
   }
 
-  #clocking-tracker .tracker-day:nth-child(6),
-  #clocking-tracker .tracker-day:nth-child(7) {
+  #clocking-tracker .tracker-day:nth-child(1),
+  #clocking-tracker .tracker-day:nth-child(2) {
     display: none;
   }
 }
