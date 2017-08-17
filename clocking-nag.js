@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Clocking Nag
 // @namespace    https://central.tri.be/
-// @version      0.1.1
+// @version      0.1.2
 // @description  Nag about clocking right in Central
 // @author       Matthew Batchelder
 // @include      /https?:\/\/central(dev)?.tri.be/
@@ -11,7 +11,7 @@
 /**
  * SET YOUR GOAL HOURS FOR THE DAY
  */
-var central_clocking_nag_goal_hours = 7.5;
+var central_clocking_nag_goal_hours = 7;
 
 /**
  * SET YOUR WORK DAYS
@@ -248,6 +248,13 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
         var message = '';
         var messageSeverity = '';
 
+        // observe when clocking has been caught up due to extra hours per day
+        if ( obj.failLevel > 0 && obj.clocking.total >= ( obj.workDays.length * obj.goalHours ) ) {
+            obj.failLevel = 0;
+            message = 'Looks like you have caught up by working more hours per day! Nicely done, you beast!';
+            messageSeverity = 'severity-good';
+        }
+
         if ( obj.failLevel > obj.numDays * 1.5 ) {
             message = 'Whoa. You are <i>really</i> far behind and need to clock some hours. Take a break and clock some <b>now</b>.';
             messageSeverity = 'severity-high';
@@ -310,6 +317,10 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
 #clocking-tracker .tracker-message.severity-high b,
 #clocking-tracker .tracker-message.severity-high i {
   color: #c30c0c;
+}
+
+#clocking-tracker .tracker-message.severity-good {
+  color: #6baf74;
 }
 
 #clocking-tracker .tracker-current-week {
