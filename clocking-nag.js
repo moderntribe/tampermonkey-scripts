@@ -174,7 +174,7 @@ var central_clocking_nag_work_days = [ 1, 2, 3, 4, 5 ];
             var date   = new Date( i + ' 00:01' );
             currentDay = date.getDay();
 
-            if ( 0 === currentDay ) {
+            if ( 1 === currentDay ) {
                 encounteredMonday = true;
                 obj.clocking.currentWeekTotal = obj.clocking.day[ i ];
             } else if ( ! encounteredMonday ) {
