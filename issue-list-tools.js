@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Adds tools to interact with the issue list
 // @author       Matthew Batchelder
-// @include      /https?:\/\/central(dev)?.tri.be\/issues/
+// @include      /https?:\/\/central(dev)?.tri.be.*\/issues/
 // @grant        none
 // ==/UserScript==
 
