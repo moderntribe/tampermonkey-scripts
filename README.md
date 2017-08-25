@@ -46,6 +46,11 @@ Ok...fine...that's just one tool, but this has room to grow.
 
 ![screen shot 2017-08-16 at 10 08 03 am](https://user-images.githubusercontent.com/430385/29367418-db3e3328-826a-11e7-8dd1-2e9e48a338c9.png)
 
+### `over-estimate.js`
+
+* highlight the spent hours with pink if they are over estimate
+* works on both issue lists and single issues
+
 ### `uncheck-email-all.js`
 
 Auto-uncheck the "email all" checkbox so you only send an email when you _really_ want to.
