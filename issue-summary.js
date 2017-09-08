@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Central issue summary
 // @namespace    http://central.tri.be/
-// @version      0.2.5
+// @version      0.2.6
 // @description  Generate a ticket summary from visible tickets
 // @author       Matthew Batchelder, Nick Pelton & Gustavo Bordoni
 // @include      /https?:\/\/central.tri.be\/(projects\/)*[^\/]*\/?issues\/?/
