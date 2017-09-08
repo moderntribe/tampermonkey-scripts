@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tickets over estimate
 // @namespace    http://central.tri.be/
-// @version      0.1
+// @version      0.1.1
 // @description  Adds highlighting when a ticket has more hours clocked than the estimate
 // @author       Zach Tirrell
 // @include      /^https:\/\/central.tri.be\/(\/.*)*/
@@ -27,7 +27,7 @@ var central_over_estimate = {};
         }
 
         var spent = parseFloat( $spent.find( 'a' ).html() );
-        if ( isNaN( spent ) || spent < estimated ) {
+        if ( isNaN( spent ) || spent <= estimated ) {
             return;
         }
 
@@ -37,22 +37,18 @@ var central_over_estimate = {};
 
     my.highlight_table = function() {
         $( '.list.issues .issue' ).each( function() {
-            console.log($(this));
             var $estimated = $( this ).find( 'td.estimated_hours' );
             var $spent = $( this ).find( 'td.spent_hours' );
 
             var estimated = parseFloat( $estimated.html() );
             if ( isNaN( estimated ) ) {
-                console.log('bad estimate');
                 return;
             }
 
             var spent = parseFloat( $spent.html() );
-            if ( isNaN( spent ) || spent < estimated ) {
-                console.log('bad spent');
+            if ( isNaN( spent ) || spent <= estimated ) {
                 return;
             }
-                console.log('change!!');
             $spent.css( 'background-color', 'pink' );
         } );
     };
