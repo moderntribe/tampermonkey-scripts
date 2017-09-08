@@ -61,6 +61,9 @@
         },
         'Pending Estimate': {
             color: '#ffc2a0'
+        },
+        'Strategy QA': {
+            color: '#d4befa'
         }
     };
 
@@ -328,3 +331,4 @@
         my.init();
     } );
 } )( jQuery );
+
