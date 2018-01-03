@@ -24,28 +24,35 @@
 
         var specFiles = obj.getSpecFiles();
 
-        if ( specFiles.length > 0 ) {
-            $reviewTools.prepend( '<div class="diffbar-item"><button class="btn btn-sm" id="tribe-suppress-spec"><span>Hide</span> spec.js (' + specFiles.length + ')</button></div>' );
-            $reviewTools.on( 'click', '#tribe-suppress-spec', function( e ) {
-                var $el = $( this );
-                var isActive = $el.hasClass( 'active' );
+        $reviewTools.prepend( '<div class="diffbar-item"><button class="btn btn-sm" id="tribe-suppress-spec"><span id="tribe-suppress-spec-showhide">Hide</span> spec.js<span id="tribe-suppress-spec-count"></span></button></div>' );
+        $reviewTools.on( 'click', '#tribe-suppress-spec', function( e ) {
+            var specFiles = obj.getSpecFiles();
 
-                Array.prototype.forEach.call( specFiles, function( el ) {
-                    $( el ).find( '.js-details-target' ).click();
-                } );
+            var $el = $( this );
+            var isActive = $el.hasClass( 'active' );
 
-                if ( isActive ) {
-                    $el.removeClass( 'active' );
-                    $el.find( 'span' ).html( 'Hide' );
-                } else {
-                    $el.addClass( 'active' );
-                    $el.find( 'span' ).html( 'Show' );
-                }
+            $( '#tribe-suppress-spec-count' ).text( ' (' + specFiles.length + ')' );
+
+            var $showhide = $( '#tribe-suppress-spec-showhide' );
+
+            specFiles.forEach( function( el ) {
+                $( '.js-details-target', el ).click();
             } );
-        }
+
+            if ( isActive ) {
+                $el.removeClass( 'active' );
+                $showhide.html( 'Hide' );
+            } else {
+                $el.addClass( 'active' );
+                $showhide.html( 'Show' );
+            }
+        } );
     };
 
     obj.getSpecFiles = function() {
+        // Reset spec files array
+        obj.specFiles = [];
+
         var jsFiles = document.getElementsByClassName( 'js-file' );
 
         Array.prototype.forEach.call( jsFiles, function( el, index, array ) {
