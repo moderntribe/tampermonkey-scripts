@@ -51,6 +51,10 @@ Ok...fine...that's just one tool, but this has room to grow.
 * highlight the spent hours with pink if they are over estimate
 * works on both issue lists and single issues
 
+### `target-blank.js`
+
+Auto-adds `target="_blank"` to all external links.
+
 ### `uncheck-email-all.js`
 
 Auto-uncheck the "email all" checkbox so you only send an email when you _really_ want to.
