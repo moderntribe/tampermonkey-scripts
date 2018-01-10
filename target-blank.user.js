@@ -17,7 +17,7 @@
 	 * Initialize
 	 */
 	obj.init = function() {
-		var $a = $( 'a' ).not( 'a[href^="https://central"]' );
+		var $a = $( 'a' ).not( 'a[href^="https://central"]' ).not( 'a[href^="/"]' );
 		$a.attr( 'target', '_blank' );
 	};
 
