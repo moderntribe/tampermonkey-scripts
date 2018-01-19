@@ -57,7 +57,7 @@ Adds a button to tasks in central to start toggl.
 You need to provide your toggl API key and the proxy address.
 You are welcome to use the proxy at https://relay-for-toggl.herokuapp.com/ 
 Proxy repo: https://github.com/binarygary/relay-for-toggl
-![example](https://www.dropbox.com/s/fubs1ir9c57fzly/toggl.gif?dl=0)
+![example](https://github.com/moderntribe/tampermonkey-scripts/img/toggl.gif)
 
 ### `target-blank.js`
 
