@@ -51,6 +51,14 @@ Ok...fine...that's just one tool, but this has room to grow.
 * highlight the spent hours with pink if they are over estimate
 * works on both issue lists and single issues
 
+### `relay-for-toggl.js`
+
+Adds a button to tasks in central to start toggl.
+You need to provide your toggl API key and the proxy address.
+You are welcome to use the proxy at https://relay-for-toggl.herokuapp.com/ 
+Proxy repo: https://github.com/binarygary/relay-for-toggl
+![example](https://github.com/moderntribe/tampermonkey-scripts/img/toggl.gif)
+
 ### `target-blank.js`
 
 Auto-adds `target="_blank"` to all external links.
