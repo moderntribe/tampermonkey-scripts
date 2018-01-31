@@ -53,7 +53,13 @@ Ok...fine...that's just one tool, but this has room to grow.
 
 ### `qa-headers.user.js`
 
-Styles QA headers so scanning QA activity on tickets is quicker.
+Styles QA headers so scanning QA activity on tickets is quicker. Relies on using the following headers in Central:
+
+```
+h2. QA PASSED (plus any extra text you want here)
+
+h2. RETURNED (plus any extra text you want here)
+```
 
 ### `relay-for-toggl.user.js`
 
