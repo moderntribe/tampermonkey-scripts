@@ -69,6 +69,11 @@ You are welcome to use the proxy at https://relay-for-toggl.herokuapp.com/
 Proxy repo: https://github.com/binarygary/relay-for-toggl
 ![example](https://github.com/moderntribe/tampermonkey-scripts/img/toggl.gif)
 
+### `sticky-clocker-dropdowns.user.js`
+
+Sets the __project__ and __activity__ to previous values after clocking time on the clocking tool.
+This does not work if the clocking tool is opened in a pop-up window.
+
 ### `target-blank.user.js`
 
 Auto-adds `target="_blank"` to all external links.
