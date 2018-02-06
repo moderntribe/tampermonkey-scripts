@@ -61,6 +61,11 @@ h2. QA PASSED (plus any extra text you want here)
 h2. RETURNED (plus any extra text you want here)
 ```
 
+### `qa-testing-instructions.user.js`
+
+Adds a button to the update form in a specific issue.
+When clicking the button, the notes and testing instructions fields are automatically populated with formatted starter text.
+
 ### `relay-for-toggl.user.js`
 
 Adds a button to tasks in central to start toggl.
