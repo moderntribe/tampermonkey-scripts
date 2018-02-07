@@ -51,6 +51,10 @@ Ok...fine...that's just one tool, but this has room to grow.
 * highlight the spent hours with pink if they are over estimate
 * works on both issue lists and single issues
 
+### `party-llamacorn.user.js`
+
+When a ticket is set to _Pending Merge_ or _Complete_, a llamacorn flies across the screen.
+
 ### `qa-headers.user.js`
 
 Styles QA headers so scanning QA activity on tickets is quicker. Relies on using the following headers in Central:
