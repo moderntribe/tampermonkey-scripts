@@ -13,6 +13,10 @@ These are some common Modern Tribe Tampermonkey scripts.
 
 ## Scripts
 
+### `central-issues-kanban.user.js`
+
+Creates a kanban board for all issues queried. The board is hidden by default and can be toggled open and closed.
+
 ### `central-links.user.js`
 
 Turns the _Pull Request_ field in Modern Tribe's "Central" issues pages into a link.
