@@ -64,7 +64,7 @@
         if ( value.indexOf( KEYS.HOUR ) === NOT_FOUND && value.indexOf( KEYS.MINUTE ) === NOT_FOUND ) {
             input.value = format( to_float( value ) );
         } else {
-            input.value = format( to_float( getAmount( input.value ) ) );
+            input.value = format( to_float( getAmount( value ) ) );
         }
     }
 
