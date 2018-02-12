@@ -93,9 +93,6 @@ var proxyURL    = 'relay address';
 			{ request: 'time',
 				action: 'start',
 				api_key: apiKeyToggl,
-				central_url: centralURL,
-				central_username: centralUN,
-				central_password: centralPW,
 				description: '[' + cache.id + '][' + cache.activityText + '][' + cache.activityDescription + ']',
 				pid : cache.projectId
 			}, 'json' )
