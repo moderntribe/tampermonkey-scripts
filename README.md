@@ -13,7 +13,7 @@ These are some common Modern Tribe Tampermonkey scripts.
 
 ## Scripts
 
-### `central-estimates-time-conversion.js`
+### `central-estimates-time-conversion.user.js`
 
 Updates the estimate field to make it wider and available to accepts entries such as: 4h 5m and make them work exactly the same as **Spent time** field.
 
