@@ -13,6 +13,10 @@ These are some common Modern Tribe Tampermonkey scripts.
 
 ## Scripts
 
+### `central-estimates-time-conversion.js`
+
+Updates the estimate field to make it wider and available to accepts entries such as: 4h 5m and make them work exactly the same as **Spent time** field.
+
 ### `central-issues-kanban.user.js`
 
 Creates a kanban board for all issues queried. The board is hidden by default and can be toggled open and closed.
