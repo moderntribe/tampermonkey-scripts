@@ -99,6 +99,8 @@
     var values = singleValue ? singleValue.trim().split(' ') : [];
     return values.map(function( item ) {
       return item.replace(/\s/g,'');
+    }).filter(function( item ) {
+        return item.length > 0;
     });
   }
 
