@@ -13,6 +13,17 @@ These are some common Modern Tribe Tampermonkey scripts.
 
 ## Scripts
 
+### `central-link-pr-formatting.user.js`
+
+Format the links that points to Pull Request in Central from a format like: `https://github.com/moderntribe/event-tickets-plus/pull/490` into a format like `event-tickets-plus#490
+`event-tickets-plus#490`  similar to what GitHub does when a Pull Request is referenced inside of an issue.  
+
+### `central-friendly-ui-for-multiple-pr.user.js`
+
+Improves the UI when an issue has more than a single Pull Request to improve the addition / removal of new Pull Requests. 
+
+![Multiple PR Image](https://user-images.githubusercontent.com/3921289/36676235-b69b5434-1ad0-11e8-9df3-345627c01aff.gif)
+
 ### `central-estimates-time-conversion.user.js`
 
 Updates the estimate field to make it wider and available to accepts entries such as: 4h 5m and make them work exactly the same as **Spent time** field.
