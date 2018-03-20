@@ -13,6 +13,12 @@ These are some common Modern Tribe Tampermonkey scripts.
 
 ## Scripts
 
+## `central-collapsable-sidebar.user.js`
+
+Improves the content space and make sure sidebar is collapsable to the same width of http://tri.be/ and sidebar is accesible just by moving the cursor to the sidebar to  make it available when only needed it.
+
+![collapsable sidebar](https://user-images.githubusercontent.com/3921289/37617341-82bc4994-2b78-11e8-8856-288de6d2c8e5.gif)
+
 ### `central-link-pr-formatting.user.js`
 
 Format the links that points to Pull Request in Central from a format like: `https://github.com/moderntribe/event-tickets-plus/pull/490` into a format like `event-tickets-plus#490
