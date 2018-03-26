@@ -80,6 +80,17 @@ Ok...fine...that's just one tool, but this has room to grow.
 
 When a ticket is set to _Pending Merge_ or _Complete_, a llamacorn flies across the screen.
 
+### `premium-forum-extras.js`
+
+Puts extra info all over a thread page.
+1) Show red label if topic is private
+2) Move Assignee and Status box to the top
+3) Show the user's licenses at the bottom right
+4) Show the latest version numbers of our plugins in the admin bar (does not yet update automatically)
+Screenshot at https://cloudup.com/cdukQK9rkr1
+
+![screen shot 2018-03-27 at 01 12 53 am](https://cloudup.com/cdukQK9rkr1)
+
 ### `qa-headers.user.js`
 
 Styles QA headers so scanning QA activity on tickets is quicker. Relies on using the following headers in Central:
