@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras
 // @namespace    https://theeventscalendar.com/
-// @version      0.4
+// @version      0.5
 // @description  Puts extra info all over a thread page.
 //               1) Show red label if topic is private
 //               2) Move Assignee and Status box to the top
@@ -62,17 +62,32 @@
 
     /**
      * Show the latest version numbers of our plugins in the admin bar
-     * Don't forget to update this manually
+     * Don't forget to update this
      */
-    var tecver = '4.6.12';
+    var tecver = '4.6.13';
     var prover = '4.4.24.4';
-    var etver  = '4.7';
-    var etpver = '4.7';
-    var cever  = '4.5.9';
-    var ctver  = '4.5.3';
+    var etver  = '4.7.1';
+    var etpver = '4.7.1';
+    var cever  = '4.5.10';
+    var ctver  = '4.5.4';
     var fbver  = '4.5.4';
+    var apmver = '4.4';
+    var ebtix  = '4.4.9';
+    var iwpver = '1.0.2';
 
-    $('#wp-admin-bar-top-secondary').after('<div id="plugin-versions">TEC <span class="version-number">' + tecver + '</span> | PRO <span class="version-number">' + prover + '</span> | ET <span class="version-number">' + etver + '</span> | ET+ <span class="version-number">' + etpver + '</span> | CE <span class="version-number">' + cever + '</span> | CT <span class="version-number">' + ctver + '</span> | FB <span class="version-number">' + fbver + '</span></div>');
+    var htmlstring = '<div id="plugin-versions">';
+    htmlstring += 'TEC <span class="version-number">' + tecver + '</span> | ';
+    htmlstring += 'PRO <span class="version-number">' + prover + '</span> | ';
+    htmlstring += 'ET <span class="version-number">'  + etver  + '</span> | ';
+    htmlstring += 'ET+ <span class="version-number">' + etpver + '</span> | ';
+    htmlstring += 'EBTix <span class="version-number">' +ebtix + '</span> | ';
+    htmlstring += 'CE <span class="version-number">'  + cever  + '</span> | ';
+    htmlstring += 'CT <span class="version-number">'  + ctver  + '</span> | ';
+    htmlstring += 'FB <span class="version-number">'  + fbver  + '</span> | ';
+    htmlstring += 'APM <span class="version-number">' + apmver + '</span> | ';
+    htmlstring += 'IW+ <span class="version-number">' + iwpver + '</span>';
+    htmlstring += '</div>';
+    $('#wp-admin-bar-top-secondary').after(htmlstring);
     $('#plugin-versions').css({'float': 'right', 'color': '#fff'});
     $('.version-number').css({'font-weight': 'bold'});
 
