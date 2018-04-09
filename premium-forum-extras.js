@@ -11,13 +11,14 @@
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
 // @match        https://theeventscalendar.com/wp-admin/post.php?*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/premium-forum-extras.js
 // ==/UserScript==
 
 (function() {
     'use strict';
 
     /**
-     * Show a red label is the topic is private
+     * Show a red label if the topic is private
      */
     var x=document.getElementById('mark_private').checked;
     var box=document.getElementById('staff_update_box');
@@ -90,5 +91,4 @@
     $('#wp-admin-bar-top-secondary').after(htmlstring);
     $('#plugin-versions').css({'float': 'right', 'color': '#fff'});
     $('.version-number').css({'font-weight': 'bold'});
-
 })();
