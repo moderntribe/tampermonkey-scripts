@@ -48,6 +48,10 @@ Shows your week of clocking at the top of Central and prompts you to enter some 
 
 ![screen shot 2017-08-16 at 10 04 53 am](https://user-images.githubusercontent.com/430385/29367332-8beceac6-826a-11e7-9e62-3800663c5b22.png)
 
+## `dotorg-helper.user.js`
+
+In runs in the .org forums for Modern Tribe plugins. It colors the resolved threads green, and the threads which have the last voice from a team member to light yellow.
+
 ### `github-products-branch-protection.user.js`
 
 Auto selects some checkboxes for setting default branch protection on Products in GitHub.
