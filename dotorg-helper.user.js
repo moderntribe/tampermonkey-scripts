@@ -17,7 +17,7 @@
     'use strict';
 
     // Get all lines in an array
-    var x = document.getElementsByClassName("type-topic");
+    var x = document.getElementsByClassName( 'type-topic' );
 
     // MT support team members
     var mtteam = [
@@ -39,11 +39,11 @@
     ];
 
     var i, j;
-    var resolvedColor = "#98fb98";
-    var lastVoiceColor = "#ffffcc";
+    var resolvedColor  = '#98fb98';
+    var lastVoiceColor = '#ffffcc';
 
     // Check every line
-    for (i = 0; i < x.length; i++) {
+    for( i = 0; i < x.length; i++ ) {
 
         // Check if the line is resolved
         for( j = 0; j < mtteam.length; j++ ) {
