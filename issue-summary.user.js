@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Central issue summary
 // @namespace    http://central.tri.be/
-// @version      0.2.5
+// @version      0.2.6
 // @description  Generate a ticket summary from visible tickets
 // @author       Matthew Batchelder, Nick Pelton & Gustavo Bordoni
-// @include      /https?:\/\/central.tri.be\/(projects\/)*[^\/]*\/?issues\/?/
+// @include      /https?:\/\/central(dev)?.tri.be\/(projects\/)*[^\/]*\/?issues\/?/
 // @grant        none
 // ==/UserScript==
 
@@ -61,6 +61,39 @@
         },
         'Pending Estimate': {
             color: '#ffc2a0'
+        },
+        'Pending Scope': {
+            color: '#dafcf4'
+        },
+        'Skills Interview': {
+            color: '#74e68b'
+        },
+        'Skills Screening': {
+            color: '#dafcf4'
+        },
+        'Pending Notice of Decline': {
+            color: '#f88888'
+        },
+        'Recruiter Interview': {
+            color: '#d1e3ff'
+        },
+        'The Bench': {
+            color: '#e0d1af'
+        },
+        'Needs More Info': {
+            color: '#ff94c7'
+        },
+        'Future Review': {
+            color: '#8e85ff'
+        },
+        'Trial in Progress': {
+            color: '#91badf'
+        },
+        'Onboarding': {
+            color: '#6ec772'
+        },
+        'Pending Gig': {
+            color: '#65f5c7'
         }
     };
 
@@ -284,7 +317,7 @@
 
             var icon = null;
 
-            switch ( $tracker.text() ) {
+            switch ( $.trim( $tracker.text() ) ) {
                 case 'Bug':
                     icon = 'bug';
                     break;
@@ -294,16 +327,21 @@
                 case 'Support':
                     icon = 'life-ring';
                     break;
+                case 'Resource':
+                    icon = 'user';
+                    break;
                 case 'Task':
                     icon = 'sticky-note-o';
                     break;
             }
 
-            $tracker
-                .css( {
-                    'text-align': 'center'
-                } )
-                .html( '<i class="fa fa-' + icon + '"></i>' );
+            if ( ! $tracker.find( 'i.fa' ).length ) {
+                $tracker
+                    .css( {
+                        'text-align': 'center'
+                    } )
+                    .html( '<i class="fa fa-' + icon + '"></i>' );
+            }
         } );
     };
 
