@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras
 // @namespace    https://theeventscalendar.com/
-// @version      0.5
+// @version      0.6
 // @description  Puts extra info all over a thread page.
 //               1) Show red label if topic is private
 //               2) Move Assignee and Status box to the top
@@ -65,13 +65,13 @@
      * Show the latest version numbers of our plugins in the admin bar
      * Don't forget to update this
      */
-    var tecver = '4.6.13';
-    var prover = '4.4.24.4';
-    var etver  = '4.7.1';
-    var etpver = '4.7.1';
-    var cever  = '4.5.10';
+    var tecver = '4.6.14.1';
+    var prover = '4.4.25';
+    var etver  = '4.7.2';
+    var etpver = '4.7.2';
+    var cever  = '4.5.11';
     var ctver  = '4.5.4';
-    var fbver  = '4.5.4';
+    var fbver  = '4.5.5';
     var apmver = '4.4';
     var ebtix  = '4.4.9';
     var iwpver = '1.0.2';
