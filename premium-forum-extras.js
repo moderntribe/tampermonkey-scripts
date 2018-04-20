@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras
 // @namespace    https://theeventscalendar.com/
-// @version      0.5
+// @version      0.6.1
 // @description  Puts extra info all over a thread page.
 //               1) Show red label if topic is private
 //               2) Move Assignee and Status box to the top
@@ -89,6 +89,6 @@
     htmlstring += 'IW+ <span class="version-number">' + iwpver + '</span>';
     htmlstring += '</div>';
     $('#wp-admin-bar-top-secondary').after(htmlstring);
-    $('#plugin-versions').css({'float': 'right', 'color': '#fff'});
+    $('#plugin-versions').css({'float': 'right', 'color': '#eee'});
     $('.version-number').css({'font-weight': 'bold'});
 })();
