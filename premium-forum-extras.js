@@ -6,7 +6,7 @@
 //               1) Show red label if topic is private
 //               2) Move Assignee and Status box to the top
 //               3) Show the user's licenses at the bottom right
-//               4) Show the latest version numbers of our plugins in the admin bar (not updated automatically)
+//               4) Display our plugins' latest version numbers (manually updated)
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
 // @match        https://theeventscalendar.com/wp-admin/post.php?*
@@ -62,7 +62,7 @@
     head.appendChild(style);
 
     /**
-     * Show the latest version numbers of our plugins in the admin bar
+     * Show the latest version numbers of our plugins
      * Don't forget to update this
      */
     var tecver = '4.6.13';
@@ -89,6 +89,6 @@
     htmlstring += 'IW+ <span class="version-number">' + iwpver + '</span>';
     htmlstring += '</div>';
     $('#wp-admin-bar-top-secondary').after(htmlstring);
-    $('#plugin-versions').css({'float': 'right', 'color': '#eee'});
-    $('.version-number').css({'font-weight': 'bold'});
+    $('#plugin-versions').css({ 'position': 'fixed', 'bottom': '0', 'padding': '0 5px', 'right': '150px', 'background-color': 'rgb(35, 40, 45)', 'color': '#eee' });
+    $('.version-number').css({ 'font-weight': 'bold' });
 })();
