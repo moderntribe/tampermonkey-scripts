@@ -65,13 +65,13 @@
      * Show the latest version numbers of our plugins
      * Don't forget to update this
      */
-    var tecver = '4.6.13';
-    var prover = '4.4.24.4';
-    var etver  = '4.7.1';
-    var etpver = '4.7.1';
-    var cever  = '4.5.10';
+    var tecver = '4.6.14.1';
+    var prover = '4.4.25';
+    var etver  = '4.7.2';
+    var etpver = '4.7.2';
+    var cever  = '4.5.11';
     var ctver  = '4.5.4';
-    var fbver  = '4.5.4';
+    var fbver  = '4.5.5';
     var apmver = '4.4';
     var ebtix  = '4.4.9';
     var iwpver = '1.0.2';
