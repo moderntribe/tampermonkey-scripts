@@ -44,6 +44,7 @@
     var i, j;
     var resolvedColor  = '#98fb98';
     var lastVoiceColor = '#add8e6';
+    var closeColor     = '#ffe463';
 
     // Check every line
     for( i = 0; i < x.length; i++ ) {
@@ -64,7 +65,10 @@
 
             if ( n > 0 ) {
                 var o = x[i].innerHTML.search( /[1-9] (month[s]?)/ );
-                if ( o > 0 ) continue;
+                if ( o > 0 ) {
+                    x[i].style.backgroundColor = closeColor;
+                    continue;
+                }
                 x[i].style.backgroundColor = lastVoiceColor;
             }
         }
