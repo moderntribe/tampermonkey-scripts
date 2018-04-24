@@ -30,7 +30,9 @@
         'courane01',
         'erishel',
         'geoffbel',
+        'ggwicz',
         'jaimemarchwinski',
+        'jentheo',
         'jeremy80',
         'juanfra',
         'mitogh',
@@ -41,7 +43,8 @@
 
     var i, j;
     var resolvedColor  = '#98fb98';
-    var lastVoiceColor = '#ffffcc';
+    var lastVoiceColor = '#add8e6';
+    var closeColor     = '#ffe463';
 
     // Check every line
     for( i = 0; i < x.length; i++ ) {
@@ -61,6 +64,11 @@
             var n = x[i].innerHTML.search( 'href="https://wordpress.org/support/users/' + mtteam[j] + '/"' );
 
             if ( n > 0 ) {
+                var o = x[i].innerHTML.search( /[1-9] (month[s]?)/ );
+                if ( o > 0 ) {
+                    x[i].style.backgroundColor = closeColor;
+                    continue;
+                }
                 x[i].style.backgroundColor = lastVoiceColor;
             }
         }
