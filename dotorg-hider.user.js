@@ -30,7 +30,9 @@
         'courane01',
         'erishel',
         'geoffbel',
+        'ggwicz',
         'jaimemarchwinski',
+        'jentheo',
         'jeremy80',
         'juanfra',
         'mitogh',
@@ -59,6 +61,11 @@
             var n = x[i].innerHTML.search( 'href="https://wordpress.org/support/users/' + mtteam[j] + '/"' );
 
             if ( n > 0 ) {
+                var o = x[i].innerHTML.search( /[1-9] (month[s]?)/ );
+                if ( o > 0 ) {
+                    x[i].style.backgroundColor = '#ffe463';
+                    continue;
+                }
                 x[i].style.display = 'none';
             }
         }
