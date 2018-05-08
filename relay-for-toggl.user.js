@@ -14,7 +14,7 @@ var apiKeyToggl = 'toggleAPIkey';
 var proxyURL = 'https://relay-for-toggl.herokuapp.com/';
 
 // Default activity text (ex. Back End Development)
-var defaultActivity = ''; 
+var defaultActivity = '';
 
 // This may differ from project to project, use defaultActivity for this to auto-detect
 var defaultActivityID = '';
