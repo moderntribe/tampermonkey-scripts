@@ -7,9 +7,22 @@
 // @match        *://central.tri.be/issues/*
 // ==/UserScript==
 
-window.tribeToggl = {};
+// Your Toggl API key
 var apiKeyToggl = 'toggleAPIkey';
-var proxyURL    = 'relay address';
+
+// Or use your own
+var proxyURL = 'https://relay-for-toggl.herokuapp.com/';
+
+// Default activity text (ex. Back End Development)
+var defaultActivity = ''; 
+
+// This may differ from project to project, use defaultActivity for this to auto-detect
+var defaultActivityID = '';
+
+// You can customize the default timer text to make it easy for certain workflows
+var defaultDescription = '';
+
+window.tribeToggl = {};
 
 (function( window, $, app, apiKeyToggl ) {
 	'use strict';
@@ -17,6 +30,8 @@ var proxyURL    = 'relay address';
 	var cache = {};
 
 	app.init = function() {
+		$('.title-bar-actions div').append('<span id="toggl_container"></span>');
+
 		app.setupCache();
 		app.setupProjects();
 		app.getButton();
@@ -59,23 +74,46 @@ var proxyURL    = 'relay address';
 			}, 'json' )
 			.done(function( data ) {
 				data = $.parseJSON( data );
-				$('.title-bar-actions div').append(app.startTime( data.running ) );
-				$( "#toggl-relay" ).on('change', function (e) {
+
+				$('#toggl_container').html(app.startTime( data.running ) );
+
+				var $toggl_relay = $('#toggl-relay');
+
+				$toggl_relay.on('change', function (e) {
 					cache.activityNumber = $(e.target).val();
 					cache.activityText = $(e.target).find("option:selected").text();
 					$( 'button.time' ).show();
 					$( 'button.time-new' ).on( 'click', function() {
-						cache.activityDescription = $('#timerdescription').val();
+						cache.activityDescription = $('#toggl_timerdescription').val();
 						$('.time').remove();
 						app.startToggl();
 					});
 				});
+
+				if ( '' !== defaultActivity ) {
+					var defaultActivityID = '';
+
+					$('option', $toggl_relay).each( function() {
+						var $this = $(this);
+
+						if ( $this.text() === defaultActivity ) {
+							defaultActivityID = $this.val();
+						}
+					} );
+
+					$toggl_relay.val( defaultActivityID );
+					$toggl_relay.trigger('change');
+                }
+
+				if ( '' !== defaultDescription ) {
+					$('#toggl_timerdescription').val( defaultDescription );
+				}
 			});
 	};
 
 	app.startTime = function( running ) {
 
-		var input = '<input type="text" class="time" id="timerdescription">';
+		var input = '<input type="text" class="time" id="toggl_timerdescription">';
 
 		//if ( running === 0 ) {
 		return app.activityType() + input + '<button class="time time-new" style="display: none">Start Timer</button>';
