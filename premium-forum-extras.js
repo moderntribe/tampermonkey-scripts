@@ -65,8 +65,8 @@
      * Show the latest version numbers of our plugins
      * Don't forget to update this
      */
-    var tecver = '4.6.14.1';
-    var prover = '4.4.25';
+    var tecver = '4.6.15';
+    var prover = '4.4.26';
     var etver  = '4.7.2';
     var etpver = '4.7.2';
     var cever  = '4.5.11';
