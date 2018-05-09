@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras
 // @namespace    https://theeventscalendar.com/
-// @version      0.6.1
+// @version      0.6.2
 // @description  Puts extra info all over a thread page.
 //               1) Show red label if topic is private
 //               2) Move Assignee and Status box to the top
