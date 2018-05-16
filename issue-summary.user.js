@@ -166,6 +166,7 @@
 
         my.$table = $( 'table.list.issues' );
         my.$issues = my.$table.find( 'tr.issue' );
+        my.$non_parent_issues = my.$issues.filter( ':not(.parent)' );
 
         // Create a list of Status Names by Code
         my.$table.find( 'td.status' ).each( function(){
@@ -250,7 +251,7 @@
 
         // Estimate summary
         var that = this;
-        that.$rows = this.$issues.find( '.estimated_hours' );
+        that.$rows = this.$non_parent_issues.find( '.estimated_hours' );
 
         if ( that.$rows.length ) {
 
@@ -261,7 +262,7 @@
             });
 
             that.hours = 0;
-            that.$rows = this.$issues.find( '.spent_hours' );
+            that.$rows = this.$non_parent_issues.find( '.spent_hours' );
             $.each(this.$rows, function(index, $object){
                 val = ( parseFloat( $($object).html() ) || 0 );
                 that.hours += val;
