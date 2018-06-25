@@ -21,6 +21,7 @@
      * - adjust the note: how|last (usually show the last 5 versions)
      * - add the new plugin version numbers
      * - if it is a new version compared to last release, add 'x' at the end, like '4.6.19x'
+     * - if it is a hotfix, then creating a new line is not needed, just update the version number in the last line (See Event Tickets (eti) in line 12)
      */
     var pluginHistory = {
          0: { note: "",     date: "",       name: "",       tec: "",          pro: "",          eti: "",         etp: "",       ebt: "",       cev: "",        ctx: "",       fib: "",       apm: "",    iwp: "",      woo: "",      edd: "" },
@@ -35,7 +36,7 @@
          9: { note: "show", date: "May 16", name: "TEC",    tec: "4.6.16x",   pro: "4.4.26",    eti: "4.7.2",    etp: "4.7.2",  ebt: "4.4.9",  cev: "4.5.11",  ctx: "4.5.4",  fib: "4.5.5",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         10: { note: "show", date: "May 29", name: "M18.08", tec: "4.6.17x",   pro: "4.4.27x",   eti: "4.7.3.1x", etp: "4.7.3x", ebt: "4.4.9",  cev: "4.5.12x", ctx: "4.5.4",  fib: "4.5.6x", apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         11: { note: "show", date: "Jun 4",  name: "ETR",    tec: "4.6.18x",   pro: "4.4.27",    eti: "4.7.3.1",  etp: "4.7.3",  ebt: "4.5x",   cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
-        12: { note: "last", date: "Jun 20", name: "M18.09", tec: "4.6.19x",   pro: "4.4.28x",   eti: "4.7.4x",   etp: "4.7.4x", ebt: "4.5.1x", cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
+        12: { note: "last", date: "Jun 20", name: "M18.09", tec: "4.6.19x",   pro: "4.4.28x",   eti: "4.7.4.1x",   etp: "4.7.4x", ebt: "4.5.1x", cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
     };
 
     var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
