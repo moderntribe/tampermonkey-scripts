@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      1.0
+// @version      1.1
 // @description  Display our plugins' latest version numbers (manually updated) and the user's version numbers from sysinfo
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
@@ -68,7 +68,7 @@
      * ecmUsed    = stores the string of the eCommerce solution used by the client (woo|edd)
      * userEcmVer = stores the version number of the eCommerce solution used by the client
      */
-    var i, k, inReply, replyHtml, ecmUsed, userEcmVer;
+    var i, k, inReply, replyHtml, ecmUsed = "-", userEcmVer = "-";
 
     /**
      * Getting the system info in a string
@@ -150,9 +150,13 @@
     htmlstring += '<table width="100%" class="versions" cellpadding="0" cellspacing="0">';
 
     // Header row
-    htmlstring += '<tr class="row first-row alwayson"><td></td><td></td><td><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td><td><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td><td><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td><td><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td><td><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td><td><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td><td><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td><td><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td><td>APM</td><td>IW+</td><td>';
-    htmlstring += ecmUsed.toUpperCase();
-    htmlstring += '</td></tr>';
+    htmlstring += '<tr class="row first-row alwayson"><td></td><td></td><td><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td><td><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td><td><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td><td><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td><td><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td><td><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td><td><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td><td><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td><td>APM</td><td>IW+</td>';
+    if ( ecmUsed != "-" ) {
+        htmlstring += '<td>';
+        htmlstring += ecmUsed.toUpperCase();
+        htmlstring += '</td>';
+    }
+    htmlstring += '</tr>';
 
     // Go through the plugin history row by row
     for( var number in pluginHistory ) {
@@ -192,31 +196,38 @@
                 htmlstring += '>' + pluginHistory[number][pN].replace( 'x', '' ) + '</td>';
             } // end for ( j = 0; j < pluginNames.length; j++ )
 
-            // eCommerce versions
-            htmlstring += '<td';
-            if ( pluginHistory[number].note == 'last' ) {
-                htmlstring += ' id="currecmver"';
-            }
-            htmlstring += '>';
-            if ( ecmUsed == "woo" ) {
-                htmlstring += pluginHistory[number].woo;
-                userEcmVer = pluginVersions.woo.version
-            }
-            else if ( ecmUsed == "edd" ) {
-                htmlstring += pluginHistory[number].edd;
-                userEcmVer = pluginVersions.edd.version
-            }
-            else {
-                htmlstring += '-';
-            }
-            htmlstring += '</td></tr>';
+            if ( ecmUsed != "-" ) {
+                // eCommerce versions
+                htmlstring += '<td';
+                if ( pluginHistory[number].note == 'last' ) {
+                    htmlstring += ' id="currecmver"';
+                }
+                htmlstring += '>';
+                if ( ecmUsed == "woo" ) {
+                    htmlstring += pluginHistory[number].woo;
+                    userEcmVer = pluginVersions.woo.version
+                }
+                else if ( ecmUsed == "edd" ) {
+                    htmlstring += pluginHistory[number].edd;
+                    userEcmVer = pluginVersions.edd.version
+                }
+                else {
+                    htmlstring += '-';
+                }
+                htmlstring += '</td>';
+            } // end if ( ecmUsed != "-" )
+            htmlstring += '</tr>';
 
         } // end if ( pluginHistory.hasOwnProperty( number ) && ( pluginHistory[number].note == 'show' || pluginHistory[number].note == 'last' ) )
 
     } // end for( var number in pluginHistory )
 
     // Row of user's version numbers
-    htmlstring += '<tr class="row last-row alwayson userrow"><td>user</td><td>' + $( '#bbps_extra_info .displayname' ).html() + '</td><td id="usertecver">' + pluginVersions.tec.version + '</td><td id="userprover">' + pluginVersions.pro.version + '</td><td id="useretiver">' + pluginVersions.eti.version + '</td><td id="useretpver">' + pluginVersions.etp.version + '</td><td id="userebtver">' + pluginVersions.ebt.version + '</td><td id="usercevver">' + pluginVersions.cev.version + '</td><td id="userctxver">' + pluginVersions.ctx.version + '</td><td id="userfibver">' + pluginVersions.fib.version + '</td><td id="userapmver">' + pluginVersions.apm.version + '</td><td id="useriwpver">' + pluginVersions.iwp.version + '</td><td id="userecmver">' + userEcmVer + '</td></tr>';
+    htmlstring += '<tr class="row last-row alwayson userrow"><td>user</td><td>' + $( '#bbps_extra_info .displayname' ).html() + '</td><td id="usertecver">' + pluginVersions.tec.version + '</td><td id="userprover">' + pluginVersions.pro.version + '</td><td id="useretiver">' + pluginVersions.eti.version + '</td><td id="useretpver">' + pluginVersions.etp.version + '</td><td id="userebtver">' + pluginVersions.ebt.version + '</td><td id="usercevver">' + pluginVersions.cev.version + '</td><td id="userctxver">' + pluginVersions.ctx.version + '</td><td id="userfibver">' + pluginVersions.fib.version + '</td><td id="userapmver">' + pluginVersions.apm.version + '</td><td id="useriwpver">' + pluginVersions.iwp.version + '</td>';
+    if ( ecmUsed != "-" ) {
+        htmlstring += '<td id="userecmver">' + userEcmVer + '</td>';
+    }
+    htmlstring += '</tr>';
     htmlstring += '</table>';
     htmlstring += '</div>';
 
