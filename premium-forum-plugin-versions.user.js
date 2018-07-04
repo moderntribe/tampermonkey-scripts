@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      1.1
+// @version      1.2
 // @description  Display our plugins' latest version numbers (manually updated) and the user's version numbers from sysinfo
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
@@ -9,6 +9,8 @@
 // @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/premium-forum-plugin-versions.user.js
 // @grant        none
 // ==/UserScript==
+
+// woo https://theeventscalendar.com/support/forums/topic/display-issues-on-mobile/
 
 (function() {
     'use strict';
@@ -43,21 +45,21 @@
 
     /**
      * Defining our plugins
-     * (Probably "version" here is not needed.)
+     * version: contains the lenght of the name, e.g. "The Events Calendar version "
      */
     var pluginVersions = {
-        tec: { name: "The Events Calendar version ", version: "", curr: "#currtecver", user: "#usertecver" },
-        pro: { name: "The Events Calendar PRO version ", version: "", curr: "#currprover", user: "#userprover" },
-        eti: { name: "Event Tickets version ", version: "", curr: "#curretiver", user: "#useretiver" },
-        etp: { name: "Event Tickets Plus version ", version: "", curr: "#curretpver", user: "#useretpver" },
-        ebt: { name: "The Events Calendar: Eventbrite Tickets version ", version: "", curr: "#currebtver", user: "#userebtver" },
-        cev: { name: "The Events Calendar: Community Events version ", version: "", curr: "#currcevver", user: "#usercevver" },
-        ctx: { name: "The Events Calendar: Community Events Tickets version ", version: "", curr: "#currctxver", user: "#userctxver" },
-        fib: { name: "The Events Calendar: Filter Bar version ", version: "", curr: "#currfibver", user: "#userfibver" },
-        apm: { name: "Advanced Post Manager version ", version: "", curr: "#currapmver", user: "#userapmver" },
-        iwp: { name: "Image Widget Plus version ", version: "", curr: "#curriwpver", user: "#useriwpver" },
-        woo: { name: "WooCommerce version ", version:"", curr: "#currecmver", user: "#userecmver" },
-        edd: { name: "Easy Digital Downloads version ", version:"", curr: "#currecmver", user: "#userecmver" }
+        tec: { name: "(The Events Calendar version )(.{0,})( by Modern Tribe)", version: "28", curr: "#currtecver", user: "#usertecver" },
+        pro: { name: "(The Events Calendar PRO version )(.{0,})( by Modern Tribe)", version: "32", curr: "#currprover", user: "#userprover" },
+        eti: { name: "(Event Tickets version )(.{0,})( by Modern Tribe)", version: "22", curr: "#curretiver", user: "#useretiver" },
+        etp: { name: "(Event Tickets Plus version )(.{0,})( by Modern Tribe)", version: "27", curr: "#curretpver", user: "#useretpver" },
+        ebt: { name: "(The Events Calendar: Eventbrite Tickets version )(.{0,})( by Modern Tribe)", version: "48", curr: "#currebtver", user: "#userebtver" },
+        cev: { name: "(The Events Calendar: Community Events version )(.{0,})( by Modern Tribe)", version: "46", curr: "#currcevver", user: "#usercevver" },
+        ctx: { name: "(The Events Calendar: Community Events Tickets version )(.{0,})( by Modern Tribe)", version: "54", curr: "#currctxver", user: "#userctxver" },
+        fib: { name: "(The Events Calendar: Filter Bar version )(.{0,})( by Modern Tribe)", version: "40", curr: "#currfibver", user: "#userfibver" },
+        apm: { name: "(Advanced Post Manager version )(.{0,})( by Modern Tribe)", version: "30", curr: "#currapmver", user: "#userapmver" },
+        iwp: { name: "(Image Widget Plus version )(.{0,})( by Modern Tribe)", version: "26", curr: "#curriwpver", user: "#useriwpver" },
+        woo: { name: "(WooCommerce version )(.{0,})( by Automattic)", version:"20", curr: "#currecmver", user: "#userecmver" },
+        edd: { name: "(Easy Digital Downloads version )(.{0,})( by Easy Digital Downloads)", version:"31", curr: "#currecmver", user: "#userecmver" }
     };
 
     /**
@@ -119,14 +121,18 @@
         if ( pluginVersions.hasOwnProperty( key ) ) {
 
             // If plugin name is found in the sysinfo ...
-            pname = fullstats.indexOf( pluginVersions[key].name );
+            pname = fullstats.search( pluginVersions[key].name );
+            //console.log("p1: " + pname);
             if ( pname != -1 ) {
                 // Starting position of version number = start of plugin name + plugin name length
-                pname = fullstats.indexOf( pluginVersions[key].name ) + pluginVersions[key].name.length;
+                pname = parseInt( fullstats.search( pluginVersions[key].name ) ) + parseInt( pluginVersions[key].version );
+                //console.log("p2: " + pname);
                 // Starting position of by (after the plugin name) | end of version number
                 pby = fullstats.indexOf( "by", pname );
+                //console.log("pby: " + pby);
                 // Get version number only
                 pver = fullstats.substring( pname, pby );
+                //console.log("pver: " + pver);
                 // Trim it
                 pluginVersions[key].version = pver.trim();
                 // Which eCommerce used?
