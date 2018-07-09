@@ -10,8 +10,6 @@
 // @grant        none
 // ==/UserScript==
 
-// woo https://theeventscalendar.com/support/forums/topic/display-issues-on-mobile/
-
 (function() {
     'use strict';
 
