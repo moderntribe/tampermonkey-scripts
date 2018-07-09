@@ -20,7 +20,7 @@
      * When a new release is out then:
      * - make a copy of the last line
      * - adjust the starting number
-     * - adjust the note: how|last (usually show the last 5 versions)
+     * - adjust the note: show|last (usually show the last 5 versions)
      * - add the new plugin version numbers
      * - if it is a new version compared to last release, add 'x' at the end, like '4.6.19x'
      * - if it is a hotfix, then creating a new line is not needed, just update the version number in the last line (See Event Tickets (eti) in line 12)
@@ -34,32 +34,33 @@
          5: { note: "",     date: "Mar 13", name: "TC",     tec: "4.6.12",    pro: "4.4.24.2",  eti: "4.7x",     etp: "4.7x",   ebt: "4.4.9",  cev: "4.5.9",   ctx: "4.5.3",  fib: "4.5.4",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
          6: { note: "",     date: "Mar 28", name: "M18.05", tec: "4.6.13x",   pro: "4.4.24.2",  eti: "4.7.1x",   etp: "4.7.1x", ebt: "4.4.9",  cev: "4.5.10x", ctx: "4.5.4x", fib: "4.5.4",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
          7: { note: "",     date: "Apr 4",  name: "M18.06", tec: "4.6.14.1x", pro: "4.4.25x",   eti: "4.7.2x",   etp: "4.7.2x", ebt: "4.4.9",  cev: "4.5.11x", ctx: "4.5.4",  fib: "4.5.5x", apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
-         8: { note: "show", date: "May 9",  name: "M18.07", tec: "4.6.15x",   pro: "4.4.26x",   eti: "4.7.2",    etp: "4.7.2",  ebt: "4.4.9",  cev: "4.5.11",  ctx: "4.5.4",  fib: "4.5.5",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
+         8: { note: "",     date: "May 9",  name: "M18.07", tec: "4.6.15x",   pro: "4.4.26x",   eti: "4.7.2",    etp: "4.7.2",  ebt: "4.4.9",  cev: "4.5.11",  ctx: "4.5.4",  fib: "4.5.5",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
          9: { note: "show", date: "May 16", name: "TEC",    tec: "4.6.16x",   pro: "4.4.26",    eti: "4.7.2",    etp: "4.7.2",  ebt: "4.4.9",  cev: "4.5.11",  ctx: "4.5.4",  fib: "4.5.5",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         10: { note: "show", date: "May 29", name: "M18.08", tec: "4.6.17x",   pro: "4.4.27x",   eti: "4.7.3.1x", etp: "4.7.3x", ebt: "4.4.9",  cev: "4.5.12x", ctx: "4.5.4",  fib: "4.5.6x", apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         11: { note: "show", date: "Jun 4",  name: "ETR",    tec: "4.6.18x",   pro: "4.4.27",    eti: "4.7.3.1",  etp: "4.7.3",  ebt: "4.5x",   cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
-        12: { note: "last", date: "Jun 20", name: "M18.09", tec: "4.6.19x",   pro: "4.4.28x",   eti: "4.7.4.1x",   etp: "4.7.4x", ebt: "4.5.1x", cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
+        12: { note: "show", date: "Jun 20", name: "M18.09", tec: "4.6.19x",   pro: "4.4.28x",   eti: "4.7.4.1x", etp: "4.7.4x", ebt: "4.5.1x", cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
+        13: { note: "last", date: "Jul 9",  name: "M18.10", tec: "4.6.20x",   pro: "4.4.29x",   eti: "4.7.5x",   etp: "4.7.5x", ebt: "4.5.1",  cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
     };
 
     var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
 
     /**
      * Defining our plugins
-     * version: contains the lenght of the name, e.g. "The Events Calendar version "
+     * (Probably "version" here is not needed.)
      */
     var pluginVersions = {
-        tec: { name: "(The Events Calendar version )(.{0,})( by Modern Tribe)", version: "28", curr: "#currtecver", user: "#usertecver" },
-        pro: { name: "(The Events Calendar PRO version )(.{0,})( by Modern Tribe)", version: "32", curr: "#currprover", user: "#userprover" },
-        eti: { name: "(Event Tickets version )(.{0,})( by Modern Tribe)", version: "22", curr: "#curretiver", user: "#useretiver" },
-        etp: { name: "(Event Tickets Plus version )(.{0,})( by Modern Tribe)", version: "27", curr: "#curretpver", user: "#useretpver" },
-        ebt: { name: "(The Events Calendar: Eventbrite Tickets version )(.{0,})( by Modern Tribe)", version: "48", curr: "#currebtver", user: "#userebtver" },
-        cev: { name: "(The Events Calendar: Community Events version )(.{0,})( by Modern Tribe)", version: "46", curr: "#currcevver", user: "#usercevver" },
-        ctx: { name: "(The Events Calendar: Community Events Tickets version )(.{0,})( by Modern Tribe)", version: "54", curr: "#currctxver", user: "#userctxver" },
-        fib: { name: "(The Events Calendar: Filter Bar version )(.{0,})( by Modern Tribe)", version: "40", curr: "#currfibver", user: "#userfibver" },
-        apm: { name: "(Advanced Post Manager version )(.{0,})( by Modern Tribe)", version: "30", curr: "#currapmver", user: "#userapmver" },
-        iwp: { name: "(Image Widget Plus version )(.{0,})( by Modern Tribe)", version: "26", curr: "#curriwpver", user: "#useriwpver" },
-        woo: { name: "(WooCommerce version )(.{0,})( by Automattic)", version:"20", curr: "#currecmver", user: "#userecmver" },
-        edd: { name: "(Easy Digital Downloads version )(.{0,})( by Easy Digital Downloads)", version:"31", curr: "#currecmver", user: "#userecmver" }
+        tec: { name: "(The Events Calendar version )(.{0,})( by Modern Tribe)",                           namelength: "28", version: "", curr: "#currtecver", user: "#usertecver" },
+        pro: { name: "(Events Calendar PRO version )(.{0,})( by Modern Tribe)",                           namelength: "28", version: "", curr: "#currprover", user: "#userprover" },
+        eti: { name: "(Event Tickets version )(.{0,})( by Modern Tribe)",                                 namelength: "22", version: "", curr: "#curretiver", user: "#useretiver" },
+        etp: { name: "(Event Tickets Plus version )(.{0,})( by Modern Tribe)",                            namelength: "27", version: "", curr: "#curretpver", user: "#useretpver" },
+        ebt: { name: "(The Events Calendar: Eventbrite Tickets version )(.{0,})( by Modern Tribe)",       namelength: "48", version: "", curr: "#currebtver", user: "#userebtver" },
+        cev: { name: "(The Events Calendar: Community Events version )(.{0,})( by Modern Tribe)",         namelength: "46", version: "", curr: "#currcevver", user: "#usercevver" },
+        ctx: { name: "(The Events Calendar: Community Events Tickets version )(.{0,})( by Modern Tribe)", namelength: "54", version: "", curr: "#currctxver", user: "#userctxver" },
+        fib: { name: "(The Events Calendar: Filter Bar version )(.{0,})( by Modern Tribe)",               namelength: "40", version: "", curr: "#currfibver", user: "#userfibver" },
+        apm: { name: "(Advanced Post Manager version )(.{0,})( by Modern Tribe)",                         namelength: "30", version: "", curr: "#currapmver", user: "#userapmver" },
+        iwp: { name: "(Image Widget Plus version )(.{0,})( by Modern Tribe)",                             namelength: "26", version: "", curr: "#curriwpver", user: "#useriwpver" },
+        woo: { name: "(WooCommerce version )(.{0,})( by Automattic)",                                     namelength: "20", version: "", curr: "#currecmver", user: "#userecmver" },
+        edd: { name: "(Easy Digital Downloads version )(.{0,})( by Easy Digital Downloads)",              namelength: "31", version: "", curr: "#currecmver", user: "#userecmver" }
     };
 
     /**
@@ -125,7 +126,7 @@
             //console.log("p1: " + pname);
             if ( pname != -1 ) {
                 // Starting position of version number = start of plugin name + plugin name length
-                pname = parseInt( fullstats.search( pluginVersions[key].name ) ) + parseInt( pluginVersions[key].version );
+                pname = parseInt( fullstats.search( pluginVersions[key].name ) ) + parseInt( pluginVersions[key].namelength );
                 //console.log("p2: " + pname);
                 // Starting position of by (after the plugin name) | end of version number
                 pby = fullstats.indexOf( "by", pname );
