@@ -29,14 +29,14 @@
 
         /* Overdue - past 20 hours - orange */
         replyHtml = criticalRows[i].innerHTML;
-        var isOverdue = replyHtml.search( /^(2)([0-9]{1})h/gi );
+        var isOverdue = replyHtml.search( /^(2)([0-9]{1})h/g );
         if ( isOverdue >= 0 ) {
             criticalRows[i].parentNode.style.backgroundColor = '#f4af49';
             continue;
         }
 
         /* Critical - past 24 hours - red */
-        var isCritical = replyHtml.search( /^([0-9]{1,2})(d|w)/gi );
+        var isCritical = replyHtml.search( /^([0-9]{1,2})(D|W|M|Y)/g );
         if ( isCritical >= 0 ) {
             criticalRows[i].parentNode.style.backgroundColor = '#e4554a';
             continue;
