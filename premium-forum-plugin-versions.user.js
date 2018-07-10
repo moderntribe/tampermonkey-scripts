@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      1.2
+// @version      1.2.1
 // @description  Display our plugins' latest version numbers (manually updated) and the user's version numbers from sysinfo
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
