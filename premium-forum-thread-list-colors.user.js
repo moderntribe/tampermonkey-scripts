@@ -5,6 +5,7 @@
 // @description  Colors thead list based on urgency: Critical (past a 24h): red; Overdue (past 20h): orange; Resolved: green
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/edit.php?post_type=topic&page=tribe-support-queues*
+// @include      https://theeventscalendar.com/wp-admin/edit.php?page=tribe-support-queues&post_type=topic*
 // @match        https://theeventscalendar.com/wp-admin/edit.php?post_type=topic&page=tribe-support-queues*
 // @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/premium-forum-thread-list-colors.user.js
 // @grant        none
