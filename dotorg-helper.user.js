@@ -37,6 +37,7 @@
         'juanfra',
         'mitogh',
         'nicosantos',
+        'patriciahillebrandt',
         'skyshab',
         'vicskf',
     ];
