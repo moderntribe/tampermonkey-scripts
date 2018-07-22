@@ -39,7 +39,7 @@
         /* Critical - past 24 hours - red */
         var isCritical = replyHtml.search( /^([0-9]{1,2})(D|W|M|Y)/g );
         if ( isCritical >= 0 ) {
-            criticalRows[i].parentNode.style.backgroundColor = '#e4554a';
+            criticalRows[i].parentNode.style.backgroundColor = 'rgba(228, 85, 74,0.3)';
             continue;
         }
 
