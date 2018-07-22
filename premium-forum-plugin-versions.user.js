@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      1.2.1
+// @version      1.2.2
 // @description  Display our plugins' latest version numbers (manually updated) and the user's version numbers from sysinfo
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
@@ -37,7 +37,7 @@
         10: { note: "show", date: "May 29", name: "M18.08", tec: "4.6.17x",   pro: "4.4.27x",   eti: "4.7.3.1x", etp: "4.7.3x", ebt: "4.4.9",  cev: "4.5.12x", ctx: "4.5.4",  fib: "4.5.6x", apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         11: { note: "show", date: "Jun 4",  name: "ETR",    tec: "4.6.18x",   pro: "4.4.27",    eti: "4.7.3.1",  etp: "4.7.3",  ebt: "4.5x",   cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         12: { note: "show", date: "Jun 20", name: "M18.09", tec: "4.6.19x",   pro: "4.4.28x",   eti: "4.7.4.1x", etp: "4.7.4x", ebt: "4.5.1x", cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
-        13: { note: "last", date: "Jul 9",  name: "M18.10", tec: "4.6.20.1x", pro: "4.4.29.1x", eti: "4.7.5.1x", etp: "4.7.5x", ebt: "4.5.1",  cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
+        13: { note: "last", date: "Jul 9",  name: "M18.10", tec: "4.6.20.1x", pro: "4.4.29.2x", eti: "4.7.5.1x", etp: "4.7.5x", ebt: "4.5.1",  cev: "4.5.12",  ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
     };
 
     var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
@@ -47,18 +47,18 @@
      * (Probably "version" here is not needed.)
      */
     var pluginVersions = {
-        tec: { name: "(The Events Calendar version )(.{0,})( by Modern Tribe)",                           namelength: "28", version: "", curr: "#currtecver", user: "#usertecver" },
-        pro: { name: "(Events Calendar PRO version )(.{0,})( by Modern Tribe)",                           namelength: "28", version: "", curr: "#currprover", user: "#userprover" },
-        eti: { name: "(Event Tickets version )(.{0,})( by Modern Tribe)",                                 namelength: "22", version: "", curr: "#curretiver", user: "#useretiver" },
-        etp: { name: "(Event Tickets Plus version )(.{0,})( by Modern Tribe)",                            namelength: "27", version: "", curr: "#curretpver", user: "#useretpver" },
-        ebt: { name: "(The Events Calendar: Eventbrite Tickets version )(.{0,})( by Modern Tribe)",       namelength: "48", version: "", curr: "#currebtver", user: "#userebtver" },
-        cev: { name: "(The Events Calendar: Community Events version )(.{0,})( by Modern Tribe)",         namelength: "46", version: "", curr: "#currcevver", user: "#usercevver" },
-        ctx: { name: "(The Events Calendar: Community Events Tickets version )(.{0,})( by Modern Tribe)", namelength: "54", version: "", curr: "#currctxver", user: "#userctxver" },
-        fib: { name: "(The Events Calendar: Filter Bar version )(.{0,})( by Modern Tribe)",               namelength: "40", version: "", curr: "#currfibver", user: "#userfibver" },
-        apm: { name: "(Advanced Post Manager version )(.{0,})( by Modern Tribe)",                         namelength: "30", version: "", curr: "#currapmver", user: "#userapmver" },
-        iwp: { name: "(Image Widget Plus version )(.{0,})( by Modern Tribe)",                             namelength: "26", version: "", curr: "#curriwpver", user: "#useriwpver" },
-        woo: { name: "(WooCommerce version )(.{0,})( by Automattic)",                                     namelength: "20", version: "", curr: "#currecmver", user: "#userecmver" },
-        edd: { name: "(Easy Digital Downloads version )(.{0,})( by Easy Digital Downloads)",              namelength: "31", version: "", curr: "#currecmver", user: "#userecmver" }
+        tec: { name: '(The Events Calendar version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',                           namelength: '28', version: '', curr: '#currtecver', user: '#usertecver' },
+        pro: { name: '(Events Calendar PRO version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',                           namelength: '28', version: '', curr: '#currprover', user: '#userprover' },
+        eti: { name: '(Event Tickets version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',                                 namelength: '22', version: '', curr: '#curretiver', user: '#useretiver' },
+        etp: { name: '(Event Tickets Plus version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',                            namelength: '27', version: '', curr: '#curretpver', user: '#useretpver' },
+        ebt: { name: '(The Events Calendar: Eventbrite Tickets version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',       namelength: '48', version: '', curr: '#currebtver', user: '#userebtver' },
+        cev: { name: '(The Events Calendar: Community Events version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',         namelength: '46', version: '', curr: '#currcevver', user: '#usercevver' },
+        ctx: { name: '(The Events Calendar: Community Events Tickets version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)', namelength: '54', version: '', curr: '#currctxver', user: '#userctxver' },
+        fib: { name: '(The Events Calendar: Filter Bar version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',               namelength: '40', version: '', curr: '#currfibver', user: '#userfibver' },
+        apm: { name: '(Advanced Post Manager version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',                         namelength: '30', version: '', curr: '#currapmver', user: '#userapmver' },
+        iwp: { name: '(Image Widget Plus version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Modern Tribe, Inc.)',                             namelength: '26', version: '', curr: '#curriwpver', user: '#useriwpver' },
+        woo: { name: '(WooCommerce version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Automattic)',                                           namelength: '20', version: '', curr: '#currecmver', user: '#userecmver' },
+        edd: { name: '(Easy Digital Downloads version )(.{0,})( by )(<a href=".{0,30}">){0,1}(Easy Digital Downloads)',                    namelength: '31', version: '', curr: '#currecmver', user: '#userecmver' }
     };
 
     /**
@@ -76,10 +76,13 @@
      * fullstats = contains the full html string of the sysinfo box
      */
     i = document.getElementsByClassName( 'system-info' );
+
     if ( i.length > 0 ) {
         var fullstats;
         fullstats = i[0].innerHTML;
     }
+
+    // console.log("FS1" + fullstats);
 
     /**
      * If system information is submitted in a reply, take that instead
@@ -97,7 +100,11 @@
         }
     }
 
+    //console.log("FS2" + fullstats);
+    //console.log( typeof fullstats );
+
     // If there is no sysinfo, then stop the execution of the scirpt
+
     if ( typeof fullstats == 'undefined' ) return;
 
     /**
@@ -116,12 +123,14 @@
      */
     for( var key in pluginVersions ) {
 
+        //console.log( 'key: ' + key );
+
         // This is the for-cycle for named arrays
         if ( pluginVersions.hasOwnProperty( key ) ) {
 
             // If plugin name is found in the sysinfo ...
             pname = fullstats.search( pluginVersions[key].name );
-            //console.log("p1: " + pname);
+
             if ( pname != -1 ) {
                 // Starting position of version number = start of plugin name + plugin name length
                 pname = parseInt( fullstats.search( pluginVersions[key].name ) ) + parseInt( pluginVersions[key].namelength );
@@ -246,8 +255,8 @@
 
     // Handle hover
     if ( document.getElementById( 'plugin-versions' ) != null ) {
-        document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
-        document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
+         document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
+         document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
     }
 
     // Compare current and user, and color it
