@@ -98,7 +98,7 @@ Puts extra info all over a thread page.
 4) Show the latest version numbers of our plugins in the admin bar (does not yet update automatically)
 Screenshot at https://cloudup.com/cdukQK9rkr1
 
-![screen shot 2018-03-27 at 01 12 53 am](https://cloudup.com/cdukQK9rkr1)
+Screenshot: https://cloudup.com/cdukQK9rkr1
 
 ### `premium-forum-move-status-box.user.js`
 
@@ -111,11 +111,20 @@ Shows the following info:
 * Version numbers of the user's plugins, if system information is submitted
 * The users nick for easy access / copy-paste 
 
-![example](https://cloudup.com/cU1Tp-rggXe)
+Screenshot: https://cloudup.com/cU1Tp-rggXe
 
 ### `premium-forum-private-topic.user.js`
 
 If the thread is marked private then puts a red label at the top and bottom, and draws a red border around the posts.
+
+### `premium-forum-thread-list-colors.user.js`
+
+Colors the thead list on theeventscalendar.com based on urgency.
+* Critical (past a 24h): red
+* Overdue (past 20h): orange
+* Resolved: green
+
+Screenshot: https://cloudup.com/ccdWJTkiF30
 
 ### `premium-forum-users-licenses.user.js`
 
