@@ -6,6 +6,7 @@
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
 // @match        https://theeventscalendar.com/wp-admin/post.php?*
+// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/premium-forum-collapse-convo.user.js
 // @grant        none
 // @run-at       document-idle
 
