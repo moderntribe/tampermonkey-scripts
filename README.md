@@ -88,17 +88,12 @@ Ok...fine...that's just one tool, but this has room to grow.
 
 When a ticket is set to _Pending Merge_ or _Complete_, a llamacorn flies across the screen.
 
-### `premium-forum-extras.js`
+### `premium-forum-collapse-convo.user.js`
 
-Replaced by separate premium-forum-* scripts.
-Puts extra info all over a thread page.
-1) Show red label if topic is private
-2) Move Assignee and Status box to the top
-3) Show the user's licenses at the bottom right
-4) Show the latest version numbers of our plugins in the admin bar (does not yet update automatically)
-Screenshot at https://cloudup.com/cdukQK9rkr1
+You have a long exchange with a client. Tired of always scrolling down and up? This is for you.
+If there are more than 6 replies in a thread, then everything between the first and the last will be collapsed.
 
-Screenshot: https://cloudup.com/cdukQK9rkr1
+Screenshot: https://cloudup.com/cn2yDKGCZ4v
 
 ### `premium-forum-move-status-box.user.js`
 
