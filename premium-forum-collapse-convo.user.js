@@ -24,7 +24,7 @@
     if ( tlen > 6 ) {
         var lastFour = 2 * tlen - 3;
         var ntlen = '.bbp-body div:nth-child(n+' + lastFour + ')';
-        console.log( 'tlen: ' + tlen);
+        //console.log( 'tlen: ' + tlen);
         $( '.bbp-reply-header' ).css({ 'display': 'none' });
         $( '.type-reply' ).css({ 'display': 'none' });
         $( ntlen ).css({ 'display': 'block' });
