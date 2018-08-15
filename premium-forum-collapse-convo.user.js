@@ -1,8 +1,8 @@
 ﻿// ==UserScript==
 // @name         Premium Forum Extras - Collapse Convo
 // @namespace    https://theeventscalendar.com/
-// @version      0.1
-// @description  You have a long exchange with a client. Tired of always scrolling down and up? This is for you. Kicks in at 6 replies.
+// @version      0.2
+// @description  You have a long exchange with a client. Tired of always scrolling down and up? This is for you. Kicks in after 6 replies.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
 // @match        https://theeventscalendar.com/wp-admin/post.php?*
@@ -22,22 +22,23 @@
     var threads = document.getElementsByClassName( 'type-reply' );
     var tlen = threads.length;
     if ( tlen > 6 ) {
-        var ntlen = '.bbp-reply-header:nth-child(' + tlen + ')';
+        var lastFour = 2 * tlen - 3;
+        var ntlen = '.bbp-body div:nth-child(n+' + lastFour + ')';
+        console.log( 'tlen: ' + tlen);
         $( '.bbp-reply-header' ).css({ 'display': 'none' });
         $( '.type-reply' ).css({ 'display': 'none' });
         $( ntlen ).css({ 'display': 'block' });
-        $( '.type-reply:last-child' ).css({ 'display': 'block' });
 
         var htmlstring;
         htmlstring  = '<div id="count-container"><div class="count-line top">&nbsp;</div><div class="count-number"><span class="count-round">';
-        htmlstring += tlen-1;
-        htmlstring += '</span><span class="count-more">more</span></div><div class="count-line bottom">&nbsp;</div></div>';
+        htmlstring += tlen-3;
+        htmlstring += '</span><span class="count-more"><a href="javascript:void(0)">more</a></span></div><div class="count-line bottom">&nbsp;</div></div>';
 
         var htmlJumpToTop;
-        htmlJumpToTop = '<span id="hideem" class="hideem">Hide`em again</span>&nbsp;|&nbsp;<span id="jumptotop"><a href="#bbps_conversation">Jump to first post</a></span>';
+        htmlJumpToTop = '<span id="hideem" class="hideem"><a href="javascript:void(0)">Hide`em again</a></span>&nbsp;|&nbsp;<span id="jumptotop"><a href="#bbps_conversation">Jump to first post</a></span>';
 
         var htmlHideemTop;
-        htmlHideemTop = '<div id="hideemTop" class="hideem">Hide`em again</div>';
+        htmlHideemTop = '<div id="hideemTop" class="hideem"><a href="javascript:void(0)">Hide`em again</a></div>';
 
         $( '#bbp-topic-0-lead' ).after( htmlstring );
         $( '#count-container' ).css({ 'cursor': 'pointer' });
@@ -68,7 +69,6 @@
         $( '.bbp-reply-header' ).css({ 'display': 'none' });
         $( '.type-reply' ).css({ 'display': 'none' });
         $( ntlen ).css({ 'display': 'block' });
-        $( '.type-reply:last-child' ).css({ 'display': 'block' });
         $( '#count-container' ).css({ 'display': 'block' });
         $( '.hideem' ).css({ 'display': 'none' });
     }
