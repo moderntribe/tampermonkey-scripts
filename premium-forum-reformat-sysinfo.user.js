@@ -81,20 +81,19 @@
                 fullstats = fullstats.replace( titles[t].toUpperCase(), '<br>&nbsp;<br>' + titles[t].toUpperCase() + '<br>' );
             }
 
-        }
+            // Replace double new lines to single
+            fullstats = fullstats.replace( /(<br>)(\s){0,1}(<br>)/ig, '<br>' );
 
-        // Replace double new lines to single
-        fullstats = fullstats.replace( /(<br>)(\s){0,1}(<br>)/ig, '<br>' );
+            // Remove blank lines from beginning
+            fullstats = fullstats.replace( /(.*)home url/ig, 'HOME URL' );
 
-        // Remove blank lines from beginning
-        fullstats = fullstats.replace( /(.*)home url/ig, 'HOME URL' );
+            // Replace sysinfo
+            s[0].innerHTML = fullstats;
 
-        // Replace sysinfo
-        s[0].innerHTML = fullstats;
-
-        // Color red to signal change
-        $( '.when-collapsed' ).css({ 'color': 'red' });
-        $( '.when-expanded' ).css({ 'color': 'red' });
-    } // else {
+            // Color red to signal change
+            $( '.when-collapsed' ).css({ 'color': 'red' });
+            $( '.when-expanded' ).css({ 'color': 'red' });
+        } // else {
+    }
 
 })();
