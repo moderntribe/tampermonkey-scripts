@@ -112,6 +112,18 @@ Screenshot: https://cloudup.com/cU1Tp-rggXe
 
 If the thread is marked private then puts a red label at the top and bottom, and draws a red border around the posts.
 
+### `premium-forum-reformat-sysinfo.user.js`
+
+Reformats the user submitted system information if it comes through without line breaks.
+
+It will re-color "View raw system information" to red to signal the formatting.
+
+If you still see improvement areas, like a plugin in 2 lines, let me know.
+
+Screenshot before: https://cloudup.com/ibZxM-aYwLA
+
+Screenshot after:  https://cloudup.com/i4JtjHdOgaP
+
 ### `premium-forum-thread-list-colors.user.js`
 
 Colors the thead list on theeventscalendar.com based on urgency.
