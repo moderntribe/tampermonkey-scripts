@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      1.3.2
+// @version      1.4
 // @description  Display our plugins' latest version numbers (manually updated) and the user's version numbers from sysinfo
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
@@ -16,6 +16,7 @@
     /**
      * Defining our plugin version history
      * When a new release is out then:
+     * - update script version number in the header
      * - make a copy of the last line
      * - adjust the starting number
      * - adjust the note: show|last (usually show the last 5 versions)
@@ -35,11 +36,12 @@
          8: { note: "",     date: "May 9",  name: "M18.07", tec: "4.6.15x",   pro: "4.4.26x",   eti: "4.7.2",    etp: "4.7.2",  ebt: "4.4.9",  cev: "4.5.11",    ctx: "4.5.4",  fib: "4.5.5",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
          9: { note: "",     date: "May 16", name: "TEC",    tec: "4.6.16x",   pro: "4.4.26",    eti: "4.7.2",    etp: "4.7.2",  ebt: "4.4.9",  cev: "4.5.11",    ctx: "4.5.4",  fib: "4.5.5",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         10: { note: "",     date: "May 29", name: "M18.08", tec: "4.6.17x",   pro: "4.4.27x",   eti: "4.7.3.1x", etp: "4.7.3x", ebt: "4.4.9",  cev: "4.5.12x",   ctx: "4.5.4",  fib: "4.5.6x", apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
-        11: { note: "show", date: "Jun 4",  name: "ETR",    tec: "4.6.18x",   pro: "4.4.27",    eti: "4.7.3.1",  etp: "4.7.3",  ebt: "4.5x",   cev: "4.5.12",    ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
+        11: { note: "",     date: "Jun 4",  name: "ETR",    tec: "4.6.18x",   pro: "4.4.27",    eti: "4.7.3.1",  etp: "4.7.3",  ebt: "4.5x",   cev: "4.5.12",    ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "",      edd: "" },
         12: { note: "show", date: "Jun 20", name: "M18.09", tec: "4.6.19x",   pro: "4.4.28x",   eti: "4.7.4.1x", etp: "4.7.4x", ebt: "4.5.1x", cev: "4.5.12",    ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
         13: { note: "show", date: "Jul 9",  name: "M18.10", tec: "4.6.20.1x", pro: "4.4.29.2x", eti: "4.7.5.1x", etp: "4.7.5x", ebt: "4.5.1",  cev: "4.5.12",    ctx: "4.5.4",  fib: "4.5.6",  apm: "4.4", iwp: "1.0.2", woo: "3.4.3", edd: "2.9.3" },
         14: { note: "show", date: "Aug 1",  name: "M18.11", tec: "4.6.21x",   pro: "4.4.30.1x", eti: "4.7.6x",   etp: "4.7.6x", ebt: "4.5.2x", cev: "4.5.13x",   ctx: "4.5.5x", fib: "4.5.7x", apm: "4.4", iwp: "1.0.2", woo: "3.4.4", edd: "2.9.6" },
-        15: { note: "last", date: "Aug 22", name: "M18.12", tec: "4.6.22.1x", pro: "4.4.31x",   eti: "4.8x",     etp: "4.8x",   ebt: "4.5.2",  cev: "4.5.13.1x", ctx: "4.5.6x", fib: "4.5.7",  apm: "4.4", iwp: "1.0.2", woo: "3.4.4", edd: "2.9.6" },
+        15: { note: "show", date: "Aug 22", name: "M18.12", tec: "4.6.22.1x", pro: "4.4.31x",   eti: "4.8x",     etp: "4.8x",   ebt: "4.5.2",  cev: "4.5.13.1x", ctx: "4.5.6x", fib: "4.5.7",  apm: "4.4", iwp: "1.0.2", woo: "3.4.4", edd: "2.9.6" },
+        16: { note: "last", date: "Sep 12", name: "M18.13", tec: "4.6.23x",   pro: "4.4.32x",   eti: "4.8.1x",   etp: "4.8.1x", ebt: "4.5.3x", cev: "4.5.13.1",  ctx: "4.5.6",  fib: "4.5.8x", apm: "4.4", iwp: "1.0.2", woo: "3.4.5", edd: "2.9.7" },
     };
 
     var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
