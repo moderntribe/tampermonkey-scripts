@@ -79,6 +79,14 @@ Ok...fine...that's just one tool, but this has room to grow.
 
 ![screen shot 2017-08-16 at 10 08 03 am](https://user-images.githubusercontent.com/430385/29367418-db3e3328-826a-11e7-8dd1-2e9e48a338c9.png)
 
+### `key-commands.js`
+
+Sorta like vim/gmail key commands
+* `/` places your cursor in the search box.
+* in query view: `j` and `k` move your selection up or down. Pressing `enter` on the selection takes you to that ticket.
+* `i` takes you to the My Query.
+If you don't like the query view `i` takes you to, change the URL in line 15. 
+
 ### `over-estimate.user.js`
 
 * highlight the spent hours with pink if they are over estimate
