@@ -5,6 +5,7 @@
 // @description  Add some basic key commands to central.
 // @author       Gary Kovar
 // @match        *://central.tri.be/issues*
+// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/key-commands.js
 // @grant        none
 // ==/UserScript==
 
