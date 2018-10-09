@@ -1,14 +1,17 @@
 // ==UserScript==
-// @name         LiveAgent - Clickafy Central ID
+// @name         LiveAgent - Clickafy Central ID and Site's URL
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Make the Central ID in the ticket meta box clickable
+// @version      0.2
+// @description  Make the Central ID in the ticket box clickable
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
 // @include      https://theeventscalendar.ladesk.com/agent/*
 // @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/liveagent-clickafy-central-id.user.js
 // @grant        none
 // ==/UserScript==
+
+// Check with this for site URL
+// https://support.theeventscalendar.com/agent/index.php?rnd=7056#Conversation;id=0f114222
 
 (function() {
     'use strict';
@@ -31,51 +34,68 @@
             var row = rows[i].innerHTML;
 
             // Get the starting position of the string 'Central ID'
-            var inReply = row.search( 'Central ID' );
+            var centralIdInReply = row.search( 'Central ID' );
+            var siteUrlInReply = row.search( "Site's URL" );
 
             // Only run if we find the Central ID field
-            if ( inReply >= 0 ) {
+            if( centralIdInReply >= 0 || siteUrlInReply >= 0 ) {
 
-                if ( log ) console.log( 'Found Central ID in row ' + i );
+                var url, label;
+                if( centralIdInReply >= 0 ) {
+                    url = 'https://central.tri.be';
+                    label = 'Central ID';
+                }
+                else if( siteUrlInReply >= 0 ) {
+                    url = '';
+                    label = "Site's URL";
+                }
+
+                if ( log ) console.log( 'Found ' + label + ' in row ' + i );
 
                 // Check if the link already exists
-                var isItLinked = row.search( 'https://central.tri.be' );
+                var isItClickafied = row.search( 'clickafied' );
 
                 // Only run if the link doesn't exist yet
-                if( isItLinked < 0 ) {
+                if( isItClickafied < 0 ) {
 
-                    if( log ) console.log( 'Central ID not clickafied yet' );
+                    if( log ) console.log( label + ' not clickafied yet' );
 
-                    // Starting position of 'Central ID'
-                    var startCentralID = parseInt( row.search( 'Central ID' ) );
+                    // Starting position of label ("Central ID" or "Site's URL")
+                    var startLabel = parseInt( row.search( label ) );
 
-                    // Starting position of div after 'central ID'
-                    var startDiv = row.indexOf( '<div class="gwt-Label">', startCentralID ); // length = 23
+                    // Starting position of div after label
+                    var startDiv = row.indexOf( '<div class="gwt-Label">', startLabel ); // length = 23
 
                     // Starting position of the ID itself
-                    var startCID = startDiv + 23;
+                    var startValue = startDiv + 23;
 
                     // Starting position of </div> after starting div
                     var endDiv = row.indexOf( '</div>', startDiv );
 
-                    // The central ID itself
-                    var CID = row.substring( startCID, endDiv );
-                    if( log ) console.log( 'Central ID ' + CID );
+                    // The value itself
+                    var value = row.substring( startValue, endDiv );
+                    if( log ) console.log( label + ' ' + value );
 
+                    if( centralIdInReply >= 0 ) {
+                        url = 'https://central.tri.be/issues/' + value.replace( '#', '' );
+                    }
+                    else if( siteUrlInReply >= 0 ) {
+                        url = value;
+                    }
                     // The new clickafied Central ID
-                    var newCID = '<div class="gwt-Label"><a href="https://central.tri.be/issues/' + CID.replace( '#', '' ) + '" target="_blank">' + CID + '</a></div>';
+                    var newValue = '<div class="gwt-Label"><a href="' + url + '" target="_blank" class="clickafied">' + value + '</a></div>';
 
                     // Replacing Central ID with the clickafied version
-                    row = row.replace( '<div class="gwt-Label">' + CID + '</div>', newCID );
+                    row = row.replace( '<div class="gwt-Label">' + value + '</div>', newValue );
 
                     // Replacing in code
                     rows[i].innerHTML = row;
 
-                } // if( isItLinked < 0 )
+                } // if( isItClickafied < 0 )
 
                 if( log ) console.log( 'Central ID already clickafied' );
 
-            } // if ( inReply >= 0 )
+            } // if ( centralIdInReply >= 0 )
         } // for ( var i=0; i<rows.length; i++ )
     } //function clickableCentral
 
