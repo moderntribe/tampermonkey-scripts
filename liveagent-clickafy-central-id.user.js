@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         LiveAgent - Clickafy Central ID and Site's URL
+// @name         LiveAgent - Clickafy Central ID
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @description  Make the Central ID in the ticket box clickable
@@ -17,7 +17,7 @@
     'use strict';
 
     // If you set this to true you will see log messages in the console
-    var log = false;
+    var log = true;
 
     // Run the script every 5 seconds. This is necessary due to the dynamic nature of LiveAgent
     var startScript = window.setInterval( clickableCentral, 5000);
@@ -80,10 +80,18 @@
                         url = 'https://central.tri.be/issues/' + value.replace( '#', '' );
                     }
                     else if( siteUrlInReply >= 0 ) {
-                        url = value;
+                        if( value.search( 'http' ) < 0 ) {
+                            url = 'http://' + value;
+                        }
+                        else {
+                            url = value;
+                        }
                     }
+                    if( log ) console.log( 'x ' + label + ' ' + value + ' ' + url );
+
                     // The new clickafied Central ID
                     var newValue = '<div class="gwt-Label"><a href="' + url + '" target="_blank" class="clickafied">' + value + '</a></div>';
+                    if( log ) console.log( newValue );
 
                     // Replacing Central ID with the clickafied version
                     row = row.replace( '<div class="gwt-Label">' + value + '</div>', newValue );
