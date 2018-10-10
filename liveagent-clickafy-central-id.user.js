@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         LiveAgent - Clickafy Central ID
 // @namespace    http://tampermonkey.net/
-// @version      0.2
-// @description  Make the Central ID in the ticket box clickable
+// @version      0.3
+// @description  Make the Central ID, the user ID, and the user's website in the ticket box clickable
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -36,9 +36,10 @@
             // Get the starting position of the string 'Central ID'
             var centralIdInReply = row.search( 'Central ID' );
             var siteUrlInReply = row.search( "Site's URL" );
+            var userIdInReply = row. search ("WordPress ID" );
 
             // Only run if we find the Central ID field
-            if( centralIdInReply >= 0 || siteUrlInReply >= 0 ) {
+            if( centralIdInReply >= 0 || siteUrlInReply >= 0 || userIdInReply >= 0 ) {
 
                 var url, label;
                 if( centralIdInReply >= 0 ) {
@@ -48,6 +49,10 @@
                 else if( siteUrlInReply >= 0 ) {
                     url = '';
                     label = "Site's URL";
+                }
+                else if( userIdInReply >= 0 ) {
+                    url = '';
+                    label = "WordPress ID";
                 }
 
                 if ( log ) console.log( 'Found ' + label + ' in row ' + i );
@@ -60,7 +65,7 @@
 
                     if( log ) console.log( label + ' not clickafied yet' );
 
-                    // Starting position of label ("Central ID" or "Site's URL")
+                    // Starting position of label ("Central ID" or "Site's URL" or "WordPress ID" )
                     var startLabel = parseInt( row.search( label ) );
 
                     // Starting position of div after label
@@ -87,6 +92,10 @@
                             url = value;
                         }
                     }
+                    else if( userIdInReply >= 0 ) {
+                        url = 'https://theeventscalendar.com/wp-admin/user-edit.php?user_id=' + value;
+                    }
+
                     if( log ) console.log( 'x ' + label + ' ' + value + ' ' + url );
 
                     // The new clickafied Central ID
@@ -101,7 +110,7 @@
 
                 } // if( isItClickafied < 0 )
 
-                if( log ) console.log( 'Central ID already clickafied' );
+                if( log ) console.log( label + ' already clickafied' );
 
             } // if ( centralIdInReply >= 0 )
         } // for ( var i=0; i<rows.length; i++ )
