@@ -90,7 +90,7 @@ If you don't like the query view `i` takes you to, change the URL in line 15.
 ### `liveagent-clickafy-central-id.user.js`
 
 Intended for the Events Support team. Works on the LiveAgent platform.  
-The script makes the Site's URL and the Central ID in the ticket meta box clickable, which will open in a new tab / window.  
+The script makes the Site's URL, the Central ID, and the user ID in the meta boxes clickable, which will open in a new tab / window.  
 The Central ID works with both `123456` and `#123456` formats.
 
 ### `over-estimate.user.js`
