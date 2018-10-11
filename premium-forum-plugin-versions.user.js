@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Premium Forum Extras - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      1.5
+// @version      1.6
 // @description  Display our plugins' latest version numbers (manually updated) and the user's version numbers from sysinfo
 // @author       Andras Guseo
 // @include      https://theeventscalendar.com/wp-admin/post.php?*
@@ -42,7 +42,7 @@
         14: { note: "show", date: "Aug 1",  name: "M18.11", tec: "4.6.21x",   pro: "4.4.30.1x", eti: "4.7.6x",   etp: "4.7.6x", ebt: "4.5.2x", cev: "4.5.13x",   ctx: "4.5.5x", fib: "4.5.7x", apm: "4.4", iwp: "1.0.2", woo: "3.4.4", edd: "2.9.6" },
         15: { note: "show", date: "Aug 22", name: "M18.12", tec: "4.6.22.1x", pro: "4.4.31x",   eti: "4.8x",     etp: "4.8x",   ebt: "4.5.2",  cev: "4.5.13.1x", ctx: "4.5.6x", fib: "4.5.7",  apm: "4.4", iwp: "1.0.2", woo: "3.4.4", edd: "2.9.6" },
         16: { note: "show", date: "Sep 12", name: "M18.13", tec: "4.6.23x",   pro: "4.4.32x",   eti: "4.8.1x",   etp: "4.8.1x", ebt: "4.5.3x", cev: "4.5.13.1",  ctx: "4.5.6",  fib: "4.5.8x", apm: "4.4", iwp: "1.0.2", woo: "3.4.5", edd: "2.9.7" },
-        17: { note: "last", date: "Oct 3",  name: "M18.14", tec: "4.6.24x",   pro: "4.4.33x",   eti: "4.8.2x",   etp: "4.8.2x", ebt: "4.5.4x", cev: "4.5.13.1",  ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.4.5", edd: "2.9.8" },
+        17: { note: "last", date: "Oct 3",  name: "M18.14", tec: "4.6.24.1x", pro: "4.4.33x",   eti: "4.8.2.1x", etp: "4.8.2x", ebt: "4.5.4x", cev: "4.5.13.1",  ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.4.5", edd: "2.9.8" },
     };
 
     var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
