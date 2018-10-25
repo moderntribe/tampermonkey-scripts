@@ -87,6 +87,12 @@ Sorta like vim/gmail key commands
 * `i` takes you to the My Query.
 If you don't like the query view `i` takes you to, change the URL in line 15. 
 
+### `liveagent-clickafy-central-id.user.js`
+
+Intended for the Events Support team. Works on the LiveAgent platform.  
+The script makes the Site's URL, the Central ID, and the user ID in the meta boxes clickable, which will open in a new tab / window.  
+The Central ID works with both `123456` and `#123456` formats.
+
 ### `over-estimate.user.js`
 
 * highlight the spent hours with pink if they are over estimate
