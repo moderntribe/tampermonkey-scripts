@@ -30,6 +30,7 @@
         'courane01',
         'erishel',
         'geoffbel',
+        'geoffgraham',
         'ggwicz',
         'jaimemarchwinski',
         'jentheo',
@@ -38,7 +39,9 @@
         'mitogh',
         'nicosantos',
         'patriciahillebrandt',
+        'sdenike',
         'skyshab',
+        'tribalmike',
         'vicskf',
     ];
 
