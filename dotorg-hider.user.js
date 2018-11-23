@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         .org Hider for Modern Tribe Support
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  The script runs in the .org forums for Modern Tribe plugins. A twin to .org Helper. It hides threads that don't need attention: resolved threads and threads where last voice is a team member.
 // @author       Andras Guseo
 // @include      https://wordpress.org/support/plugin/pardot*
@@ -41,6 +41,7 @@
         'patriciahillebrandt',
         'sdenike',
         'skyshab',
+        'tokyobiyori',
         'tribalmike',
         'vicskf',
     ];
