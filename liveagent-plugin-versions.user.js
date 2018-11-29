@@ -66,7 +66,7 @@
             17: { note: "",     date: "Oct 3",  name: "M18.14", tec: "4.6.24.1x", pro: "4.4.33x",   eti: "4.8.2x",   etp: "4.8.2x", ebt: "4.5.4x", cev: "4.5.13.1",  ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.4.5", edd: "2.9.8" },
             18: { note: "show", date: "Oct 22", name: "M18.15", tec: "4.6.25x",   pro: "4.4.34x",   eti: "4.8.3x",   etp: "4.8.3x", ebt: "4.5.5x", cev: "4.5.13.1",  ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.5.0", edd: "2.9.8" },
             19: { note: "show", date: "Nov 13", name: "M18.16", tec: "4.6.26.1x", pro: "4.4.35x",   eti: "4.8.4.1x", etp: "4.8.3",  ebt: "4.5.6x", cev: "4.5.14x",   ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.5.1", edd: "2.9.8" },
-            20: { note: "last", date: "Nov 29", name: "F18.03", tec: "4.7x",      pro: "4.5x",      eti: "4.9x",     etp: "4.9x",   ebt: "4.5.6x", cev: "4.5.14x",   ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.5.2", edd: "2.9.8" },
+            20: { note: "last", date: "Nov 29", name: "F18.03", tec: "4.7x",      pro: "4.5x",      eti: "4.9x",     etp: "4.9x",   ebt: "4.5.6",  cev: "4.5.14",    ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.5.2", edd: "2.9.8" },
         };
 
         //var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
