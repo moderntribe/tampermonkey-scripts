@@ -322,6 +322,9 @@
                 case 'Bug':
                     icon = 'bug';
                     break;
+                case 'Enhancement':
+                    icon = 'wrench';
+                    break;
                 case 'Feature':
                     icon = 'star-o';
                     break;
