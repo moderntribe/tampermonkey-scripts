@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      1.12
+// @version      2.1.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -10,6 +10,12 @@
 // @grant        none
 // ==/UserScript==
 
+/**
+ Versioning:
+ First digit: only changes when year changes. 2 = 2019
+ Second digit: corresponds to which MR we just shipped. First MR of the year -> 1
+ Third digit: increment when a hotfix or a feature release is out
+*/
 (function() {
     'use strict';
 
@@ -42,7 +48,7 @@
          * - increase the starting number
          * - adjust the note: show|last (usually show the last 3 versions)
          * - add the new date, release number, and plugin version numbers
-         * - if it is a new version compared to last release, add 'x' at the end, like '4.6.19x'
+         * - if it is a new version compared to last release, add 'x' at the end, like '4.6.19x'. Woo and EDD do not get tagged with 'x'
          * - if it is a hotfix, then creating a new line is not needed, just update the version number in the last line (See Event Tickets (eti) in line 12)
          */
         var pluginHistory = {
@@ -67,9 +73,10 @@
             18: { note: "",     date: "Oct 22", name: "M18.15", tec: "4.6.25x",   pro: "4.4.34x",   eti: "4.8.3x",   etp: "4.8.3x", ebt: "4.5.5x", cev: "4.5.13.1",  ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.5.0", edd: "2.9.8" },
             19: { note: "",     date: "Nov 13", name: "M18.16", tec: "4.6.26.1x", pro: "4.4.35x",   eti: "4.8.4.1x", etp: "4.8.3",  ebt: "4.5.6x", cev: "4.5.14x",   ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.5.1", edd: "2.9.8" },
             20: { note: "",     date: "Nov 29", name: "F18.03", tec: "4.7.0.1x",  pro: "4.5x",      eti: "4.9.0.2x", etp: "4.9x",   ebt: "4.5.6",  cev: "4.5.14",    ctx: "4.5.6",  fib: "4.5.8",  apm: "4.4", iwp: "1.0.2", woo: "3.5.2", edd: "2.9.8" },
-            21: { note: "show", date: "Dec 5",  name: "M18.17", tec: "4.7.1x",    pro: "4.5",       eti: "4.9.1x",   etp: "4.9",    ebt: "4.5.6",  cev: "4.5.15x",   ctx: "4.5.7x", fib: "4.5.9x", apm: "4.4", iwp: "1.0.2", woo: "3.5.2", edd: "2.9.9" },
+            21: { note: "",     date: "Dec 5",  name: "M18.17", tec: "4.7.1x",    pro: "4.5",       eti: "4.9.1x",   etp: "4.9",    ebt: "4.5.6",  cev: "4.5.15x",   ctx: "4.5.7x", fib: "4.5.9x", apm: "4.4", iwp: "1.0.2", woo: "3.5.2", edd: "2.9.9" },
             22: { note: "show", date: "Dec 13", name: "M18.18", tec: "4.7.2x",    pro: "4.5.1x",    eti: "4.9.2x",   etp: "4.9",    ebt: "4.5.6",  cev: "4.5.15",    ctx: "4.5.7",  fib: "4.5.9",  apm: "4.4", iwp: "1.0.2", woo: "3.5.2", edd: "2.9.10" },
-            23: { note: "last", date: "Dec 19", name: "M18.19", tec: "4.7.3x",    pro: "4.5.2.1x",  eti: "4.9.3x",   etp: "4.9.1x", ebt: "4.5.6",  cev: "4.5.15",    ctx: "4.5.7",  fib: "4.5.9",  apm: "4.4", iwp: "1.0.2", woo: "3.5.3", edd: "2.9.10" },
+            23: { note: "show", date: "Dec 19", name: "M18.19", tec: "4.7.3x",    pro: "4.5.2.1x",  eti: "4.9.3x",   etp: "4.9.1x", ebt: "4.5.6",  cev: "4.5.15",    ctx: "4.5.7",  fib: "4.5.9",  apm: "4.4", iwp: "1.0.2", woo: "3.5.3", edd: "2.9.10" },
+            24: { note: "last", date: "Jan 15", name: "G19.01", tec: "4.7.3",     pro: "4.5.2.1",   eti: "4.9.4x",   etp: "4.9.2x", ebt: "4.5.6",  cev: "4.5.16x",   ctx: "4.5.7",  fib: "4.5.9",  apm: "4.4", iwp: "1.0.2", woo: "3.5.3", edd: "2.9.10" },
         };
 
         //var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
