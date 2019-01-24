@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.2.0
+// @version      2.2.0.1
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -12,9 +12,10 @@
 
 /**
  Versioning:
- First digit: only changes when year changes. 2 = 2019
+ First digit:  only changes when year changes. 2 = 2019
  Second digit: corresponds to which MR we just shipped. First MR of the year -> 1
- Third digit: increment when a hotfix or a feature release is out
+ Third digit:  increment when a hotfix or a feature release is out
+ Fourth digit: bugfix for the script
 */
 (function() {
     'use strict';
@@ -113,7 +114,7 @@
         htmlstring += '<table width="100%" class="versions" cellpadding="0" cellspacing="0">';
 
         // Header row
-        htmlstring += '<tr class="row first-row alwayson"><td><span id="hider">[hide]</span></td><td></td><td><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td><td><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td><td><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td><td><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td><td><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td><td><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td><td><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td><td><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td><td>APM</td><td>IW+</td>';
+        htmlstring += '<tr class="row first-row alwayson"><td class="hider-cell"><span id="hider">[hide]</span></td><td></td><td><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td><td><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td><td><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td><td><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td><td><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td><td><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td><td><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td><td><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td><td>APM</td><td>IW+</td>';
         /*    if ( ecmUsed != "-" ) {
                 htmlstring += '<td>';
                 htmlstring += ecmUsed.toUpperCase();
@@ -214,7 +215,8 @@
         $( '.version-number' ).css({ 'font-weight': 'bold' });
         $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
         $( '.alwayson' ).css({ 'display': 'table-row' });
-        $( '#hider' ).css({ 'cursor': 'pointer', 'vertical-align': 'top' });
+        $( '#hider' ).css({ 'cursor': 'pointer' });
+        $( '.hider-cell' ).css({ 'vertical-align': 'top' });
 
         // Handle hover
         if ( document.getElementById( 'plugin-versions' ) != null ) {
@@ -246,20 +248,23 @@
             $( '.row' ).css({ 'display': 'none' });
             $( '.alwayson' ).css({ 'display': 'table-row' });
         }
-        function hideBlock(e) {
+        function hideBlock() {
             var block = document.getElementById( 'plugin-versions' );
             var str   = document.getElementById( 'hider' );
             var right = window.outerWidth-block.offsetLeft;
-            if ( log ) console.log(block.offsetLeft);
-            if ( log ) console.log(window.outerWidth);
-            if ( log ) console.log(right);
+            var hideRight = -block.offsetWidth + 55;
+            if ( log ) console.log( 'block.offsetLeft: ' + block.offsetLeft );
+            if ( log ) console.log( 'block.offsetWidth: ' + block.offsetWidth );
+            if ( log ) console.log( 'window.outerWidth: ' + window.outerWidth );
+            if ( log ) console.log( 'right: ' + right );
+            if ( log ) console.log( 'hideRight: ' + hideRight );
 
             if ( block.offsetLeft + 100 > window.outerWidth ) {
                 $( '#plugin-versions' ).css({ 'right': '350px' });
                 str.innerHTML = '[hide]';
             }
             else {
-                $( '#plugin-versions' ).css({ 'right': '-546px' });
+                $( '#plugin-versions' ).css({ 'right': hideRight });
                 str.innerHTML = '[show]';
             }
         }
