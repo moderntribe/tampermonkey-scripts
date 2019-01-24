@@ -214,14 +214,13 @@
         $( '.version-number' ).css({ 'font-weight': 'bold' });
         $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
         $( '.alwayson' ).css({ 'display': 'table-row' });
-        $( '.alwayson' ).css({ 'display': 'table-row' });
         $( '#hider' ).css({ 'cursor': 'pointer', 'vertical-align': 'top' });
 
         // Handle hover
         if ( document.getElementById( 'plugin-versions' ) != null ) {
             document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
             document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
-			document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
+            document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
         }
 
         // Compare current and user, and color it
@@ -247,13 +246,14 @@
             $( '.row' ).css({ 'display': 'none' });
             $( '.alwayson' ).css({ 'display': 'table-row' });
         }
-		function hideBlock(e) {
+        function hideBlock(e) {
             var block = document.getElementById( 'plugin-versions' );
             var str   = document.getElementById( 'hider' );
-            //var right = window.outerWidth-block.offsetLeft;
-			//console.log(block.offsetLeft);
-            //console.log(window.outerWidth);
-            //console.log(right);
+            var right = window.outerWidth-block.offsetLeft;
+            if ( log ) console.log(block.offsetLeft);
+            if ( log ) console.log(window.outerWidth);
+            if ( log ) console.log(right);
+
             if ( block.offsetLeft + 100 > window.outerWidth ) {
                 $( '#plugin-versions' ).css({ 'right': '350px' });
                 str.innerHTML = '[hide]';
