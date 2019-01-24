@@ -113,7 +113,7 @@
         htmlstring += '<table width="100%" class="versions" cellpadding="0" cellspacing="0">';
 
         // Header row
-        htmlstring += '<tr class="row first-row alwayson"><td></td><td></td><td><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td><td><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td><td><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td><td><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td><td><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td><td><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td><td><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td><td><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td><td>APM</td><td>IW+</td>';
+        htmlstring += '<tr class="row first-row alwayson"><td><span id="hider">[hide]</span></td><td></td><td><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td><td><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td><td><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td><td><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td><td><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td><td><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td><td><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td><td><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td><td>APM</td><td>IW+</td>';
         /*    if ( ecmUsed != "-" ) {
                 htmlstring += '<td>';
                 htmlstring += ecmUsed.toUpperCase();
@@ -209,16 +209,19 @@
 
         // Formatting
         $( '#body' ).after( htmlstring );
-        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'right': '350px', 'background-color': 'rgb(35, 40, 45)', 'color': '#eee' });
+        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'right': '350px', 'background-color': 'rgb(35, 40, 45)', 'color': '#eee', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
         $( '.versions td' ).css({ 'line-height': '1.5em !important' });
         $( '.version-number' ).css({ 'font-weight': 'bold' });
         $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
         $( '.alwayson' ).css({ 'display': 'table-row' });
+        $( '.alwayson' ).css({ 'display': 'table-row' });
+        $( '#hider' ).css({ 'cursor': 'pointer', 'vertical-align': 'top' });
 
         // Handle hover
         if ( document.getElementById( 'plugin-versions' ) != null ) {
             document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
             document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
+			document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
         }
 
         // Compare current and user, and color it
@@ -243,6 +246,22 @@
         function hideRows() {
             $( '.row' ).css({ 'display': 'none' });
             $( '.alwayson' ).css({ 'display': 'table-row' });
+        }
+		function hideBlock(e) {
+            var block = document.getElementById( 'plugin-versions' );
+            var str   = document.getElementById( 'hider' );
+            //var right = window.outerWidth-block.offsetLeft;
+			//console.log(block.offsetLeft);
+            //console.log(window.outerWidth);
+            //console.log(right);
+            if ( block.offsetLeft + 100 > window.outerWidth ) {
+                $( '#plugin-versions' ).css({ 'right': '350px' });
+                str.innerHTML = '[hide]';
+            }
+            else {
+                $( '#plugin-versions' ).css({ 'right': '-546px' });
+                str.innerHTML = '[show]';
+            }
         }
 
     } // if ( typeof alreadydone == 'undefined')
