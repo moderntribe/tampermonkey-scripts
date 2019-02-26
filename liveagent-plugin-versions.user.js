@@ -20,7 +20,7 @@
 (function() {
     'use strict';
 
-    var log = true;
+    var log = false;
 
     if ( log ) console.log ( alreadydone );
     if ( log ) console.log ( typeof alreadydone );
