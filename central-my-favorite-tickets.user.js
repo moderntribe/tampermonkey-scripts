@@ -6,6 +6,7 @@
 // @author       Andras Guseo
 // @match        https://central.tri.be/*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/central-my-favorite-tickets.user.js
 // ==/UserScript==
 
 (function() {
