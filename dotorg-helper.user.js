@@ -25,6 +25,8 @@
         'aguseo',
         'barryhughes-1',
         'bskousen3',
+        'brianjessee',
+        'brook-tribe',
         'cliffpaulick',
         'cliffseal',
         'courane01',
@@ -37,13 +39,17 @@
         'jeremy80',
         'juanfra',
         'mitogh',
+        'neillmcshea',
         'nicosantos',
         'patriciahillebrandt',
         'sdenike',
         'skyshab',
         'tokyobiyori',
         'tribalmike',
+        'tribecari',
         'vicskf',
+        'wfalaa',
+        'zbtirrell',
     ];
 
     var i, j;
