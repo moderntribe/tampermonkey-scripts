@@ -23,6 +23,7 @@
     // MT support team members
     var mtteam = [
         'aguseo',
+        'alaasalama',
         'barryhughes-1',
         'bskousen3',
         'brianjessee',
@@ -30,6 +31,7 @@
         'cliffpaulick',
         'cliffseal',
         'courane01',
+        'djbramer',
         'erishel',
         'geoffbel',
         'geoffgraham',
@@ -48,7 +50,6 @@
         'tribalmike',
         'tribecari',
         'vicskf',
-        'wfalaa',
         'zbtirrell',
     ];
 
