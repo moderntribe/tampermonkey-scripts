@@ -42,6 +42,13 @@ Creates a kanban board for all issues queried. The board is hidden by default an
 
 Turns the _Pull Request_ field in Modern Tribe's "Central" issues pages into a link.
 
+### `central-my-favorite-tickets.user.js`
+
+Add your favorite ticket numbers to the main menu for easy access.
+The ticket numbers and descriptions need to be manually adjusted in the script.
+
+![screen shot](https://dl.dropboxusercontent.com/s/ni5i38m93hvxmjc/shot_190304_231637.jpg)
+
 ### `clocking-nag.user.js`
 
 Shows your week of clocking at the top of Central and prompts you to enter some clocked time if you are falling behind.
