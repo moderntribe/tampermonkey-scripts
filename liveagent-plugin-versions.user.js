@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.5.1.0
+// @version      2.5.2.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -82,7 +82,7 @@
             26: { note: "",     date: "Feb 5",  name: "F19.01", tec: "4.8.0.1x",  pro: "4.6x",      eti: "4.10.0.1x", etp: "4.10.0.2x", ebt: "4.6x",   cev: "4.6x",      ctx: "4.6x",     fib: "4.6x",   apm: "4.4",  iwp: "1.0.2",  woo: "3.5.4", edd: "2.9.11" },
             27: { note: "show", date: "Feb 14", name: "B19.02", tec: "4.8.1x",    pro: "4.6.1x",    eti: "4.10.0.1",  etp: "4.10.0.2",  ebt: "4.6.1x", cev: "4.6",       ctx: "4.6",      fib: "4.6",    apm: "4.5x", iwp: "1.0.3x", woo: "3.5.4", edd: "2.9.11" },
             28: { note: "show", date: "Feb 26", name: "G19.03", tec: "4.8.1",     pro: "4.6.1",     eti: "4.10.1x",   etp: "4.10.1x",   ebt: "4.6.1",  cev: "4.6.1x",    ctx: "4.6.1x",   fib: "4.6",    apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
-            29: { note: "last", date: "Mar 4",  name: "B19.03", tec: "4.8.2x",    pro: "4.6.2x",    eti: "4.10.1.1x", etp: "4.10.1.1x", ebt: "4.6.2x", cev: "4.6.1.1x",  ctx: "4.6.1.1x", fib: "4.7x",   apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
+            29: { note: "last", date: "Mar 4",  name: "B19.03", tec: "4.8.2x",    pro: "4.6.2.1x",  eti: "4.10.1.2x", etp: "4.10.1.3x", ebt: "4.6.2x", cev: "4.6.1.1x",  ctx: "4.6.1.1x", fib: "4.7x",   apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
         };
 
         //var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
@@ -338,6 +338,9 @@
 
     /**
      * === Changelog ===
+     * 2.5.2.0 - 2019-03-30
+     * Adjusted version numbers based on March hotfixes
+     *
      * 2.5.0.0 - 2019-03-04
      * Added B19.03 version numbers
      *
