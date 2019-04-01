@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.5.2.0
+// @version      2.6.0.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -80,9 +80,10 @@
             24: { note: "",     date: "Jan 15", name: "G19.01", tec: "4.7.3",     pro: "4.5.2.1",   eti: "4.9.4x",    etp: "4.9.2x",    ebt: "4.5.6",  cev: "4.5.16x",   ctx: "4.5.7",    fib: "4.5.9",  apm: "4.4",  iwp: "1.0.2",  woo: "3.5.3", edd: "2.9.10" },
             25: { note: "",     date: "Jan 21", name: "B19.01", tec: "4.7.4x",    pro: "4.5.3x",    eti: "4.9.4",     etp: "4.9.2",     ebt: "4.5.7x", cev: "4.5.16",    ctx: "4.5.7",    fib: "4.5.9",  apm: "4.4",  iwp: "1.0.2",  woo: "3.5.4", edd: "2.9.11" },
             26: { note: "",     date: "Feb 5",  name: "F19.01", tec: "4.8.0.1x",  pro: "4.6x",      eti: "4.10.0.1x", etp: "4.10.0.2x", ebt: "4.6x",   cev: "4.6x",      ctx: "4.6x",     fib: "4.6x",   apm: "4.4",  iwp: "1.0.2",  woo: "3.5.4", edd: "2.9.11" },
-            27: { note: "show", date: "Feb 14", name: "B19.02", tec: "4.8.1x",    pro: "4.6.1x",    eti: "4.10.0.1",  etp: "4.10.0.2",  ebt: "4.6.1x", cev: "4.6",       ctx: "4.6",      fib: "4.6",    apm: "4.5x", iwp: "1.0.3x", woo: "3.5.4", edd: "2.9.11" },
+            27: { note: "",     date: "Feb 14", name: "B19.02", tec: "4.8.1x",    pro: "4.6.1x",    eti: "4.10.0.1",  etp: "4.10.0.2",  ebt: "4.6.1x", cev: "4.6",       ctx: "4.6",      fib: "4.6",    apm: "4.5x", iwp: "1.0.3x", woo: "3.5.4", edd: "2.9.11" },
             28: { note: "show", date: "Feb 26", name: "G19.03", tec: "4.8.1",     pro: "4.6.1",     eti: "4.10.1x",   etp: "4.10.1x",   ebt: "4.6.1",  cev: "4.6.1x",    ctx: "4.6.1x",   fib: "4.6",    apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
-            29: { note: "last", date: "Mar 4",  name: "B19.03", tec: "4.8.2x",    pro: "4.6.2.1x",  eti: "4.10.1.2x", etp: "4.10.1.3x", ebt: "4.6.2x", cev: "4.6.1.1x",  ctx: "4.6.1.1x", fib: "4.7x",   apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
+            29: { note: "show", date: "Mar 4",  name: "B19.03", tec: "4.8.2x",    pro: "4.6.2.1x",  eti: "4.10.1.2x", etp: "4.10.1.3x", ebt: "4.6.2x", cev: "4.6.1.1x",  ctx: "4.6.1.1x", fib: "4.7x",   apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
+            30: { note: "last", date: "Apr 1",  name: "G19.04", tec: "4.8.2",     pro: "4.6.2.1",   eti: "4.10.2x",   etp: "4.10.2x",   ebt: "4.6.2",  cev: "4.6.1.1",   ctx: "4.6.1.1",  fib: "4.7",    apm: "4.5",  iwp: "1.0.3",  woo: "3.5.7", edd: "2.9.12" },
         };
 
         //var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
@@ -338,6 +339,9 @@
 
     /**
      * === Changelog ===
+     * 2.6.0.0 - 2019-04-01
+     * Adjusted version numbers for G19.04
+     *
      * 2.5.2.0 - 2019-03-30
      * Adjusted version numbers based on March hotfixes
      *
