@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.8.3.0
+// @version      2.9.0.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -84,8 +84,8 @@
             28: { note: "",     date: "Feb 26", name: "G19.03", tec: "4.8.1",     pro: "4.6.1",     eti: "4.10.1x",   etp: "4.10.1x",   ebt: "4.6.1",  cev: "4.6.1x",    ctx: "4.6.1x",   fib: "4.6",      apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
             29: { note: "",     date: "Mar 4",  name: "B19.03", tec: "4.8.2x",    pro: "4.6.2.1x",  eti: "4.10.1.2x", etp: "4.10.1.3x", ebt: "4.6.2x", cev: "4.6.1.1x",  ctx: "4.6.1.1x", fib: "4.7x",     apm: "4.5",  iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
             30: { note: "show", date: "Apr 1",  name: "G19.04", tec: "4.8.2",     pro: "4.6.2.1",   eti: "4.10.2x",   etp: "4.10.2x",   ebt: "4.6.2",  cev: "4.6.1.2x",  ctx: "4.6.1.2x", fib: "4.7.0.1x", apm: "4.5",  iwp: "1.0.3",  woo: "3.5.7", edd: "2.9.12" },
-            31: { note: "show", date: "Apr 17", name: "ORM",    tec: "4.9x",      pro: "4.7x",      eti: "4.10.3x",   etp: "4.10.2x",   ebt: "4.6.2",  cev: "4.6.1.2x",  ctx: "4.6.1.2x", fib: "4.8x",     apm: "4.5",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
-            32: { note: "last", date: "Apr 23", name: "G19.05", tec: "4.9.0.3x",  pro: "4.7.0.1x",  eti: "4.10.4.3x", etp: "4.10.3x",   ebt: "4.6.2",  cev: "4.6.1.2x",  ctx: "4.6.1.2x", fib: "4.8x",     apm: "4.5",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
+            31: { note: "show", date: "Apr 17", name: "ORM",    tec: "4.9x",      pro: "4.7x",      eti: "4.10.3x",   etp: "4.10.2",    ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  fib: "4.8x",     apm: "4.5",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
+            32: { note: "last", date: "Apr 23", name: "G19.05", tec: "4.9.0.3x",  pro: "4.7.0.1x",  eti: "4.10.4.3x", etp: "4.10.3x",   ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  fib: "4.8",      apm: "4.5",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
         };
 
         //var pluginNames = ['tec', 'pro', 'eti', 'etp', 'ebt', 'cev', 'ctx', 'fib', 'apm', 'iwp'];
