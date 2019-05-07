@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.9.0.0
+// @version      2.9.1.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -86,7 +86,7 @@
             30: { note: "",     date: "Apr 1",  name: "G19.04", tec: "4.8.2",     pro: "4.6.2.1",   fib: "4.7.0.1x", ebt: "4.6.2",  apm: "4.5",  eti: "4.10.2x",   etp: "4.10.2x",   ebt: "4.6.2",  cev: "4.6.1.2x",  ctx: "4.6.1.2x", iwp: "1.0.3",  woo: "3.5.7", edd: "2.9.12" },
             31: { note: "show", date: "Apr 17", name: "ORM",    tec: "4.9x",      pro: "4.7x",      fib: "4.8x",     ebt: "4.6.2",  apm: "4.5",  eti: "4.10.3x",   etp: "4.10.2x",   ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
             32: { note: "show", date: "Apr 23", name: "G19.05", tec: "4.9.0.3x",  pro: "4.7.0.1x",  fib: "4.8",      ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.3x", etp: "4.10.3x",   ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
-            33: { note: "last", date: "May 3",  name: "B19.05", tec: "4.9.1x",    pro: "4.7.1x",    fib: "4.8.1x",   ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.4x", etp: "4.10.3",    ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.12" },
+            33: { note: "last", date: "May 3",  name: "B19.05", tec: "4.9.1.1x",  pro: "4.7.1x",    fib: "4.8.1x",   ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.4x", etp: "4.10.3",    ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.12" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -365,6 +365,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 2.9.1.0 - 2019-05-07
+     * TEC hotfix
      *
      * 2.9.0.0 - 2019-05-03
      * Restructured plugin order based on teams
