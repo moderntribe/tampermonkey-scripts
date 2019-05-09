@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Uncheck the email all checkbox
 // @author       You
-// @include      /^https:\/\/central.tri.be\/issues\/.*/
+// @include      /^https:\/\/central.tri.be(\/.*)?/
 // @grant        none
 // ==/UserScript==
 
