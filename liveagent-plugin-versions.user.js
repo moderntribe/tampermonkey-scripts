@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.13.1.0
+// @version      2.14.0.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -88,9 +88,10 @@
             32: { note: "",     date: "Apr 23", name: "G19.05", tec: "4.9.0.3x",  pro: "4.7.0.1x",  fib: "4.8",      ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.3x", etp: "4.10.3x",   ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
             33: { note: "",     date: "May 3",  name: "B19.05", tec: "4.9.1.1x",  pro: "4.7.1x",    fib: "4.8.1x",   ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.4x", etp: "4.10.3",    ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.12" },
             34: { note: "",     date: "May 14", name: "G19.06", tec: "4.9.1.1",   pro: "4.7.1",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.5x",   etp: "4.10.4x",   ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.14" },
-            35: { note: "show", date: "May 16", name: "B19.06", tec: "4.9.2x",    pro: "4.7.2x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.5",    etp: "4.10.4",    ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.3", edd: "2.9.14" },
+            35: { note: "",     date: "May 16", name: "B19.06", tec: "4.9.2x",    pro: "4.7.2x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.5",    etp: "4.10.4",    ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.3", edd: "2.9.14" },
             36: { note: "show", date: "May 22", name: "G19.07", tec: "4.9.2",     pro: "4.7.2",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6x",   etp: "4.10.5x",   ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.3", edd: "2.9.14" },
-            37: { note: "last", date: "June 6", name: "B19.07", tec: "4.9.3.1x",  pro: "4.7.3x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6",    etp: "4.10.5",    ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.15" },
+            37: { note: "show", date: "June 6", name: "B19.07", tec: "4.9.3.1x",  pro: "4.7.3x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.1x", etp: "4.10.5.1x", ebt: "4.6.2",  cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.15" },
+            38: { note: "last", date: "Jun 20", name: "G19.08", tec: "4.9.3.2x",  pro: "4.7.3",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2x", etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.2x",    ctx: "4.6.2x",   iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.16" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -369,6 +370,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 2.14.0.0 - 2019-06-24
+     * Adjusted version numbers for G19.08 and hotfix before
      *
      * 2.13.1.0 - 2019-06-12
      * Adjusted version numbers for B19.07 and hotfix
