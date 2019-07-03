@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Central QA Headers
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      1.0
 // @description  Applies color background to QA template headers for better visibility
 // @author       Nicole Ramsey

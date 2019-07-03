@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Suppress moderntribe/
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  When on a combined pull request list, remove moderntribe/ so the list is more easily scannable
 // @author       Matthew Batchelder

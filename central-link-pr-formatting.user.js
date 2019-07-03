@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Github PR name formatting.
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Format Github PR Links same as Github does.
 // @author       Crisoforo Gaspar Hernandez

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Tickets over estimate
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1.1
 // @description  Adds highlighting when a ticket has more hours clocked than the estimate
 // @author       Zach Tirrell

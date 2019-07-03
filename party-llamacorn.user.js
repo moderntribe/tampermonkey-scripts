@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Party Llamacorn
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Party time!
 // @author       Paul Kim, Aaron Hanson

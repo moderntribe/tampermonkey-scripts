@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Central Issues Kanban
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Display a Kanban board of queried tickets
 // @author       Paul Kim, Aaron Hanson
