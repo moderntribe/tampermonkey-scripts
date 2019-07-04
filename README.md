@@ -15,9 +15,9 @@ These are some common Modern Tribe Tampermonkey scripts.
 
 ## `central-collapsable-sidebar.user.js`
 
-Improves the content space and make sure sidebar is collapsable to the same width of http://tri.be/ and sidebar is accesible just by moving the cursor to the sidebar to  make it available when only needed it.
+Improves the content space and make sure sidebar is collapsible to the same width of http://tri.be/ and sidebar is accessible just by moving the cursor to the sidebar to  make it available when only needed it.
 
-![collapsable sidebar](https://user-images.githubusercontent.com/3921289/37617341-82bc4994-2b78-11e8-8856-288de6d2c8e5.gif)
+![collapsible sidebar](https://user-images.githubusercontent.com/3921289/37617341-82bc4994-2b78-11e8-8856-288de6d2c8e5.gif)
 
 ### `central-link-pr-formatting.user.js`
 
@@ -48,6 +48,10 @@ Add your favorite ticket numbers to the main menu for easy access.
 The ticket numbers and descriptions need to be manually adjusted in the script.
 
 ![screen shot](https://dl.dropboxusercontent.com/s/ni5i38m93hvxmjc/shot_190304_231637.jpg)
+
+### `central-new-issue-templates.user.js`
+
+Starter Templates for New Central Issues
 
 ### `clocking-nag.user.js`
 
