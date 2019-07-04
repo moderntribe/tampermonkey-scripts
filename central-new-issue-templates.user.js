@@ -6,6 +6,7 @@
 // @author       Clifford Paulick
 // @include      https://central.tri.be/projects/*/issues/new
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/central-new-issue-templates.user.js
 // ==/UserScript==
 
 let central_new_issue_templates = {};
