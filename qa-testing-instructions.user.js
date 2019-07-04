@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         QA Testing Instructions
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Click button to add QA Testing Instructions format
 // @author       Paul Kim

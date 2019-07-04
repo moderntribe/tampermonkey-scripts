@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Anchor tags in Central
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1.1
 // @description  Adds anchor tags to some links in central
 // @author       Gustavo Bordoni

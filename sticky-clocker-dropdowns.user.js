@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Sticky Clocker Dropdowns
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Persistent project and activity fields after submitting hours on the clocking tool
 // @author       Paul Kim

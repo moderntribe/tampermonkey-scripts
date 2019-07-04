@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Central Estimates time conversion
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Makes sure estimate field accepts format such as 2h 5m and converts it into an float value.
 // @author       Crisoforo Gaspar Hernandez

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Auto-TBD on new
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Auto-sets TBD on new issues
 // @author       You

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Friendly UI for PR list and forums Threads
-// @namespace    http://central.tri.be/
+// @namespace    https://central.tri.be/
 // @version      0.1
 // @description  Update the UI to allow improve the UI to add more than one PR to an issue.
 // @author       Crisoforo Gaspar Hernandez
