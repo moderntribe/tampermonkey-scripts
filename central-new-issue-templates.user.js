@@ -45,7 +45,9 @@ let central_new_issue_templates = {};
 			'\n\n' +
 			'*Preferred solution/outcome:*' +
 			'\n\n' +
-			'*Relevant documents/files:*',
+			'*Relevant documents/files:*' +
+			'\n\n' +
+			'*Customer System Info::*',
 		'feature':
 			'Add all applicable Support Help Desk threads and/or UserVoice threads to the ticket\'s "Forum Threads" field.' +
 			'\n\n' +
