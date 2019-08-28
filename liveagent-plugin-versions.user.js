@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.19.2.0
+// @version      2.19.2.1
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -95,14 +95,14 @@
             39: { note: "",     date: "Jul 3",  name: "B19.08", tec: "4.9.4x",    pro: "4.7.4x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.2",     ctx: "4.6.2",    iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.16" },
             40: { note: "",     date: "Jul 18", name: "G19.09", tec: "4.9.4",     pro: "4.7.4",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3x",    ctx: "4.6.3x",   iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
             41: { note: "",     date: "Jul 25", name: "B19.09", tec: "4.9.5x",    pro: "4.7.5x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
-            42: { note: "show", date: "Aug 8",  name: "B19.10", tec: "4.9.6x",    pro: "4.7.5",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            43: { note: "show", date: "Aug 19", name: "B19.11", tec: "4.9.7x",    pro: "4.7.6x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            44: { note: "last", date: "Aug 8",  name: "SplitP", tec: "4.9.7",     pro: "4.7.6",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.1x", etp: "4.10.6x",   ebt: "4.6.2",  cev: "4.6.4x",    ctx: "4.7x",     iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            42: { note: "",     date: "Aug 8",  name: "B19.10", tec: "4.9.6x",    pro: "4.7.5",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            43: { note: "",     date: "Aug 19", name: "B19.11", tec: "4.9.7x",    pro: "4.7.6x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            44: { note: "",     date: "Aug 8",  name: "SplitP", tec: "4.9.7",     pro: "4.7.6",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.1x", etp: "4.10.6x",   ebt: "4.6.2",  cev: "4.6.4x",    ctx: "4.7x",     iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
 
-        // The number of releases
+        // The number of releases (the length of the object)
         var rowNumber = Object.keys(pluginHistory).length;
 
         // This will show one more line on the first click.
@@ -171,12 +171,26 @@
         for( var number in pluginHistory ) {
 
             // Check if it has a note
-//            if ( pluginHistory.hasOwnProperty( number ) && ( pluginHistory[number].note == 'show' || pluginHistory[number].note == 'last' ) ) {
+            // if ( pluginHistory.hasOwnProperty( number ) && ( pluginHistory[number].note == 'show' || pluginHistory[number].note == 'last' ) ) {
+            if ( log ) console.log('Number: ' + number + ' ' + rowNumber );
             htmlstring += '<tr class="row';
             // For the last row add additional classes
-            if ( pluginHistory[number].note !== "") htmlstring += ' ' + pluginHistory[number].note;
+
+            // Removed for new version
+            //if ( pluginHistory[number].note !== "") htmlstring += ' ' + pluginHistory[number].note;
+
+            // New version
+            if ( number >= rowNumber-3 && number < rowNumber-1 ) htmlstring += ' show';
+
+            /**
+             * Removed for new version
             if ( pluginHistory[number].note == 'last' ) {
                 htmlstring += ' last-row alwayson';
+            }
+            */
+            // New version
+            if (  number == rowNumber-1 ) {
+                htmlstring += ' last last-row alwayson';
             }
             htmlstring += '">';
             htmlstring += '<td>' + pluginHistory[number].date + '</td>';
@@ -376,6 +390,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 2.19.2.1 - 2019-08-28
+     * Enhanced the script so the 'note' column in the pluginHistory object can be omitted
      *
      * 2.19.2.0 - 2019-08-28
      * Adjusted version number for B19.11
