@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.19.2.0
+// @version      2.19.2.1
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -102,7 +102,7 @@
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
 
-        // The number of releases
+        // The number of releases (the length of the object)
         var rowNumber = Object.keys(pluginHistory).length;
 
         // This will show one more line on the first click.
@@ -171,12 +171,26 @@
         for( var number in pluginHistory ) {
 
             // Check if it has a note
-//            if ( pluginHistory.hasOwnProperty( number ) && ( pluginHistory[number].note == 'show' || pluginHistory[number].note == 'last' ) ) {
+            // if ( pluginHistory.hasOwnProperty( number ) && ( pluginHistory[number].note == 'show' || pluginHistory[number].note == 'last' ) ) {
+            if ( log ) console.log('Number: ' + number + ' ' + rowNumber );
             htmlstring += '<tr class="row';
             // For the last row add additional classes
-            if ( pluginHistory[number].note !== "") htmlstring += ' ' + pluginHistory[number].note;
+
+            // Removed for new version
+            //if ( pluginHistory[number].note !== "") htmlstring += ' ' + pluginHistory[number].note;
+
+            // New version
+            if ( number >= rowNumber-3 && number < rowNumber-1 ) htmlstring += ' show';
+
+            /**
+             * Removed for new version
             if ( pluginHistory[number].note == 'last' ) {
                 htmlstring += ' last-row alwayson';
+            }
+            */
+            // New version
+            if (  number == rowNumber-1 ) {
+                htmlstring += ' last last-row alwayson';
             }
             htmlstring += '">';
             htmlstring += '<td>' + pluginHistory[number].date + '</td>';
@@ -376,6 +390,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 2.19.2.1 - 2019-08-28
+     * Enhanced the script so the 'note' column in the pluginHistory object can be omitted
      *
      * 2.19.2.0 - 2019-08-28
      * Adjusted version number for B19.11
