@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.19.2.1
+// @version      2.20.0.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -97,7 +97,8 @@
             41: { note: "",     date: "Jul 25", name: "B19.09", tec: "4.9.5x",    pro: "4.7.5x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
             42: { note: "",     date: "Aug 8",  name: "B19.10", tec: "4.9.6x",    pro: "4.7.5",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             43: { note: "",     date: "Aug 19", name: "B19.11", tec: "4.9.7x",    pro: "4.7.6x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            44: { note: "",     date: "Aug 8",  name: "SplitP", tec: "4.9.7",     pro: "4.7.6",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.1x", etp: "4.10.6x",   ebt: "4.6.2",  cev: "4.6.4x",    ctx: "4.7x",     iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            44: { note: "",     date: "Aug 8",  name: "SplitP", tec: "4.9.7",     pro: "4.7.6",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2x", etp: "4.10.6x",   ebt: "4.6.2",  cev: "4.6.4x",    ctx: "4.7x",     iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            45: { note: "",     date: "Sep 5",  name: "B19.12", tec: "4.9.8x",    pro: "4.7.7x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2",  etp: "4.10.6",    ebt: "4.6.2",  cev: "4.6.4",     ctx: "4.7",      iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -391,13 +392,17 @@
     /**
      * === Changelog ===
      *
+     * 2.20.0.0 - 2019-09-06
+     * Adjusted version number for ET hotfix
+     * Adjusted version numbers for B19.12
+     *
      * 2.19.2.1 - 2019-08-28
      * Enhanced the script so the 'note' column in the pluginHistory object can be omitted
      *
      * 2.19.2.0 - 2019-08-28
-     * Adjusted version number for B19.11
-     * Adjusted version number for Split Payments release
-     * Adjusted version number for ET hotfix
+     * Adjusted version numbers for B19.11
+     * Adjusted version numbers for Split Payments release
+     * Adjusted version numbers for ET hotfix
      *
      * 2.18.0.0 - 2019-08-14
      * Adjusted version numbers for B19.09 and B19.10
