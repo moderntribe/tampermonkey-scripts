@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Clickafy Central ID
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Make the Central ID, the user ID, and the user's website in the ticket box clickable
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
@@ -43,7 +43,7 @@
 
                 var url, label;
                 if( centralIdInReply >= 0 ) {
-                    url = 'https://central.tri.be';
+                    url = '';
                     label = 'Central ID';
                 }
                 else if( siteUrlInReply >= 0 ) {
@@ -82,7 +82,10 @@
                     if( log ) console.log( label + ' ' + value );
 
                     if( centralIdInReply >= 0 ) {
-                        url = 'https://central.tri.be/issues/' + value.replace( '#', '' );
+                        if ( value.search( 'http' ) < 0 ) {
+                            url = 'https://central.tri.be/issues/';
+                        }
+                        url += value.replace( '#', '' );
                     }
                     else if( siteUrlInReply >= 0 ) {
                         if( value.search( 'http' ) < 0 ) {
@@ -116,4 +119,9 @@
         } // for ( var i=0; i<rows.length; i++ )
     } //function clickableCentral
 
+/**
+ * Changelog
+ * 0.4 - 2019-09-06
+ * - The script now correctly handles central tickets with full URL
+ */
 })();
