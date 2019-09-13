@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Clocking Nag
 // @namespace    https://central.tri.be/
-// @version      0.1.2
+// @version      0.1.3
 // @description  Nag about clocking right in Central
 // @author       Matthew Batchelder
 // @include      /https?:\/\/central(dev)?.tri.be/
+// @exclude      /https?:\/\/central(dev)?.tri.be/login
 // @grant        none
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/clocking-nag.user.js
 // ==/UserScript==
 
 /**
