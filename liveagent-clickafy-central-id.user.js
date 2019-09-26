@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Clickafy Central ID
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  Make the Central ID, the user ID, and the user's website in the ticket box clickable
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
@@ -34,12 +34,13 @@
             var row = rows[i].innerHTML;
 
             // Get the starting position of the string 'Central ID'
-            var centralIdInReply = row.search( 'Central ID' );
-            var siteUrlInReply = row.search( "Site's URL" );
-            var userIdInReply = row. search ("WordPress ID" );
+            var centralIdInReply  = row.search( "Central ID" );
+            var siteUrlInReply    = row.search( "Site's URL" );
+            var userIdInReply     = row.search( "WordPress ID" );
+            var sandboxUrlInReply = row.search( "Sandbox URL" );
 
             // Only run if we find the Central ID field
-            if( centralIdInReply >= 0 || siteUrlInReply >= 0 || userIdInReply >= 0 ) {
+            if( centralIdInReply >= 0 || siteUrlInReply >= 0 || userIdInReply >= 0 || sandboxUrlInReply >= 0 ) {
 
                 var url, label;
                 if( centralIdInReply >= 0 ) {
@@ -54,6 +55,11 @@
                     url = '';
                     label = "WordPress ID";
                 }
+                else if( sandboxUrlInReply >= 0 ) {
+                    url = '';
+                    label = "Sandbox URL";
+                }
+
 
                 if ( log ) console.log( 'Found ' + label + ' in row ' + i );
 
@@ -65,7 +71,7 @@
 
                     if( log ) console.log( label + ' not clickafied yet' );
 
-                    // Starting position of label ("Central ID" or "Site's URL" or "WordPress ID" )
+                    // Starting position of label ("Central ID" or "Site's URL" or "WordPress ID" or "Sandbox URL" )
                     var startLabel = parseInt( row.search( label ) );
 
                     // Starting position of div after label
@@ -87,7 +93,7 @@
                         }
                         url += value.replace( '#', '' );
                     }
-                    else if( siteUrlInReply >= 0 ) {
+                    else if( siteUrlInReply >= 0 || sandboxUrlInReply >= 0 ) {
                         if( value.search( 'http' ) < 0 ) {
                             url = 'http://' + value;
                         }
@@ -121,6 +127,9 @@
 
 /**
  * Changelog
+ * 0.5 - 2019-09-26
+ * - The script now handles Sandbox URL as well
+ *
  * 0.4 - 2019-09-06
  * - The script now correctly handles central tickets with full URL
  */
