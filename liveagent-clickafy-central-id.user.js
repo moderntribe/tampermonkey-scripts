@@ -34,10 +34,10 @@
             var row = rows[i].innerHTML;
 
             // Get the starting position of the string 'Central ID'
-            var centralIdInReply = row.search( 'Central ID' );
-            var siteUrlInReply = row.search( "Site's URL" );
-            var userIdInReply = row. search ("WordPress ID" );
-            var sandboxUrlInReply = row. search ("Sandbox URL" );
+            var centralIdInReply  = row.search( "Central ID" );
+            var siteUrlInReply    = row.search( "Site's URL" );
+            var userIdInReply     = row.search( "WordPress ID" );
+            var sandboxUrlInReply = row.search( "Sandbox URL" );
 
             // Only run if we find the Central ID field
             if( centralIdInReply >= 0 || siteUrlInReply >= 0 || userIdInReply >= 0 || sandboxUrlInReply >= 0 ) {
