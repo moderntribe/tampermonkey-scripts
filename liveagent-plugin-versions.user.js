@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.22.1.1
+// @version      2.22.2.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -101,6 +101,7 @@
             45: { note: "",     date: "Sep 5",  name: "B19.12", tec: "4.9.8x",    pro: "4.7.7x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2",  etp: "4.10.6",    ebt: "4.6.2",  cev: "4.6.4",     ctx: "4.7",      iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             46: { note: "",     date: "Sep 16", name: "G19.11", tec: "4.9.8",     pro: "4.7.7",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8x",   etp: "4.10.7x",   ebt: "4.6.2",  cev: "4.6.5x",    ctx: "4.7.1x",   iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             47: { note: "",     date: "Sep 25", name: "B19.13", tec: "4.9.9x",    pro: "4.7.8.1x",  fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8",    etp: "4.10.7",    ebt: "4.6.2",  cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            48: { note: "",     date: "Sep 30", name: "G19.12", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.9x",   etp: "4.10.8x",   ebt: "4.6.2",  cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.17" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -393,7 +394,10 @@
 
     /**
      * === Changelog ===
-     *
+     * 
+     * 2.22.2.0 - 2019-10-06
+     * Adjusted version numbers for G19.12
+     * 
      * 2.22.1.1 - 2019-09-26
      * Removed new markers for Green plugins (Ooops)
      *
