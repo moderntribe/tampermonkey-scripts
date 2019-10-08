@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.23.0.0
+// @version      2.24.0.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -95,12 +95,12 @@
             39: { note: "",     date: "Jul 3",  name: "B19.08", tec: "4.9.4x",    pro: "4.7.4x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.2",     ctx: "4.6.2",    iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.16" },
             40: { note: "",     date: "Jul 18", name: "G19.09", tec: "4.9.4",     pro: "4.7.4",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3x",    ctx: "4.6.3x",   iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
             41: { note: "",     date: "Jul 25", name: "B19.09", tec: "4.9.5x",    pro: "4.7.5x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
-            42: { note: "",     date: "Aug 8",  name: "B19.10", tec: "4.9.6x",    pro: "4.7.5",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            43: { note: "",     date: "Aug 19", name: "B19.11", tec: "4.9.7x",    pro: "4.7.6x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            42: { note: "",     date: "Aug 8",  name: "B19.9.1",tec: "4.9.6x",    pro: "4.7.5",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            43: { note: "",     date: "Aug 19", name: "B19.10", tec: "4.9.7x",    pro: "4.7.6x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  ebt: "4.6.2",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             44: { note: "",     date: "Aug 8",  name: "SplitP", tec: "4.9.7",     pro: "4.7.6",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2x", etp: "4.10.6x",   ebt: "4.6.2",  cev: "4.6.4x",    ctx: "4.7x",     iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            45: { note: "",     date: "Sep 5",  name: "B19.12", tec: "4.9.8x",    pro: "4.7.7x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2",  etp: "4.10.6",    ebt: "4.6.2",  cev: "4.6.4",     ctx: "4.7",      iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            45: { note: "",     date: "Sep 5",  name: "B19.11", tec: "4.9.8x",    pro: "4.7.7x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2",  etp: "4.10.6",    ebt: "4.6.2",  cev: "4.6.4",     ctx: "4.7",      iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             46: { note: "",     date: "Sep 16", name: "G19.11", tec: "4.9.8",     pro: "4.7.7",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8x",   etp: "4.10.7x",   ebt: "4.6.2",  cev: "4.6.5x",    ctx: "4.7.1x",   iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            47: { note: "",     date: "Sep 25", name: "B19.13", tec: "4.9.9x",    pro: "4.7.8.1x",  fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8",    etp: "4.10.7",    ebt: "4.6.2",  cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            47: { note: "",     date: "Sep 25", name: "B19.12", tec: "4.9.9x",    pro: "4.7.8.1x",  fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8",    etp: "4.10.7",    ebt: "4.6.2",  cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             48: { note: "",     date: "Sep 30", name: "G19.12", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.9x",   etp: "4.10.8x",   ebt: "4.6.2",  cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.17" },
         };
 
@@ -394,10 +394,13 @@
 
     /**
      * === Changelog ===
-     * 
+     *
+     * 2.24.0.0 - 2019-10-10
+     * Fixed Blue versioning
+     *
      * 2.23.0.0 - 2019-10-06
      * Adjusted version numbers for G19.12
-     * 
+     *
      * 2.22.1.1 - 2019-09-26
      * Removed new markers for Green plugins (Ooops)
      *
