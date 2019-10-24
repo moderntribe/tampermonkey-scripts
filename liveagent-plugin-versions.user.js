@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.24.0.0
+// @version      2.25.0.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -102,6 +102,8 @@
             46: { note: "",     date: "Sep 16", name: "G19.11", tec: "4.9.8",     pro: "4.7.7",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8x",   etp: "4.10.7x",   ebt: "4.6.2",  cev: "4.6.5x",    ctx: "4.7.1x",   iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             47: { note: "",     date: "Sep 25", name: "B19.12", tec: "4.9.9x",    pro: "4.7.8.1x",  fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8",    etp: "4.10.7",    ebt: "4.6.2",  cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
             48: { note: "",     date: "Sep 30", name: "G19.12", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.9x",   etp: "4.10.8x",   ebt: "4.6.2",  cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.17" },
+            49: { note: "",     date: "Oct 14", name: "G19.13", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.10x",   etp: "4.10.9x",   ebt: "4.6.2",  cev: "4.6.6x",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.1", edd: "2.9.17" },
+            50: { note: "",     date: "Oct 16", name: "G19.13.1", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.10",   etp: "4.10.9",   ebt: "4.6.2",  cev: "4.6.6.1x",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.1", edd: "2.9.18" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -394,6 +396,10 @@
 
     /**
      * === Changelog ===
+     *
+     * 2.25.0.0 - 2019-10-24
+     * Adjusted version numbers for G19.13.1 Hotfix
+     * Adjusted version numbers for G19.13
      *
      * 2.24.0.0 - 2019-10-10
      * Fixed Blue versioning
