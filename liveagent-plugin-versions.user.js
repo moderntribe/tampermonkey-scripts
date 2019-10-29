@@ -397,9 +397,11 @@
     /**
      * === Changelog ===
      *
-     * 2.25.0.0 - 2019-10-24
+     * 2.25.0.0 - 2019-10-29
+     * Adjusted version numbers for B19.14
      * Adjusted version numbers for G19.13.1 Hotfix
      * Adjusted version numbers for G19.13
+     * Removed duplicate column of Eventbrite Tickets
      *
      * 2.24.0.0 - 2019-10-10
      * Fixed Blue versioning
