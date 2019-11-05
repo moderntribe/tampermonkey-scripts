@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Starter Templates for New Central Issues
 // @namespace    https://central.tri.be/
-// @version      0.1.0
+// @version      0.1.1
 // @description  The applicable template inserts into the empty Description field after selecting an Issue Tracker status (Bug, Feature, etc.)
 // @author       Clifford Paulick
 // @include      https://central.tri.be/projects/*/issues/new
@@ -30,38 +30,76 @@ let central_new_issue_templates = {};
 	 * The template name as the object keys. The template text as the object values.
 	 */
 	const templates = {
-		'bug'    :
-			'*Overview of the issue:*' +
-			'\n\n' +
-			'*Priority recommendation:*' +
-			'\n\n' +
-			'*Screencast recording reproducing issue:*' +
-			'\n\n' +
-			'*Steps to recreate:*' +
-			'\n\n' +
-			'*Sandbox URL of the issue:*' +
-			'\n\n' +
-			'*Plugins (with version #s) associated with this bug:*' +
-			'\n\n' +
-			'*Preferred solution/outcome:*' +
-			'\n\n' +
-			'*Relevant documents/files:*' +
-			'\n\n' +
-			'*Customer System Info:*',
-		'feature':
-			'Add all applicable Support Help Desk threads and/or UserVoice threads to the ticket\'s "Forum Threads" field.' +
-			'\n\n' +
-			'*Priority recommendation:*' +
+		'feature'    :
+			'h2. +*Info*+' +
 			'\n\n' +
 			'*Explanation of the proposal:*' +
+			'\n' +
+			'*Screencast/Screenshots recording explaining item:*' +
+			'\n' +
+			'*Priority recommendation:*' +
+			'\n' +
+			'*Preferred Solution/Outcome:*' +
 			'\n\n' +
-			'*Screencast recording explaining item:* ' +
+			'h2.  +*User Stories*+' +
 			'\n\n' +
-			'*Step by Step instructions:* (if applicable)' +
+			'# as a ... I expect' +
+			'\n' +
+			'# as a ... I expect' +
+			'\n' +
+			'# as a ... I expect' +
 			'\n\n' +
-			'*Preferred Solution/Outcome:* (User Stories)' +
+			'h2. +*Application Details*+' +
 			'\n\n' +
-			'*Relevant documents/files:*',
+			'Classic/Block,' +
+			'\n' +
+			'Specific deliverable,' +
+			'\n' +
+			'Product focus/area,' +
+			'\n' +
+			'etc' +
+			'\n\n' +
+			'h2. +*Extras*+' +
+			'\n\n' +
+			'*Relevant documents/files:*' +
+			'\n' +
+			'_Add all applicable Support Help Desk threads and/or UserVoice threads to the ticket\'s "Forum Threads" field._',
+		'bug':
+			'h2. +*Info*+\n' +
+			'\n' +
+			'*Overview of the issue:*' +
+			'\n' +
+			'*Recommended Solution:*' +
+			'\n' +
+			'*Priority recommendation:*' +
+			'\n\n' +
+			'h2. +*Steps To Reproduce:*+' +
+			'\n\n' +
+			'**Environmental requirements (plugins, WP version, etc)**' +
+			'\n\n' +
+			'_setup requirements (create events, tickets, blocks, ar-modal, etc)_' +
+			'\n\n' +
+			'# Do this' +
+			'\n' +
+			'# expectation' +
+			'\n' +
+			'# actual (bug)' +
+			'\n' +
+			'# then this' +
+			'\n\n' +
+			'h2. +*Extras*+' +
+			'\n\n' +
+			'*Screenshot:* ' +
+			'\n' +
+			'*Video:* ' +
+			'\n' +
+			'*Sandbox URL of the issue:* ' +
+			'\n' +
+			'*Relevant documents/files* _(attach or link)_' +
+			'\n' +
+			'*Customer System Info* _(attach as text file)_' +
+			'\n' +
+			'_Add all applicable Support Help Desk threads and/or UserVoice threads to the ticket\'s "Forum Threads" field._',
 	};
 
 	/**
