@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      2.25.0.0
+// @version      2.26.1.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -44,66 +44,67 @@
         /**
          * Defining our plugin version history
          * When a new release is out then:
-         * - update script version number in the header
+         * - update script version number in the header based on the versioning info at the top
          * - make a copy of the last line in the below array
          * - increase the starting number
-         * - adjust the note: show|last (usually show the last 3 versions)
-         * - add the new date, release number, and plugin version numbers
+         * - add the release name, new date, and plugin version numbers
          * - if it is a new version compared to last release, add 'x' at the end, like '4.6.19x'. Woo and EDD do not get tagged with 'x'
          * - if it is a hotfix, then creating a new line is not needed, just update the version number in the last line (See Event Tickets (eti) in line 12)
          */
         var pluginHistory = {
-            0: { note: "",      date: "",       name: "",       tec: "",          pro: "",          fib: "",         ebt: "",       apm: "",     eti: "",          etp: "",          cev: "",          ctx: "",         iwp: "",       woo: "",      edd: "" },
-            1: { note: "",      date: "Jan 7",  name: "M18.01", tec: "4.6.9x",    pro: "4.4.21",    fib: "4.5.2",    ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3",     etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            2: { note: "",      date: "Jan 22", name: "M18.02", tec: "4.6.10x",   pro: "4.4.22x",   fib: "4.5.3x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3",     etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            3: { note: "",      date: "Feb 14", name: "M18.03", tec: "4.6.11.1x", pro: "4.4.23x",   fib: "4.5.3",    ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3.1x",  etp: "4.6.2",     cev: "4.5.9x",    ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            4: { note: "",      date: "Mar 8",  name: "M18.04", tec: "4.6.12x",   pro: "4.4.24.2x", fib: "4.5.4x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3.1",   etp: "4.6.2",     cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            5: { note: "",      date: "Mar 13", name: "TC",     tec: "4.6.12",    pro: "4.4.24.2",  fib: "4.5.4",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7x",      etp: "4.7x",      cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            6: { note: "",      date: "Mar 28", name: "M18.05", tec: "4.6.13x",   pro: "4.4.24.2",  fib: "4.5.4",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7.1x",    etp: "4.7.1x",    cev: "4.5.10x",   ctx: "4.5.4x",   iwp: "1.0.2",  woo: "",      edd: "" },
-            7: { note: "",      date: "Apr 4",  name: "M18.06", tec: "4.6.14.1x", pro: "4.4.25x",   fib: "4.5.5x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.7.2x",    etp: "4.7.2x",    cev: "4.5.11x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            8: { note: "",      date: "May 9",  name: "M18.07", tec: "4.6.15x",   pro: "4.4.26x",   fib: "4.5.5",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7.2",     etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            9: { note: "",      date: "May 16", name: "TEC",    tec: "4.6.16x",   pro: "4.4.26",    fib: "4.5.5",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7.2",     etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            10: { note: "",     date: "May 29", name: "M18.08", tec: "4.6.17x",   pro: "4.4.27x",   fib: "4.5.6x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.7.3.1x",  etp: "4.7.3x",    cev: "4.5.12x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            11: { note: "",     date: "Jun 4",  name: "ETR",    tec: "4.6.18x",   pro: "4.4.27",    fib: "4.5.6",    ebt: "4.5x",   apm: "4.4",  eti: "4.7.3.1",   etp: "4.7.3",     cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            12: { note: "",     date: "Jun 20", name: "M18.09", tec: "4.6.19x",   pro: "4.4.28x",   fib: "4.5.6",    ebt: "4.5.1x", apm: "4.4",  eti: "4.7.4.1x",  etp: "4.7.4x",    cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "3.4.3", edd: "2.9.3" },
-            13: { note: "",     date: "Jul 9",  name: "M18.10", tec: "4.6.20.1x", pro: "4.4.29.2x", fib: "4.5.6",    ebt: "4.5.1",  apm: "4.4",  eti: "4.7.5.1x",  etp: "4.7.5x",    cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "3.4.3", edd: "2.9.3" },
-            14: { note: "",     date: "Aug 1",  name: "M18.11", tec: "4.6.21x",   pro: "4.4.30.1x", fib: "4.5.7x",   ebt: "4.5.2x", apm: "4.4",  eti: "4.7.6x",    etp: "4.7.6x",    cev: "4.5.13x",   ctx: "4.5.5x",   iwp: "1.0.2",  woo: "3.4.4", edd: "2.9.6" },
-            15: { note: "",     date: "Aug 22", name: "M18.12", tec: "4.6.22.1x", pro: "4.4.31x",   fib: "4.5.7",    ebt: "4.5.2",  apm: "4.4",  eti: "4.8x",      etp: "4.8x",      cev: "4.5.13.1x", ctx: "4.5.6x",   iwp: "1.0.2",  woo: "3.4.4", edd: "2.9.6" },
-            16: { note: "",     date: "Sep 12", name: "M18.13", tec: "4.6.23x",   pro: "4.4.32x",   fib: "4.5.8x",   ebt: "4.5.3x", apm: "4.4",  eti: "4.8.1x",    etp: "4.8.1x",    cev: "4.5.13.1",  ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.4.5", edd: "2.9.7" },
-            17: { note: "",     date: "Oct 3",  name: "M18.14", tec: "4.6.24.1x", pro: "4.4.33x",   fib: "4.5.8",    ebt: "4.5.4x", apm: "4.4",  eti: "4.8.2x",    etp: "4.8.2x",    cev: "4.5.13.1",  ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.4.5", edd: "2.9.8" },
-            18: { note: "",     date: "Oct 22", name: "M18.15", tec: "4.6.25x",   pro: "4.4.34x",   fib: "4.5.8",    ebt: "4.5.5x", apm: "4.4",  eti: "4.8.3x",    etp: "4.8.3x",    cev: "4.5.13.1",  ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.5.0", edd: "2.9.8" },
-            19: { note: "",     date: "Nov 13", name: "M18.16", tec: "4.6.26.1x", pro: "4.4.35x",   fib: "4.5.8",    ebt: "4.5.6x", apm: "4.4",  eti: "4.8.4.1x",  etp: "4.8.3",     cev: "4.5.14x",   ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.5.1", edd: "2.9.8" },
-            20: { note: "",     date: "Nov 29", name: "F18.03", tec: "4.7.0.1x",  pro: "4.5x",      fib: "4.5.8",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.0.2x",  etp: "4.9x",      cev: "4.5.14",    ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.5.2", edd: "2.9.8" },
-            21: { note: "",     date: "Dec 5",  name: "M18.17", tec: "4.7.1x",    pro: "4.5",       fib: "4.5.9x",   ebt: "4.5.6",  apm: "4.4",  eti: "4.9.1x",    etp: "4.9",       cev: "4.5.15x",   ctx: "4.5.7x",   iwp: "1.0.2",  woo: "3.5.2", edd: "2.9.9" },
-            22: { note: "",     date: "Dec 13", name: "M18.18", tec: "4.7.2x",    pro: "4.5.1x",    fib: "4.5.9",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.2x",    etp: "4.9",       cev: "4.5.15",    ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.2", edd: "2.9.10" },
-            23: { note: "",     date: "Dec 19", name: "M18.19", tec: "4.7.3x",    pro: "4.5.2.1x",  fib: "4.5.9",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.3x",    etp: "4.9.1x",    cev: "4.5.15",    ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.3", edd: "2.9.10" },
-            24: { note: "",     date: "Jan 15", name: "G19.01", tec: "4.7.3",     pro: "4.5.2.1",   fib: "4.5.9",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.4x",    etp: "4.9.2x",    cev: "4.5.16x",   ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.3", edd: "2.9.10" },
-            25: { note: "",     date: "Jan 21", name: "B19.01", tec: "4.7.4x",    pro: "4.5.3x",    fib: "4.5.9",    ebt: "4.5.7x", apm: "4.4",  eti: "4.9.4",     etp: "4.9.2",     cev: "4.5.16",    ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.4", edd: "2.9.11" },
-            26: { note: "",     date: "Feb 5",  name: "F19.01", tec: "4.8.0.1x",  pro: "4.6x",      fib: "4.6x",     ebt: "4.6x",   apm: "4.4",  eti: "4.10.0.1x", etp: "4.10.0.2x", cev: "4.6x",      ctx: "4.6x",     iwp: "1.0.2",  woo: "3.5.4", edd: "2.9.11" },
-            27: { note: "",     date: "Feb 14", name: "B19.02", tec: "4.8.1x",    pro: "4.6.1x",    fib: "4.6",      ebt: "4.6.1x", apm: "4.5x", eti: "4.10.0.1",  etp: "4.10.0.2",  cev: "4.6",       ctx: "4.6",      iwp: "1.0.3x", woo: "3.5.4", edd: "2.9.11" },
-            28: { note: "",     date: "Feb 26", name: "G19.03", tec: "4.8.1",     pro: "4.6.1",     fib: "4.6",      ebt: "4.6.1",  apm: "4.5",  eti: "4.10.1x",   etp: "4.10.1x",   cev: "4.6.1x",    ctx: "4.6.1x",   iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
-            29: { note: "",     date: "Mar 4",  name: "B19.03", tec: "4.8.2x",    pro: "4.6.2.1x",  fib: "4.7x",     ebt: "4.6.2x", apm: "4.5",  eti: "4.10.1.2x", etp: "4.10.1.3x", cev: "4.6.1.1x",  ctx: "4.6.1.1x", iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
-            30: { note: "",     date: "Apr 1",  name: "G19.04", tec: "4.8.2",     pro: "4.6.2.1",   fib: "4.7.0.1x", ebt: "4.6.2",  apm: "4.5",  eti: "4.10.2x",   etp: "4.10.2x",   cev: "4.6.1.2x",  ctx: "4.6.1.2x", iwp: "1.0.3",  woo: "3.5.7", edd: "2.9.12" },
-            31: { note: "",     date: "Apr 17", name: "ORM",    tec: "4.9x",      pro: "4.7x",      fib: "4.8x",     ebt: "4.6.2",  apm: "4.5",  eti: "4.10.3x",   etp: "4.10.2x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
-            32: { note: "",     date: "Apr 23", name: "G19.05", tec: "4.9.0.3x",  pro: "4.7.0.1x",  fib: "4.8",      ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.3x", etp: "4.10.3x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
-            33: { note: "",     date: "May 3",  name: "B19.05", tec: "4.9.1.1x",  pro: "4.7.1x",    fib: "4.8.1x",   ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.4x", etp: "4.10.3",    cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.12" },
-            34: { note: "",     date: "May 14", name: "G19.06", tec: "4.9.1.1",   pro: "4.7.1",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.5x",   etp: "4.10.4x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.14" },
-            35: { note: "",     date: "May 16", name: "B19.06", tec: "4.9.2x",    pro: "4.7.2x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.5",    etp: "4.10.4",    cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.3", edd: "2.9.14" },
-            36: { note: "",     date: "May 22", name: "G19.07", tec: "4.9.2",     pro: "4.7.2",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6x",   etp: "4.10.5x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.3", edd: "2.9.14" },
-            37: { note: "",     date: "Jun 6",  name: "B19.07", tec: "4.9.3.1x",  pro: "4.7.3x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.1x", etp: "4.10.5.1x", cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.15" },
-            38: { note: "",     date: "Jun 20", name: "G19.08", tec: "4.9.3.2x",  pro: "4.7.3",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2x", etp: "4.10.5.1",  cev: "4.6.2x",    ctx: "4.6.2x",   iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.16" },
-            39: { note: "",     date: "Jul 3",  name: "B19.08", tec: "4.9.4x",    pro: "4.7.4x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  cev: "4.6.2",     ctx: "4.6.2",    iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.16" },
-            40: { note: "",     date: "Jul 18", name: "G19.09", tec: "4.9.4",     pro: "4.7.4",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  cev: "4.6.3x",    ctx: "4.6.3x",   iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
-            41: { note: "",     date: "Jul 25", name: "B19.09", tec: "4.9.5x",    pro: "4.7.5x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
-            42: { note: "",     date: "Aug 8",  name: "B19.9.1",tec: "4.9.6x",    pro: "4.7.5",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            43: { note: "",     date: "Aug 19", name: "B19.10", tec: "4.9.7x",    pro: "4.7.6x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",  etp: "4.10.5.1",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            44: { note: "",     date: "Aug 8",  name: "SplitP", tec: "4.9.7",     pro: "4.7.6",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2x", etp: "4.10.6x",   cev: "4.6.4x",    ctx: "4.7x",     iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            45: { note: "",     date: "Sep 5",  name: "B19.11", tec: "4.9.8x",    pro: "4.7.7x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2",  etp: "4.10.6",    cev: "4.6.4",     ctx: "4.7",      iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            46: { note: "",     date: "Sep 16", name: "G19.11", tec: "4.9.8",     pro: "4.7.7",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8x",   etp: "4.10.7x",   cev: "4.6.5x",    ctx: "4.7.1x",   iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            47: { note: "",     date: "Sep 25", name: "B19.12", tec: "4.9.9x",    pro: "4.7.8.1x",  fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8",    etp: "4.10.7",    cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
-            48: { note: "",     date: "Sep 30", name: "G19.12", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.9x",   etp: "4.10.8x",   cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.17" },
-            49: { note: "",     date: "Oct 14", name: "G19.13", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.10x",  etp: "4.10.9x",   cev: "4.6.6x",    ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.1", edd: "2.9.17" },
-            50: { note: "",     date: "Oct 16", name: "B19.14", tec: "4.9.10x",   pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.3x", apm: "4.5",  eti: "4.10.10",   etp: "4.10.9",    cev: "4.6.6.1x",  ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.1", edd: "2.9.18" },
+             0: { name: "",         date: "",       tec: "",          pro: "",          fib: "",         ebt: "",       apm: "",     eti: "",           etp: "",          cev: "",          ctx: "",         iwp: "",       woo: "",      edd: "" },
+             1: { name: "M18.01",   date: "Jan 7",  tec: "4.6.9x",    pro: "4.4.21",    fib: "4.5.2",    ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3",      etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
+             2: { name: "M18.02",   date: "Jan 22", tec: "4.6.10x",   pro: "4.4.22x",   fib: "4.5.3x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3",      etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
+             3: { name: "M18.03",   date: "Feb 14", tec: "4.6.11.1x", pro: "4.4.23x",   fib: "4.5.3",    ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3.1x",   etp: "4.6.2",     cev: "4.5.9x",    ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
+             4: { name: "M18.04",   date: "Mar 8",  tec: "4.6.12x",   pro: "4.4.24.2x", fib: "4.5.4x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.6.3.1",    etp: "4.6.2",     cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
+             5: { name: "TC",       date: "Mar 13", tec: "4.6.12",    pro: "4.4.24.2",  fib: "4.5.4",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7x",       etp: "4.7x",      cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
+             6: { name: "M18.05",   date: "Mar 28", tec: "4.6.13x",   pro: "4.4.24.2",  fib: "4.5.4",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7.1x",     etp: "4.7.1x",    cev: "4.5.10x",   ctx: "4.5.4x",   iwp: "1.0.2",  woo: "",      edd: "" },
+             7: { name: "M18.06",   date: "Apr 4",  tec: "4.6.14.1x", pro: "4.4.25x",   fib: "4.5.5x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.7.2x",     etp: "4.7.2x",    cev: "4.5.11x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
+             8: { name: "M18.07",   date: "May 9",  tec: "4.6.15x",   pro: "4.4.26x",   fib: "4.5.5",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7.2",      etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
+             9: { name: "TEC",      date: "May 16", tec: "4.6.16x",   pro: "4.4.26",    fib: "4.5.5",    ebt: "4.4.9",  apm: "4.4",  eti: "4.7.2",      etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
+            10: { name: "M18.08",   date: "May 29", tec: "4.6.17x",   pro: "4.4.27x",   fib: "4.5.6x",   ebt: "4.4.9",  apm: "4.4",  eti: "4.7.3.1x",   etp: "4.7.3x",    cev: "4.5.12x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
+            11: { name: "ETR",      date: "Jun 4",  tec: "4.6.18x",   pro: "4.4.27",    fib: "4.5.6",    ebt: "4.5x",   apm: "4.4",  eti: "4.7.3.1",    etp: "4.7.3",     cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
+            12: { name: "M18.09",   date: "Jun 20", tec: "4.6.19x",   pro: "4.4.28x",   fib: "4.5.6",    ebt: "4.5.1x", apm: "4.4",  eti: "4.7.4.1x",   etp: "4.7.4x",    cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "3.4.3", edd: "2.9.3" },
+            13: { name: "M18.10",   date: "Jul 9",  tec: "4.6.20.1x", pro: "4.4.29.2x", fib: "4.5.6",    ebt: "4.5.1",  apm: "4.4",  eti: "4.7.5.1x",   etp: "4.7.5x",    cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "3.4.3", edd: "2.9.3" },
+            14: { name: "M18.11",   date: "Aug 1",  tec: "4.6.21x",   pro: "4.4.30.1x", fib: "4.5.7x",   ebt: "4.5.2x", apm: "4.4",  eti: "4.7.6x",     etp: "4.7.6x",    cev: "4.5.13x",   ctx: "4.5.5x",   iwp: "1.0.2",  woo: "3.4.4", edd: "2.9.6" },
+            15: { name: "M18.12",   date: "Aug 22", tec: "4.6.22.1x", pro: "4.4.31x",   fib: "4.5.7",    ebt: "4.5.2",  apm: "4.4",  eti: "4.8x",       etp: "4.8x",      cev: "4.5.13.1x", ctx: "4.5.6x",   iwp: "1.0.2",  woo: "3.4.4", edd: "2.9.6" },
+            16: { name: "M18.13",   date: "Sep 12", tec: "4.6.23x",   pro: "4.4.32x",   fib: "4.5.8x",   ebt: "4.5.3x", apm: "4.4",  eti: "4.8.1x",     etp: "4.8.1x",    cev: "4.5.13.1",  ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.4.5", edd: "2.9.7" },
+            17: { name: "M18.14",   date: "Oct 3",  tec: "4.6.24.1x", pro: "4.4.33x",   fib: "4.5.8",    ebt: "4.5.4x", apm: "4.4",  eti: "4.8.2x",     etp: "4.8.2x",    cev: "4.5.13.1",  ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.4.5", edd: "2.9.8" },
+            18: { name: "M18.15",   date: "Oct 22", tec: "4.6.25x",   pro: "4.4.34x",   fib: "4.5.8",    ebt: "4.5.5x", apm: "4.4",  eti: "4.8.3x",     etp: "4.8.3x",    cev: "4.5.13.1",  ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.5.0", edd: "2.9.8" },
+            19: { name: "M18.16",   date: "Nov 13", tec: "4.6.26.1x", pro: "4.4.35x",   fib: "4.5.8",    ebt: "4.5.6x", apm: "4.4",  eti: "4.8.4.1x",   etp: "4.8.3",     cev: "4.5.14x",   ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.5.1", edd: "2.9.8" },
+            20: { name: "F18.03",   date: "Nov 29", tec: "4.7.0.1x",  pro: "4.5x",      fib: "4.5.8",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.0.2x",   etp: "4.9x",      cev: "4.5.14",    ctx: "4.5.6",    iwp: "1.0.2",  woo: "3.5.2", edd: "2.9.8" },
+            21: { name: "M18.17",   date: "Dec 5",  tec: "4.7.1x",    pro: "4.5",       fib: "4.5.9x",   ebt: "4.5.6",  apm: "4.4",  eti: "4.9.1x",     etp: "4.9",       cev: "4.5.15x",   ctx: "4.5.7x",   iwp: "1.0.2",  woo: "3.5.2", edd: "2.9.9" },
+            22: { name: "M18.18",   date: "Dec 13", tec: "4.7.2x",    pro: "4.5.1x",    fib: "4.5.9",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.2x",     etp: "4.9",       cev: "4.5.15",    ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.2", edd: "2.9.10" },
+            23: { name: "M18.19",   date: "Dec 19", tec: "4.7.3x",    pro: "4.5.2.1x",  fib: "4.5.9",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.3x",     etp: "4.9.1x",    cev: "4.5.15",    ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.3", edd: "2.9.10" },
+            24: { name: "G19.01",   date: "Jan 15", tec: "4.7.3",     pro: "4.5.2.1",   fib: "4.5.9",    ebt: "4.5.6",  apm: "4.4",  eti: "4.9.4x",     etp: "4.9.2x",    cev: "4.5.16x",   ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.3", edd: "2.9.10" },
+            25: { name: "B19.01",   date: "Jan 21", tec: "4.7.4x",    pro: "4.5.3x",    fib: "4.5.9",    ebt: "4.5.7x", apm: "4.4",  eti: "4.9.4",      etp: "4.9.2",     cev: "4.5.16",    ctx: "4.5.7",    iwp: "1.0.2",  woo: "3.5.4", edd: "2.9.11" },
+            26: { name: "F19.01",   date: "Feb 5",  tec: "4.8.0.1x",  pro: "4.6x",      fib: "4.6x",     ebt: "4.6x",   apm: "4.4",  eti: "4.10.0.1x",  etp: "4.10.0.2x", cev: "4.6x",      ctx: "4.6x",     iwp: "1.0.2",  woo: "3.5.4", edd: "2.9.11" },
+            27: { name: "B19.02",   date: "Feb 14", tec: "4.8.1x",    pro: "4.6.1x",    fib: "4.6",      ebt: "4.6.1x", apm: "4.5x", eti: "4.10.0.1",   etp: "4.10.0.2",  cev: "4.6",       ctx: "4.6",      iwp: "1.0.3x", woo: "3.5.4", edd: "2.9.11" },
+            28: { name: "G19.03",   date: "Feb 26", tec: "4.8.1",     pro: "4.6.1",     fib: "4.6",      ebt: "4.6.1",  apm: "4.5",  eti: "4.10.1x",    etp: "4.10.1x",   cev: "4.6.1x",    ctx: "4.6.1x",   iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
+            29: { name: "B19.03",   date: "Mar 4",  tec: "4.8.2x",    pro: "4.6.2.1x",  fib: "4.7x",     ebt: "4.6.2x", apm: "4.5",  eti: "4.10.1.2x",  etp: "4.10.1.3x", cev: "4.6.1.1x",  ctx: "4.6.1.1x", iwp: "1.0.3",  woo: "3.5.5", edd: "2.9.11" },
+            30: { name: "G19.04",   date: "Apr 1",  tec: "4.8.2",     pro: "4.6.2.1",   fib: "4.7.0.1x", ebt: "4.6.2",  apm: "4.5",  eti: "4.10.2x",    etp: "4.10.2x",   cev: "4.6.1.2x",  ctx: "4.6.1.2x", iwp: "1.0.3",  woo: "3.5.7", edd: "2.9.12" },
+            31: { name: "ORM",      date: "Apr 17", tec: "4.9x",      pro: "4.7x",      fib: "4.8x",     ebt: "4.6.2",  apm: "4.5",  eti: "4.10.3x",    etp: "4.10.2x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
+            32: { name: "G19.05",   date: "Apr 23", tec: "4.9.0.3x",  pro: "4.7.0.1x",  fib: "4.8",      ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.3x",  etp: "4.10.3x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.1", edd: "2.9.12" },
+            33: { name: "B19.05",   date: "May 3",  tec: "4.9.1.1x",  pro: "4.7.1x",    fib: "4.8.1x",   ebt: "4.6.2",  apm: "4.5",  eti: "4.10.4.4x",  etp: "4.10.3",    cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.12" },
+            34: { name: "G19.06",   date: "May 14", tec: "4.9.1.1",   pro: "4.7.1",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.5x",    etp: "4.10.4x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.2", edd: "2.9.14" },
+            35: { name: "B19.06",   date: "May 16", tec: "4.9.2x",    pro: "4.7.2x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.5",     etp: "4.10.4",    cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.3", edd: "2.9.14" },
+            36: { name: "G19.07",   date: "May 22", tec: "4.9.2",     pro: "4.7.2",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6x",    etp: "4.10.5x",   cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.3", edd: "2.9.14" },
+            37: { name: "B19.07",   date: "Jun 6",  tec: "4.9.3.1x",  pro: "4.7.3x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.1x",  etp: "4.10.5.1x", cev: "4.6.1.2",   ctx: "4.6.1.2",  iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.15" },
+            38: { name: "G19.08",   date: "Jun 20", tec: "4.9.3.2x",  pro: "4.7.3",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2x",  etp: "4.10.5.1",  cev: "4.6.2x",    ctx: "4.6.2x",   iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.16" },
+            39: { name: "B19.08",   date: "Jul 3",  tec: "4.9.4x",    pro: "4.7.4x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",   etp: "4.10.5.1",  cev: "4.6.2",     ctx: "4.6.2",    iwp: "1.0.3",  woo: "3.6.4", edd: "2.9.16" },
+            40: { name: "G19.09",   date: "Jul 18", tec: "4.9.4",     pro: "4.7.4",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",   etp: "4.10.5.1",  cev: "4.6.3x",    ctx: "4.6.3x",   iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
+            41: { name: "B19.09",   date: "Jul 25", tec: "4.9.5x",    pro: "4.7.5x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",   etp: "4.10.5.1",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.6.5", edd: "2.9.16" },
+            42: { name: "B19.09.1", date: "Aug 8",  tec: "4.9.6x",    pro: "4.7.5",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",   etp: "4.10.5.1",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            43: { name: "B19.10",   date: "Aug 19", tec: "4.9.7x",    pro: "4.7.6x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.6.2",   etp: "4.10.5.1",  cev: "4.6.3",     ctx: "4.6.3",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            44: { name: "SplitP",   date: "Aug 22", tec: "4.9.7",     pro: "4.7.6",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2x",  etp: "4.10.6x",   cev: "4.6.4x",    ctx: "4.7x",     iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            45: { name: "B19.11",   date: "Sep 5",  tec: "4.9.8x",    pro: "4.7.7x",    fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.7.2",   etp: "4.10.6",    cev: "4.6.4",     ctx: "4.7",      iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            46: { name: "G19.11",   date: "Sep 16", tec: "4.9.8",     pro: "4.7.7",     fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8x",    etp: "4.10.7x",   cev: "4.6.5x",    ctx: "4.7.1x",   iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            47: { name: "B19.12",   date: "Sep 25", tec: "4.9.9x",    pro: "4.7.8.1x",  fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.8",     etp: "4.10.7",    cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.16" },
+            48: { name: "G19.12",   date: "Sep 30", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.9x",    etp: "4.10.8x",   cev: "4.6.5",     ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.0", edd: "2.9.17" },
+            49: { name: "G19.13",   date: "Oct 14", tec: "4.9.9",     pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.2",  apm: "4.5",  eti: "4.10.10x",   etp: "4.10.9x",   cev: "4.6.6x",    ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.1", edd: "2.9.17" },
+            50: { name: "B19.13",   date: "Oct 16", tec: "4.9.10x",   pro: "4.7.8.1",   fib: "4.8.1",    ebt: "4.6.3x", apm: "4.5",  eti: "4.10.10",    etp: "4.10.9",    cev: "4.6.6.1x",  ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.7.1", edd: "2.9.18" },
+            51: { name: "B19.14",   date: "Nov 12", tec: "4.9.11x",   pro: "4.7.9x",    fib: "4.8.1",    ebt: "4.6.3",  apm: "4.5",  eti: "4.10.10",    etp: "4.10.9",    cev: "4.6.6.1",   ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.8",   edd: "2.9.20" },
+            52: { name: "G19.14",   date: "Nov 13", tec: "4.9.11",    pro: "4.7.9",     fib: "4.8.1",    ebt: "4.6.3",  apm: "4.5",  eti: "4.10.11.1x", etp: "4.10.10x",  cev: "4.6.6.1",   ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.8",   edd: "2.9.20" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -176,25 +177,15 @@
         // Go through the plugin history row by row
         for( var number in pluginHistory ) {
 
-            // Check if it has a note
-            // if ( pluginHistory.hasOwnProperty( number ) && ( pluginHistory[number].note == 'show' || pluginHistory[number].note == 'last' ) ) {
             if ( log ) console.log('Number: ' + number + ' ' + rowNumber );
+
             htmlstring += '<tr class="row';
             // For the last row add additional classes
 
-            // Removed for new version
-            //if ( pluginHistory[number].note !== "") htmlstring += ' ' + pluginHistory[number].note;
-
-            // New version
+            // Show last 3 rows on hover
             if ( number >= rowNumber-3 && number < rowNumber-1 ) htmlstring += ' show';
 
-            /**
-             * Removed for new version
-            if ( pluginHistory[number].note == 'last' ) {
-                htmlstring += ' last-row alwayson';
-            }
-            */
-            // New version
+            // Always show last row
             if (  number == rowNumber-1 ) {
                 htmlstring += ' last last-row alwayson';
             }
@@ -212,33 +203,31 @@
                 // Open the cell
                 htmlstring += '<td class="';
 
+                // Add class based on team
                 if ( 0 <= j && j <= 4 ) {
                     htmlstring += 'blue';
                 }
                 else if ( 5 <= j && j <= 9 ) {
                     htmlstring += 'green'
                 }
+
                 // If plugin version number has 'x', then it's a new release, so add extra class
                 if( pluginHistory[number][pN].includes( "x" ) ) {
                     htmlstring += ' new-version';
                 }
-                htmlstring += '"';
 
-                // If it's the last row, then add the IDs
-                if ( pluginHistory[number].note == 'last' ) {
-                    htmlstring += ' id="curr' + pN + 'ver"';
-                }
+                // Closing quote
+                htmlstring += '"';
 
                 // Print the version number and close the cell
                 htmlstring += '>' + pluginHistory[number][pN].replace( 'x', '' ) + '</td>';
+
             } // end for ( j = 0; j < pluginNames.length; j++ )
 
+            // eCommerce usage - temporarily disabled
             /*if ( ecmUsed != "-" ) {
                 // eCommerce versions
                 htmlstring += '<td';
-                if ( pluginHistory[number].note == 'last' ) {
-                    htmlstring += ' id="currecmver"';
-                }
                 htmlstring += '>';
                 if ( ecmUsed == "woo" ) {
                     htmlstring += pluginHistory[number].woo;
@@ -258,19 +247,18 @@
             // Close the row
             htmlstring += '</tr>';
 
-//            } // end if ( pluginHistory.hasOwnProperty( number ) && ( pluginHistory[number].note == 'show' || pluginHistory[number].note == 'last' ) )
-
         } // end for( var number in pluginHistory )
 
-        // Row of user's version numbers
+        // Row of user's version numbers - temporarily disabled
         /*
         htmlstring += '<tr class="row last-row alwayson userrow"><td>user</td><td>' + $( '#bbps_extra_info .displayname' ).html() + '</td><td id="usertecver">' + pluginVersions.tec.version + '</td><td id="userprover">' + pluginVersions.pro.version + '</td><td id="useretiver">' + pluginVersions.eti.version + '</td><td id="useretpver">' + pluginVersions.etp.version + '</td><td id="userebtver">' + pluginVersions.ebt.version + '</td><td id="usercevver">' + pluginVersions.cev.version + '</td><td id="userctxver">' + pluginVersions.ctx.version + '</td><td id="userfibver">' + pluginVersions.fib.version + '</td><td id="userapmver">' + pluginVersions.apm.version + '</td><td id="useriwpver">' + pluginVersions.iwp.version + '</td>';
         if ( ecmUsed != "-" ) {
             htmlstring += '<td id="userecmver">' + userEcmVer + '</td>';
-        }*/
+        }
 
         // Close the row of user versions
-        // htmlstring += '</tr>';
+        htmlstring += '</tr>';
+        */
 
         // Close the table and the container
         htmlstring += '</table>';
@@ -396,6 +384,13 @@
 
     /**
      * === Changelog ===
+     *
+     * 2.26.1.0 - 2019-11-19
+     * Adjusted version numbers for B19.14
+     * Adjusted version numbers for G19.14 and hotfix
+     * Did a whole bunch of code cleanup
+     * Adjusted version numbers for G19.13
+     * Removed duplicate column of Eventbrite Tickets
      *
      * 2.25.0.0 - 2019-10-29
      * Adjusted version numbers for B19.14
