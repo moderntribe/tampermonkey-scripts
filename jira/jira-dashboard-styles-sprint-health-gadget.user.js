@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Jira Dashboard: Sprint Health Gadget Styles
-// @namespace    http://tampermonkey.net/
+// @namespace    https://moderntribe.atlassian.net/
 // @version      0.1
 // @description  Adjust styles of the Sprint Health Gadget
 // @author       Matthew Batchelder
