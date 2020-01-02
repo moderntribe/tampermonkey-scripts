@@ -75,28 +75,12 @@ Auto selects some checkboxes for setting default branch protection on Products i
 
 When viewing Pull Requests on GitHub, if the PR is against a Modern Tribe repo, it removes the `moderntribe/` prefix for easier scanning.
 
-### `issue-list-tools.user.js`
+### `jira-dashboard-styles-sprint-health.user.js`
 
-This script provides handy tools when viewing an issue list:
+This script injects styles that reduce the font size of the Sprint Health Gadget within the Dashboard.
 
-* Toggle open/close row groupings of issues
-
-Ok...fine...that's just one tool, but this has room to grow.
-
-### `issue-summary.user.js`
-
-* Color-codes central issues by status and swaps out issue types (Support, Feature, Bug) with FontAwesome "icons".
-* Adds a summary of on-page issues grouped by issue status.
-
-![screen shot 2017-08-16 at 10 08 03 am](https://user-images.githubusercontent.com/430385/29367418-db3e3328-826a-11e7-8dd1-2e9e48a338c9.png)
-
-### `key-commands.js`
-
-Sorta like vim/gmail key commands
-* `/` places your cursor in the search box.
-* in query view: `j` and `k` move your selection up or down. Pressing `enter` on the selection takes you to that ticket.
-* `i` takes you to the My Query.
-If you don't like the query view `i` takes you to, change the URL in line 15. 
+* Before: http://p.tri.be/PaGYhL
+* After: http://p.tri.be/9XVPS1
 
 ### `liveagent-clickafy-central-id.user.js`
 
@@ -109,15 +93,6 @@ The Central ID works with both `123456` and `#123456` formats.
 Intended for the Events Support team. Works on the LiveAgent platform.  
 The script Display our plugins' latest version numbers at the top of the screen.  
 It has to be manually updated after a new release. Update notes are in the file.
-
-### `over-estimate.user.js`
-
-* highlight the spent hours with pink if they are over estimate
-* works on both issue lists and single issues
-
-### `party-llamacorn.user.js`
-
-When a ticket is set to _Pending Merge_ or _Complete_, a llamacorn flies across the screen.
 
 ### `premium-forum-collapse-convo.user.js`
 
@@ -168,6 +143,44 @@ Screenshot: https://cloudup.com/ccdWJTkiF30
 
 Show the user's licenses at the bottom right, making them visible when the thread is long.
 
+### `uservoice.user.js`
+
+Tweaks the UserVoice UI by throwing out portions of the interface that we don't care about; resizing stuff; and other small tweaks.
+
+## Old Central Scripts
+
+### `issue-list-tools.user.js`
+
+This script provides handy tools when viewing an issue list:
+
+* Toggle open/close row groupings of issues
+
+Ok...fine...that's just one tool, but this has room to grow.
+
+### `issue-summary.user.js`
+
+* Color-codes central issues by status and swaps out issue types (Support, Feature, Bug) with FontAwesome "icons".
+* Adds a summary of on-page issues grouped by issue status.
+
+![screen shot 2017-08-16 at 10 08 03 am](https://user-images.githubusercontent.com/430385/29367418-db3e3328-826a-11e7-8dd1-2e9e48a338c9.png)
+
+### `key-commands.js`
+
+Sorta like vim/gmail key commands
+* `/` places your cursor in the search box.
+* in query view: `j` and `k` move your selection up or down. Pressing `enter` on the selection takes you to that ticket.
+* `i` takes you to the My Query.
+If you don't like the query view `i` takes you to, change the URL in line 15. 
+
+### `over-estimate.user.js`
+
+* highlight the spent hours with pink if they are over estimate
+* works on both issue lists and single issues
+
+### `party-llamacorn.user.js`
+
+When a ticket is set to _Pending Merge_ or _Complete_, a llamacorn flies across the screen.
+
 ### `qa-headers.user.js`
 
 Styles QA headers so scanning QA activity on tickets is quicker. Relies on using the following headers in Central:
@@ -203,7 +216,3 @@ Auto-adds `target="_blank"` to all external links.
 ### `uncheck-email-all.user.js`
 
 Auto-uncheck the "email all" checkbox so you only send an email when you _really_ want to.
-
-### `uservoice.user.js`
-
-Tweaks the UserVoice UI by throwing out portions of the interface that we don't care about; resizing stuff; and other small tweaks.
