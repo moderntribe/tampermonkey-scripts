@@ -6,3 +6,7 @@ This script injects styles that reduce the font size of the Sprint Health Gadget
 
 * Before: http://p.tri.be/PaGYhL
 * After: http://p.tri.be/9XVPS1
+
+## `jira-remove-harvest.user.js`
+
+Removes the Harvest section in the sidebar of Jira.
