@@ -16,7 +16,6 @@ These are some common Modern Tribe Tampermonkey scripts.
 * [GitHub](/github)
 * [Jira](/jira)
 * [LiveAgent](/liveagent)
-* [Premium Forum](/premium-forum)
 * [UserVoice](/uservoice)
 * [WP.org](/dotorg)
 
@@ -25,4 +24,5 @@ These are some common Modern Tribe Tampermonkey scripts.
 These ones are largely retired, but may still have some use.
 
 * [Central](/central)
+* [Premium Forum](/premium-forum)
 
