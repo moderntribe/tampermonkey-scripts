@@ -17,7 +17,7 @@ Screencast: http://p.tri.be/ov7Grn
 
 This adds a *Your Work* icon to the Global Navigation sidebar, allowing you to one-click to the *Your Work* page if you have set your default page to the *Dashboard* page.
 
-Screencast: http://p.tri.be/ov7Grn
+Screencast: Basically...the same as the `jira-global-nav-dashboard.user.js`, only the inverse.
 
 ## `jira-remove-harvest.user.js`
 
