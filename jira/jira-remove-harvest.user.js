@@ -7,6 +7,7 @@
 // @include      https://moderntribe.atlassian.net/browse/*
 // @grant        GM_addStyle
 // @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/jira/jira-remove-harvest.user.js
+// @run-at       document-start
 // ==/UserScript==
 
 (function() {
