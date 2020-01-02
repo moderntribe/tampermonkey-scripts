@@ -13,52 +13,6 @@ These are some common Modern Tribe Tampermonkey scripts.
 
 ## Scripts
 
-## `central-collapsable-sidebar.user.js`
-
-Improves the content space and make sure sidebar is collapsible to the same width of http://tri.be/ and sidebar is accessible just by moving the cursor to the sidebar to  make it available when only needed it.
-
-![collapsible sidebar](https://user-images.githubusercontent.com/3921289/37617341-82bc4994-2b78-11e8-8856-288de6d2c8e5.gif)
-
-### `central-link-pr-formatting.user.js`
-
-Format the links that points to Pull Request in Central from a format like: `https://github.com/moderntribe/event-tickets-plus/pull/490` into a format like `event-tickets-plus#490
-`event-tickets-plus#490`  similar to what GitHub does when a Pull Request is referenced inside of an issue.  
-
-### `central-friendly-ui-for-multiple-pr.user.js`
-
-Improves the UI when an issue has more than a single Pull Request to improve the addition / removal of new Pull Requests. 
-
-![Multiple PR Image](https://user-images.githubusercontent.com/3921289/36676235-b69b5434-1ad0-11e8-9df3-345627c01aff.gif)
-
-### `central-estimates-time-conversion.user.js`
-
-Updates the estimate field to make it wider and available to accepts entries such as: 4h 5m and make them work exactly the same as **Spent time** field.
-
-### `central-issues-kanban.user.js`
-
-Creates a kanban board for all issues queried. The board is hidden by default and can be toggled open and closed.
-
-### `central-links.user.js`
-
-Turns the _Pull Request_ field in Modern Tribe's "Central" issues pages into a link.
-
-### `central-my-favorite-tickets.user.js`
-
-Add your favorite ticket numbers to the main menu for easy access.
-The ticket numbers and descriptions need to be manually adjusted in the script.
-
-![screen shot](https://dl.dropboxusercontent.com/s/ni5i38m93hvxmjc/shot_190304_231637.jpg)
-
-### `central-new-issue-templates.user.js`
-
-Starter Templates for New Central Issues
-
-### `clocking-nag.user.js`
-
-Shows your week of clocking at the top of Central and prompts you to enter some clocked time if you are falling behind.
-
-![screen shot 2017-08-16 at 10 04 53 am](https://user-images.githubusercontent.com/430385/29367332-8beceac6-826a-11e7-9e62-3800663c5b22.png)
-
 ## `dotorg-helper.user.js`
 
 In runs in the .org forums for Modern Tribe plugins. It colors the resolved threads green, and the threads which have the last voice from a team member to light yellow. Don't use together with dotorg Hider.
@@ -148,6 +102,53 @@ Show the user's licenses at the bottom right, making them visible when the threa
 Tweaks the UserVoice UI by throwing out portions of the interface that we don't care about; resizing stuff; and other small tweaks.
 
 ## Old Central Scripts
+
+## `central-collapsable-sidebar.user.js`
+
+Improves the content space and make sure sidebar is collapsible to the same width of http://tri.be/ and sidebar is accessible just by moving the cursor to the sidebar to  make it available when only needed it.
+
+![collapsible sidebar](https://user-images.githubusercontent.com/3921289/37617341-82bc4994-2b78-11e8-8856-288de6d2c8e5.gif)
+
+### `central-link-pr-formatting.user.js`
+
+Format the links that points to Pull Request in Central from a format like: `https://github.com/moderntribe/event-tickets-plus/pull/490` into a format like `event-tickets-plus#490
+`event-tickets-plus#490`  similar to what GitHub does when a Pull Request is referenced inside of an issue.  
+
+### `central-friendly-ui-for-multiple-pr.user.js`
+
+Improves the UI when an issue has more than a single Pull Request to improve the addition / removal of new Pull Requests. 
+
+![Multiple PR Image](https://user-images.githubusercontent.com/3921289/36676235-b69b5434-1ad0-11e8-9df3-345627c01aff.gif)
+
+### `central-estimates-time-conversion.user.js`
+
+Updates the estimate field to make it wider and available to accepts entries such as: 4h 5m and make them work exactly the same as **Spent time** field.
+
+### `central-issues-kanban.user.js`
+
+Creates a kanban board for all issues queried. The board is hidden by default and can be toggled open and closed.
+
+### `central-links.user.js`
+
+Turns the _Pull Request_ field in Modern Tribe's "Central" issues pages into a link.
+
+### `central-my-favorite-tickets.user.js`
+
+Add your favorite ticket numbers to the main menu for easy access.
+The ticket numbers and descriptions need to be manually adjusted in the script.
+
+![screen shot](https://dl.dropboxusercontent.com/s/ni5i38m93hvxmjc/shot_190304_231637.jpg)
+
+### `central-new-issue-templates.user.js`
+
+Starter Templates for New Central Issues
+
+### `clocking-nag.user.js`
+
+Shows your week of clocking at the top of Central and prompts you to enter some clocked time if you are falling behind.
+
+![screen shot 2017-08-16 at 10 04 53 am](https://user-images.githubusercontent.com/430385/29367332-8beceac6-826a-11e7-9e62-3800663c5b22.png)
+
 
 ### `issue-list-tools.user.js`
 
