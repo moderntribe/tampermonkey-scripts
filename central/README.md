@@ -1,5 +1,13 @@
 # Central
 
+## `central-redirect-to-jira.user.js`
+
+Redirect single Central Issue links to finding it in Jira.
+Won't work for issues that didn't migrate over to Jira.
+Won't work if your Central Issue URL has cruft on it, such as anchor links.
+
+![Central issue redirecting to Jira](https://user-images.githubusercontent.com/1812179/71703646-6079d780-2d9b-11ea-85d0-692d86a98631.gif)
+
 ## `central-collapsable-sidebar.user.js`
 
 Improves the content space and make sure sidebar is collapsible to the same width of http://tri.be/ and sidebar is accessible just by moving the cursor to the sidebar to  make it available when only needed it.
