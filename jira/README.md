@@ -29,10 +29,16 @@ This adds a *Your Work* icon to the Global Navigation sidebar, allowing you to o
 
 Screencast: Basically...the same as the `jira-global-nav-dashboard.user.js`, only the inverse.
 
-## Ticket page tweaks
+## Ticket tweaks
 
 ### Remove Harvest from ticket page
 
 Script: `jira-remove-harvest.user.js`
 
 Removes the Harvest section in the sidebar of Jira.
+
+### Uncheck email checkbox when bulk editing
+
+Script: `jira-bulk-edit-uncheck-email.user.js`
+
+When bulk editing tickets, automatically uncheck the _Send mail for this update_ checkbox.
