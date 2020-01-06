@@ -2,6 +2,12 @@
 
 ## Dashboard tweaks
 
+### Project list styles
+
+Script: [`jira-dashboard-styles-projects.user.js`](https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-dashboard-styles-projects.user.js)
+
+Improves the styling of the Project List gadget.
+
 ### Reduce size of Sprint Health Gadget on the Dashboard
 
 Script: [`jira-dashboard-styles-sprint-health.user.js`](https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-dashboard-styles-sprint-health-gadget.user.js)
