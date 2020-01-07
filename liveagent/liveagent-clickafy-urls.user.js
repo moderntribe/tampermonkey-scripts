@@ -1,17 +1,14 @@
 // ==UserScript==
-// @name         LiveAgent - Clickafy Issue Tracker ID
+// @name         LiveAgent - Clickafy URLs
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Make the Central ID, the user ID, and the user's website in the ticket box clickable
+// @description  Make the Central and Jira issue tracker IDs, the user ID, the user's website, and the sandbox site URL clickable in LiveAgent
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
 // @include      https://theeventscalendar.ladesk.com/agent/*
-// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/liveagent/liveagent-clickafy-central-id.user.js
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/liveagent/liveagent-clickafy-urls.user.js
 // @grant        none
 // ==/UserScript==
-
-// Check with this for site URL
-// https://support.theeventscalendar.com/agent/index.php?rnd=7056#Conversation;id=0f114222
 
 (function() {
     'use strict';
@@ -151,6 +148,7 @@
  * Changelog
  * 1.0 - 2020-01-07
  * - Adjusted to make it work with both Central and Jira ticket IDs
+ * - Renamed file and updated download URL
  *
  * 0.5 - 2019-09-26
  * - The script now handles Sandbox URL as well
