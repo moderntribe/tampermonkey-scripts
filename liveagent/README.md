@@ -14,5 +14,5 @@ The script makes the following strings / URLs clickable and will open in a new t
 ## `liveagent-plugin-versions.user.js`
 
 Intended for the Events Support team. Works on the LiveAgent platform.
-The script Display our plugins' latest version numbers at the top of the screen.
+The script displays our plugins' latest version numbers at the top of the screen.
 It has to be manually updated after a new release. Update notes are in the file.
