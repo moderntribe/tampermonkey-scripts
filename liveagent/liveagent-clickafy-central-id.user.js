@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         LiveAgent - Clickafy Central ID
+// @name         LiveAgent - Clickafy Issue Tracker ID
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      1.0
 // @description  Make the Central ID, the user ID, and the user's website in the ticket box clickable
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
 // @include      https://theeventscalendar.ladesk.com/agent/*
-// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/liveagent-clickafy-central-id.user.js
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/liveagent/liveagent-clickafy-central-id.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -34,18 +34,23 @@
             var row = rows[i].innerHTML;
 
             // Get the starting position of the string 'Central ID'
-            var centralIdInReply  = row.search( "Central ID" );
-            var siteUrlInReply    = row.search( "Site's URL" );
-            var userIdInReply     = row.search( "WordPress ID" );
-            var sandboxUrlInReply = row.search( "Sandbox URL" );
+            var centralIdInReply      = row.search( "Central ID" );
+            var issueTrackerIdInReply = row.search( "Issue Tracker ID" );
+            var siteUrlInReply        = row.search( "Site's URL" );
+            var userIdInReply         = row.search( "WordPress ID" );
+            var sandboxUrlInReply     = row.search( "Sandbox URL" );
 
             // Only run if we find the Central ID field
-            if( centralIdInReply >= 0 || siteUrlInReply >= 0 || userIdInReply >= 0 || sandboxUrlInReply >= 0 ) {
+            if( centralIdInReply >= 0 || issueTrackerIdInReply >= 0 || siteUrlInReply >= 0 || userIdInReply >= 0 || sandboxUrlInReply >= 0 ) {
 
                 var url, label;
                 if( centralIdInReply >= 0 ) {
                     url = '';
                     label = 'Central ID';
+                }
+                else if( siteUrlInReply >= 0 ) {
+                    url = '';
+                    label = "Issue Tracker ID";
                 }
                 else if( siteUrlInReply >= 0 ) {
                     url = '';
@@ -93,6 +98,23 @@
                         }
                         url += value.replace( '#', '' );
                     }
+                    else if( issueTrackerIdInReply >= 0 ) {
+
+                        /* If field value is not a URL yet then... */
+                        if ( value.search( 'http' ) < 0 ) {
+                            /* If it doesn't contain a dash, then it's Central */
+                            if ( value.search( '-' ) < 0 ) {
+                                url = 'https://central.tri.be/issues/';
+                            }
+                            /* Otherwise it is Jira */
+                            else {
+                                url = 'https://moderntribe.atlassian.net/browse/';
+                            }
+                        }
+
+                        /* Remove hash character from URL (Usually Central ID) */
+                        url += value.replace( '#', '' );
+                    }
                     else if( siteUrlInReply >= 0 || sandboxUrlInReply >= 0 ) {
                         if( value.search( 'http' ) < 0 ) {
                             url = 'http://' + value;
@@ -127,6 +149,9 @@
 
 /**
  * Changelog
+ * 1.0 - 2020-01-07
+ * - Adjusted to make it work with both Central and Jira ticket IDs
+ *
  * 0.5 - 2019-09-26
  * - The script now handles Sandbox URL as well
  *
