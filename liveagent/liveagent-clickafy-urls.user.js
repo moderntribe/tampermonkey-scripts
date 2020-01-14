@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Clickafy URLs
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Make the Central and Jira issue tracker IDs, the user ID, the user's website, and the sandbox site URL clickable in LiveAgent
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
@@ -14,7 +14,7 @@
     'use strict';
 
     // If you set this to true you will see log messages in the console
-    var log = true;
+    var log = false;
 
     // Run the script every 5 seconds. This is necessary due to the dynamic nature of LiveAgent
     var startScript = window.setInterval( clickableCentral, 5000);
@@ -45,7 +45,7 @@
                     url = '';
                     label = 'Central ID';
                 }
-                else if( siteUrlInReply >= 0 ) {
+                else if( issueTrackerIdInReply >= 0 ) {
                     url = '';
                     label = "Issue Tracker ID";
                 }
