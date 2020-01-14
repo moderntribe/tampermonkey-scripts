@@ -146,6 +146,9 @@
 
 /**
  * Changelog
+ * 1.1 - 2020-01-14
+ * - Fixed a glitch where the user's site URL was added to the Jira Issue Tracker URL
+ *
  * 1.0 - 2020-01-07
  * - Adjusted to make it work with both Central and Jira ticket IDs
  * - Renamed file and updated download URL
