@@ -1,7 +1,8 @@
 /**
  * Source: https://gist.github.com/BrockA/2625891
  * Use this in your TamperMonkey script header:
- * // @require https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/waitForKeyElements.js
+// @require https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
+// @require https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/waitForKeyElements.js
  */
 
 /*--- waitForKeyElements():  A utility function, for Greasemonkey scripts,
@@ -40,9 +41,9 @@ function waitForKeyElements (
 	var targetNodes, btargetsFound;
 
 	if (typeof iframeSelector == "undefined")
-		targetNodes     = $(selectorTxt);
+		targetNodes     = jQuery(selectorTxt);
 	else
-		targetNodes     = $(iframeSelector).contents ()
+		targetNodes     = jQuery(iframeSelector).contents ()
 			.find (selectorTxt);
 
 	if (targetNodes  &&  targetNodes.length > 0) {
@@ -51,7 +52,7 @@ function waitForKeyElements (
 			are new.
 		*/
 		targetNodes.each ( function () {
-			var jThis        = $(this);
+			var jThis        = jQuery(this);
 			var alreadyFound = jThis.data ('alreadyFound')  ||  false;
 
 			if (!alreadyFound) {
