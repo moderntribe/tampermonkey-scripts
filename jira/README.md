@@ -48,3 +48,18 @@ Removes the Harvest section in the sidebar of Jira.
 Script: [`jira-bulk-edit-uncheck-email.user.js`](https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-bulk-edit-uncheck-email.user.js)
 
 When bulk editing tickets, automatically uncheck the _Send mail for this update_ checkbox.
+
+## Tempo tweaks
+
+### Hide private events in My Work / Tempo
+
+Script: [`jira-mywork-hide-events.user.js`](https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-mywork-hide-events.user.js)
+
+If you are using the Google Calendar integration in Tempo you can hide events on the My Work page by defining keywords or strings. When the script finds a keyword in the event title the event will be hidden on the My Work page.
+Predefined keywords:
+* Hide
+* Busy
+* Private
+* Night
+
+You can also adjust or define your own keywords in the script.
