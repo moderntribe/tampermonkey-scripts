@@ -6,7 +6,7 @@
 // @author       Stephen Page
 // @include      https://moderntribe.atlassian.net/browse/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
-// @require https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/waitForKeyElements.js
+// @require      https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/waitForKeyElements.js
 // @grant        none
 // ==/UserScript==
 
