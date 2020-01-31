@@ -10,11 +10,11 @@
 // @grant        none
 // ==/UserScript==
 
-
-
 if ( ! document.getElementById( 'jira' ) ) {
 	return;
 }
+
+waitForKeyElements("[aria-label='Edit Forum Threads']", wrap_fu, true );
 
 function wrapLines(str, tmpl) {
 	return str.replace(/.+$/gm, tmpl || '<a href="$&">$&</a>');
@@ -26,5 +26,3 @@ function wrap_fu(threadsButton) {
 
 	sib.html( wrapLines( text ) );
 }
-
-waitForKeyElements("[aria-label='Edit Forum Threads']", wrap_fu, true );
