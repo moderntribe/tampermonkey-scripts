@@ -17,11 +17,11 @@ if ( ! document.getElementById( 'jira' ) ) {
 waitForKeyElements("[aria-label='Edit Forum Threads']", wrap_fu, true );
 
 function wrapLines(str, tmpl) {
-	return str.replace(/.+$/gm, tmpl || '<a href="$&">$&</a>');
+	return str.replace(/http.+$/gm, tmpl || '<a href="$&">$&</a>');
 }
 
 function wrap_fu(threadsButton) {
-	const sib  = threadsButton.prev();
+	const sib = threadsButton.prev();
 	const text = sib.html();
 
 	sib.html( wrapLines( text ) );
