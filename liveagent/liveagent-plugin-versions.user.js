@@ -11,11 +11,20 @@
 // ==/UserScript==
 
 /**
- Versioning:
- First digit:  only changes when year changes. 2 = 2019
- Second digit: corresponds to which MR we just shipped. First MR of the year -> 1
- Third digit:  increment when a hotfix or a feature release is out
- Fourth digit: bugfix or feature for the script
+ * When a new release is out then:
+ * 1. Update script version number in the header based on the versioning info below
+ * 2. Go to the 'pluginHistory' object and make a copy of the last line in the below array
+ * 3. Increase the starting number of the row by one
+ * 4. Add the release name, date, and plugin version numbers
+ * 5a. If it is a new version compared to last release, add 'x' at the end, like '4.6.19x'. Note: Woo and EDD do not get tagged with 'x'
+ * 5b. If it is a hotfix, then creating a new line is not needed, just update the version number in the last line (See Event Tickets (eti) in line 12)
+ * 6. Create a pull request and ping Andras to check and approve
+ *
+ * Versioning:
+ * First digit:  only changes when year changes. 2 = 2019
+ * Second digit: corresponds to which MR we just shipped. First MR of the year -> 1
+ * Third digit:  increment when a hotfix or a feature release is out
+ * Fourth digit: bugfix or feature for the script
  */
 (function() {
     'use strict';
