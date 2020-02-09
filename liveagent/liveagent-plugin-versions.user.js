@@ -6,7 +6,7 @@
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
 // @include      https://support.theeventscalendar.com/agent/*
-// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/liveagent-plugin-versions.user.js
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/liveagent/liveagent-plugin-versions.user.js
 // @grant        none
 // ==/UserScript==
 
