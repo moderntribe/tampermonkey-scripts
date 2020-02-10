@@ -10,7 +10,7 @@
 // @include      https://wordpress.org/support/plugin/gigpress*
 // @include      https://wordpress.org/support/plugin/image-widget*
 // @include      https://wordpress.org/support/plugin/advanced-post-manager*
-// @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/dotorg-helper.user.js
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/dotorg/dotorg-helper.user.js
 // @grant        none
 // ==/UserScript==
 
