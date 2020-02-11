@@ -7,6 +7,7 @@
 // @include      https://moderntribe.atlassian.net/browse/*
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
 // @require      https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/waitForKeyElements.js
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-convert-threads-to-links.user.js
 // @grant        none
 // ==/UserScript==
 
