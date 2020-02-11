@@ -27,6 +27,14 @@ This adds a *Dashboard icon* to the Global Navigation sidebar, allowing you to o
 
 Screencast: http://p.tri.be/ov7Grn
 
+### Make urls in the "Forum Threads" field clickable links
+
+Script: [`jira-convert-threads-to-links.js`](https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-convert-threads-to-links.js)
+
+This checks for the "Forum Threads" field and scrapes it for urls, wrapping them in anchor tags so they become clickable links.
+
+Screenshot: http://p.tri.be/wCrT13
+
 ### Add "Your Work" link in Global Nav
 
 Script: [`jira-global-nav-your-work.user.js`](https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-global-nav-your-work.user.js)
