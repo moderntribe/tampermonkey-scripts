@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.0.0.0
+// @version      3.1.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -21,10 +21,9 @@
  * 6. Create a pull request and ping Andras to check and approve
  *
  * Versioning:
- * First digit:  only changes when year changes. 2 = 2019
- * Second digit: corresponds to which MR we just shipped. First MR of the year -> 1
- * Third digit:  increment when a hotfix or a feature release is out
- * Fourth digit: bugfix or feature for the script
+ * First digit:  only changes when year changes. 2 = 2019; 3 = 2020
+ * Second digit: increment when updating the script
+ * Third digit:  increment when a bugfix or feature for the script
  */
 (function() {
     'use strict';
@@ -119,7 +118,10 @@
             55: { name: "G",         date: "Dec 19", tec: "4.9.13",    pro: "4.7.10",    fib: "4.8.1",    apm: "4.5",  ebt: "4.6.3",  eti: "4.11.1x",    etp: "4.11.1x",   cev: "4.6.6.1",   ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.8.1", edd: "2.9.20" },
             56: { name: "B20.01",    date: "Jan 15", tec: "4.9.14x",   pro: "4.7.10",    fib: "4.8.1",    apm: "4.5",  ebt: "4.6.3",  eti: "4.11.1",     etp: "4.11.1",    cev: "4.6.6.1",   ctx: "4.7.1",    iwp: "1.0.3",  woo: "3.8.1", edd: "2.9.20" },
             57: { name: "B20.02 v2", date: "Jan 27", tec: "5.0.0.2x",  pro: "5.0.0.2x",  fib: "4.9.0x",   apm: "4.5",  ebt: "4.6.3",  eti: "4.11.2x",    etp: "4.11.1.1x", cev: "4.6.6.1",   ctx: "4.7.2x",   iwp: "1.0.3",  woo: "3.9",   edd: "2.9.20" },
-            58: { name: "G20.01",    date: "Feb 6",  tec: "5.0.0.2",   pro: "5.0.0.2",   fib: "4.9.0",    apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3x",    etp: "4.11.2x",   cev: "4.6.7x",    ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.1", edd: "2.9.20" },
+            58: { name: "G20.01",    date: "Feb 6",  tec: "5.0.0.2",   pro: "5.0.0.2",   fib: "4.9.0",    apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3.1x",  etp: "4.11.2x",   cev: "4.6.7x",    ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.1", edd: "2.9.20" },
+            59: { name: "B20.02.01", date: "Feb 12",  tec: "5.0.1x",   pro: "5.0.1x",    fib: "4.9.1x",   apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
+            60: { name: "B20.02.02", date: "Feb 19",  tec: "5.0.2x",   pro: "5.0.2x",    fib: "4.9.2x",   apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
+            61: { name: "Y",         date: "Feb 24",  tec: "5.0.2",    pro: "5.0.2",     fib: "4.9.2",    apm: "4.5",  ebt: "4.6.4x", eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -407,6 +409,10 @@
 
     /**
      * === Changelog ===
+     *
+     * 3.1.0 - 2020-02-25
+     * Simplified versioning practice
+     * Updated version numbers up to this date (59-61)
      *
      * 3.0.0.0 - 2020-02-09
      * Updated version numbers up to this date
