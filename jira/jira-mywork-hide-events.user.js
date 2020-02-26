@@ -6,6 +6,7 @@
 // @author       Andras Guseo
 // @include      https://app.tempo.io/timesheets/jira/my-work/*
 // @include      https://app.tempo.io/io/web/tempo-app*
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/jira/jira-mywork-hide-events.user.js
 // @grant        none
 // ==/UserScript==
 
