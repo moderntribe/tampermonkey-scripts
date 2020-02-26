@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira: Hide private events in My Work
 // @namespace    https://moderntribe.atlassian.net/
-// @version      0.2
+// @version      0.3
 // @description  Hide private / unneeded events from your Google calendar on the Mywork page to reduce clutter
 // @author       Andras Guseo
 // @include      https://app.tempo.io/timesheets/jira/my-work/*
@@ -51,7 +51,7 @@
     var log = false;
 
     // Run every 2 seconds...
-    var startScript = window.setTimeout( hideThem, 2000 );
+    var startScript = window.setInterval( hideThem, 2000 );
 
     function hideThem() {
 
@@ -61,40 +61,46 @@
         if ( log ) console.log( 'Number of slots: ' + slots.length );
 
         // Walk the object
-        for ( var i = 0; i < slots.length; i++ ) {
+        if ( slots.length > 0 ) {
+            for ( var i = 0; i < slots.length; i++ ) {
 
-            // Bail if we already did the excercise
-            if ( slots[i].classList.contains( 'weredone' ) ) {
-                if ( log ) console.log( 'Skipped' );
-                continue;
-            }
-            // Add a class, so we know we have checked this already
-            else {
-                slots[i].classList.add( 'weredone' );
-            }
+                // Bail if we already did the excercise
+                if ( slots[i].classList.contains( 'weredone' ) ) {
+                    if ( log ) console.log( 'Skipped');
+                    continue;
+                }
+                // Add a class, so we know we have checked this already
+                else {
+                    slots[i].classList.add( 'weredone' );
+                }
 
-            // Get the HTML from the row
-            var row = slots[i].innerHTML;
+                // Get the HTML from the row
+                var row = slots[i].innerHTML;
 
-            // Check if one of the predefined strings is in the row
-            for ( var j = 0; j < strings.length; j++ ) {
+                // Check if one of the predefined strings is in the row
+                for ( var j = 0; j < strings.length; j++ ) {
 
-                // If yes, then hide it
-                if ( row.search( strings[j] ) > 0 ) {
-                    if ( log ) console.log( 'Found one: ' + i );
-                    slots[i].style.display = 'none';
+                    // If yes, then hide it
+                    if ( row.search( strings[j] ) > 0 ) {
+                        if ( log ) console.log( 'Found one: ' + i );
+                        slots[i].style.display = 'none';
+                    }
                 }
             }
+        }
+        else {
+            console.log( 'DOM not ready.' );
         }
     }
 })();
 
 /** Changelog
  *
- * === 0.2 - 2020-02-26 ===
+ * === 0.3 - 2020-02-26 ===
  * Updated the @include URL
  * Updated the class name the script is looking for
- * Added a check to reduce resource needs
+ * Added @downloadURL
+ * Added checks to reduce resource needs
  * Housekeeping
  *
  * === 0.1 - 2020-01-16 ===
