@@ -47,6 +47,7 @@
         'mitogh',                   // Crisoforo Hernandez
         'neillmcshea',              // Neill McShae
         'nicosantos',               // Nico Santos
+        'nikrosales'                // Nik Rosales
         'patriciahillebrandt',      // Patricia Hillebrandt
         'sdenike',                  // Shelby DeNike
         'sjaure',                   // Santiago Jaureguiberry
