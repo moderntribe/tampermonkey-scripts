@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         .org Helper for Modern Tribe Support
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @description  The script runs in the .org forums for Modern Tribe plugins. It colors resolved threads green, and threads where last voice is a team member light yellow.
 // @author       Andras Guseo
 // @include      https://wordpress.org/support/plugin/pardot*
@@ -22,39 +22,41 @@
 
     // MT support team members
     var mtteam = [
-        'aguseo',
-        'alaasalama',
-        'barryhughes-1',
-        'bordoni',
-        'bskousen3',
-        'brianjessee',
-        'brook-tribe',
-        'chikaibeneme',
-        'cliffpaulick',
-        'cliffseal',
-        'courane01',
-        'deblynprado',
-        'djbramer',
-        'erishel',
-        'geoffbel',
-        'geoffgraham',
-        'ggwicz',
-        'jaimemarchwinski',
-        'jentheo',
-        'jeremy80',
-        'juanfra',
-        'mitogh',
-        'neillmcshea',
-        'nicosantos',
-        'patriciahillebrandt',
-        'sdenike',
-        'sjaure',
-        'skyshab',
-        'tokyobiyori',
-        'tribalmike',
-        'tribecari',
-        'vicskf',
-        'zbtirrell',
+        'aguseo',                   // Andras Guseo
+        'alaasalama',               // Alaa Salama
+        'barryhughes-1',            // Barry Hughes
+        'bordoni',                  // Gustavo Bordoni
+        'bskousen3',                // Brendan Skousen
+        'brianjessee',              // Brian Jessee
+        'brook-tribe',              // Brook
+        'chikaibeneme',             // Chika Ibeneme - 2020-02-10
+        'cliffpaulick',             // Clifford Paulick
+        'cliffseal',                // Cliff Seal - Pardot
+        'courane01',                // Courtney Robertson
+        'deblynprado',              // Deblyn Prado
+        'djbramer',                 // Dan Bramer
+        'erishel',                  // Edward Rishel
+        'geoffbel',                 // Geoffroy 'LeGeoff' Belanger
+        'geoffgraham',              // Geoff Graham
+        'ggwicz',                   // George Gecewicz
+        'jaimemarchwinski',         // Jaime Marchwinski
+        'jentheo',                  // Jennifer Theodore
+        'jeremy80',                 // Jeremy Marchandeau
+        'juanfra',                  // Juan Francisco Aldasoro
+        'mandraagora',              // Wolf Bishop - 2020-03-04
+        'mitogh',                   // Crisoforo Hernandez
+        'neillmcshea',              // Neill McShae
+        'nicosantos',               // Nico Santos
+        'nikrosales'                // Nik Rosales
+        'patriciahillebrandt',      // Patricia Hillebrandt
+        'sdenike',                  // Shelby DeNike
+        'sjaure',                   // Santiago Jaureguiberry
+        'skyshab',                  // Jason 'Sky' Shabatura
+        'tokyobiyori',              // Ali Darwich
+        'tribalmike',               // Mike Cotton
+        'tribecari',                // Caroline
+        'vicskf',                   // Victor Zarranz
+        'zbtirrell',                // Zach Tirrell
     ];
 
     var i, j;
