@@ -22,28 +22,40 @@
 
     // MT support team members
     var mtteam = [
-        'aguseo',
-        'barryhughes-1',
-        'bskousen3',
-        'cliffpaulick',
-        'cliffseal',
-        'courane01',
-        'erishel',
-        'geoffbel',
-        'geoffgraham',
-        'ggwicz',
-        'jaimemarchwinski',
-        'jentheo',
-        'jeremy80',
-        'juanfra',
-        'mitogh',
-        'nicosantos',
-        'patriciahillebrandt',
-        'sdenike',
-        'skyshab',
-        'tokyobiyori',
-        'tribalmike',
-        'vicskf',
+        'aguseo',                   // Andras Guseo
+        'alaasalama',               // Alaa Salama
+        'barryhughes-1',            // Barry Hughes
+        'bordoni',                  // Gustavo Bordoni
+        'bskousen3',                // Brendan Skousen
+        'brianjessee',              // Brian Jessee
+        'brook-tribe',              // Brook
+        'chikaibeneme',             // Chika Ibeneme - 2020-02-10
+        'cliffpaulick',             // Clifford Paulick
+        'cliffseal',                // Cliff Seal - Pardot
+        'courane01',                // Courtney Robertson
+        'deblynprado',              // Deblyn Prado
+        'djbramer',                 // Dan Bramer
+        'erishel',                  // Edward Rishel
+        'geoffbel',                 // Geoffroy 'LeGeoff' Belanger
+        'geoffgraham',              // Geoff Graham
+        'ggwicz',                   // George Gecewicz
+        'jaimemarchwinski',         // Jaime Marchwinski
+        'jentheo',                  // Jennifer Theodore
+        'jeremy80',                 // Jeremy Marchandeau
+        'juanfra',                  // Juan Francisco Aldasoro
+        'mandraagora',              // Wolf Bishop - 2020-03-04
+        'mitogh',                   // Crisoforo Hernandez
+        'neillmcshea',              // Neill McShae
+        'nicosantos',               // Nico Santos
+        'patriciahillebrandt',      // Patricia Hillebrandt
+        'sdenike',                  // Shelby DeNike
+        'sjaure',                   // Santiago Jaureguiberry
+        'skyshab',                  // Jason 'Sky' Shabatura
+        'tokyobiyori',              // Ali Darwich
+        'tribalmike',               // Mike Cotton
+        'tribecari',                // Caroline
+        'vicskf',                   // Victor Zarranz
+        'zbtirrell',                // Zach Tirrell
     ];
 
     var i, j;
