@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira: Hide private events in My Work
 // @namespace    https://moderntribe.atlassian.net/
-// @version      0.3
+// @version      0.4
 // @description  Hide private / unneeded events from your Google calendar on the Mywork page to reduce clutter
 // @author       Andras Guseo
 // @include      https://app.tempo.io/timesheets/jira/my-work/*
@@ -33,6 +33,15 @@
 (function() {
     'use strict';
 
+    /**************/
+    /*  SETTINGS  */
+    /**************/
+
+    /**
+     * Define the class to look for. This changes on occasion
+     */
+    var rowClass = 'sc-MKjYC';
+
     /**
      * Define the keywords / strings that we are looking for in event titles
      * that should be hidden. Case sensitive!
@@ -43,6 +52,10 @@
         'Private',
         'Night',
     ];
+
+    /******************/
+    /*  SETTINGS END  */
+    /******************/
 
     // The array / object where we store the calendar entries
     var slots;
@@ -56,7 +69,7 @@
     function hideThem() {
 
         // Collect all the events
-        slots =   document.getElementsByClassName( 'sc-fAfrNB' );
+        slots =   document.getElementsByClassName( rowClass );
 
         if ( log ) console.log( 'Number of slots: ' + slots.length );
 
@@ -95,6 +108,10 @@
 })();
 
 /** Changelog
+ *
+ * === 0.4 - 2020-03-04 ===
+ * Set up a settings part at the top
+ * Broke out the class name to be a setting
  *
  * === 0.3 - 2020-02-26 ===
  * Updated the @include URL
