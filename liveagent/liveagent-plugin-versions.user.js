@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.1.0
+// @version      3.2.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -121,7 +121,8 @@
             58: { name: "G20.01",    date: "Feb 6",  tec: "5.0.0.2",   pro: "5.0.0.2",   fib: "4.9.0",    apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3.1x",  etp: "4.11.2x",   cev: "4.6.7x",    ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.1", edd: "2.9.20" },
             59: { name: "B20.02.01", date: "Feb 12",  tec: "5.0.1x",   pro: "5.0.1x",    fib: "4.9.1x",   apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
             60: { name: "B20.02.02", date: "Feb 19",  tec: "5.0.2x",   pro: "5.0.2x",    fib: "4.9.2x",   apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
-            61: { name: "Y",         date: "Feb 24",  tec: "5.0.2",    pro: "5.0.2",     fib: "4.9.2",    apm: "4.5",  ebt: "4.6.4x", eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
+            61: { name: "Y",         date: "Feb 24",  tec: "5.0.2.1x", pro: "5.0.2",     fib: "4.9.2",    apm: "4.5",  ebt: "4.6.4x", eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
+            62: { name: "G20.02",    date: "Feb 26",  tec: "5.0.2.1",  pro: "5.0.2",     fib: "4.9.2",    apm: "4.5",  ebt: "4.6.4x", eti: "4.11.4x",    etp: "4.11.3x",   cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.21" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -409,6 +410,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 3.2.0 - 2020-03-04
+     * Updated version numbers up to this date (62)
      *
      * 3.1.0 - 2020-02-25
      * Simplified versioning practice
