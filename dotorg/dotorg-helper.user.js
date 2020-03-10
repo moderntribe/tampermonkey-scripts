@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         .org Helper for Modern Tribe Support
 // @namespace    http://tampermonkey.net/
-// @version      1.7
+// @version      1.7.1
 // @description  The script runs in the .org forums for Modern Tribe plugins. It colors resolved threads green, and threads where last voice is a team member light yellow.
 // @author       Andras Guseo
 // @include      https://wordpress.org/support/plugin/pardot*
@@ -47,7 +47,7 @@
         'mitogh',                   // Crisoforo Hernandez
         'neillmcshea',              // Neill McShae
         'nicosantos',               // Nico Santos
-        'nikrosales'                // Nik Rosales
+        'nikrosales',               // Nik Rosales
         'patriciahillebrandt',      // Patricia Hillebrandt
         'sdenike',                  // Shelby DeNike
         'sjaure',                   // Santiago Jaureguiberry
