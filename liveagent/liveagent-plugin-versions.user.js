@@ -29,6 +29,7 @@
     'use strict';
 
     var log = false;
+    var startHidden = false;
 
     if ( log ) console.log ( alreadydone );
     if ( log ) console.log ( typeof alreadydone );
@@ -390,6 +391,12 @@
         //using closure to cache all child elements
         var parent = document.getElementById( 'plugin-versions' );
         parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
+
+        if(startHidden) {
+            var blockOne = document.getElementById('plugin-versions');
+            var startRight = -blockOne.offsetWidth + 100;
+            $('#plugin-versions').css({'right': startRight});
+        }
 
         //quick and dirty DFS children traversal,
         function traverseChildren( elem ) {
