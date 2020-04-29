@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.3.0
+// @version      3.3.1
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -28,15 +28,22 @@
 (function() {
     'use strict';
 
+    // Enable logging
     var log = false;
+
+    // Start hidden?
+    var startHidden = false;
 
     if ( log ) console.log ( alreadydone );
     if ( log ) console.log ( typeof alreadydone );
 
     // Only run if it wasn't executed before
-    if ( typeof alreadydone == 'undefined') {
+    if ( typeof alreadydone == 'undefined' ) {
 
         var alreadydone = true;
+
+        // Define starting position of the container
+        var startRight = '350px';
 
         if ( log ) console.log ( typeof alreadydone );
 
@@ -173,7 +180,9 @@
 
         // Header row
         htmlstring += '<tr class="row first-row alwayson">' +
-            '<td class="hider-cell"><span id="hider">[hide]</span></td>' +
+            '<td class="hider-cell"><span id="hider">[';
+        htmlstring += startHidden ? 'show' : 'hide';
+        htmlstring += ']</span></td>' +
             '<td class="more-cell" id="more"><span id="mmore">[more]</span></td>' +
             '<td class="blue"><img src="https://andrasguseo.com/images/new-tec-icon.svg" title="TEC" alt="The Events Calendar icon" /></td>' +
             '<td class="blue"><img src="https://andrasguseo.com/images/new-ecp-icon.svg" title="ECP" alt="Events Calendar Pro icon" /></td>' +
@@ -292,30 +301,9 @@
 
         if ( log ) console.log( htmlstring );
 
-        // Formatting
+        // Adding to markup
         $( '#body' ).after( htmlstring );
-        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'right': '350px', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
-        $( '.versions td' ).css({ 'line-height': '1.5em !important' });
-        $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
-        $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
-        $( '.versions td.green' ).css({ 'background-color': '#078e87' });
-        $( '.versions td.green.new-version' ).css({ 'background-color': '#2dd39c' });
-        $( '.versions td.yellow' ).css({ 'background-color': '#ebe463', 'color': '#666' });
-        $( '.versions td.yellow.new-version' ).css({ 'background-color': '#ebc863' });
-        $( '.row td:nth-child(6)' ).css({ 'border-right-width': '3px' });
-        $( '.row td:nth-child(7)' ).css({ 'border-right-width': '3px' });
-        $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
-        $( '.alwayson' ).css({ 'display': 'table-row' });
-        $( '#hider, #more' ).css({ 'cursor': 'pointer' });
-        $( '.hider-cell, .more-cell' ).css({ 'vertical-align': 'top' });
 
-        // Handle hover
-        if ( document.getElementById( 'plugin-versions' ) != null ) {
-            document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
-            //document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
-            document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
-            document.getElementById( 'more' ).addEventListener( 'click', showMore );
-        }
 
         // Compare current and user, and color it
         /*
@@ -353,7 +341,7 @@
             if ( log ) console.log( 'right: ' + right );
             if ( log ) console.log( 'hideRight: ' + hideRight );
 
-            if ( block.offsetLeft + 100 > window.outerWidth ) {
+            if ( block.offsetLeft + 150 > window.outerWidth ) {
                 $( '#plugin-versions' ).css({ 'right': '350px' });
                 str.innerHTML = '[hide]';
             }
@@ -387,10 +375,6 @@
             };
         }
 
-        //using closure to cache all child elements
-        var parent = document.getElementById( 'plugin-versions' );
-        parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
-
         //quick and dirty DFS children traversal,
         function traverseChildren( elem ) {
             var children = [];
@@ -409,15 +393,50 @@
             return children;
         }
 
+        // Formatting
+        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
+        $( '.versions td' ).css({ 'line-height': '1.5em !important' });
+        $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
+        $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
+        $( '.versions td.green' ).css({ 'background-color': '#078e87' });
+        $( '.versions td.green.new-version' ).css({ 'background-color': '#2dd39c' });
+        $( '.versions td.yellow' ).css({ 'background-color': '#ebe463', 'color': '#666' });
+        $( '.versions td.yellow.new-version' ).css({ 'background-color': '#ebc863' });
+        $( '.row td:nth-child(6)' ).css({ 'border-right-width': '3px' });
+        $( '.row td:nth-child(7)' ).css({ 'border-right-width': '3px' });
+        $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
+        $( '.alwayson' ).css({ 'display': 'table-row' });
+        $( '#hider, #more' ).css({ 'cursor': 'pointer' });
+        $( '.hider-cell, .more-cell' ).css({ 'vertical-align': 'top' });
+
+        //using closure to cache all child elements
+        var parent = document.getElementById( 'plugin-versions' );
+        parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
+
+        if(startHidden) {
+            startRight = -parent.offsetWidth + 100;
+        }
+        $('#plugin-versions').css({'right': startRight});
+
+        // Handle hover
+        if ( document.getElementById( 'plugin-versions' ) != null ) {
+            document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
+            //document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
+            document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
+            document.getElementById( 'more' ).addEventListener( 'click', showMore );
+        }
+
     } // if ( typeof alreadydone == 'undefined')
 
     /**
      * === Changelog ===
      *
-     * 3.3.0 - 2020-04-29
+     * 3.3.1 - 2020-04-29
      * Updated version numbers up to this date (63-65)
      * Updated product icons
      * Added product icons for Woo and EDD
+     * Added the option to start the bar in a hidden stated
+     * Restructured the code a bit
      *
      * 3.2.0 - 2020-03-04
      * Updated version numbers up to this date (62)
