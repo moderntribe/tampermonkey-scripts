@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.2.0
+// @version      3.3.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -413,6 +413,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 3.3.0 - 2020-04-29
+     * Updated version numbers up to this date (63-65)
      *
      * 3.2.0 - 2020-03-04
      * Updated version numbers up to this date (62)
