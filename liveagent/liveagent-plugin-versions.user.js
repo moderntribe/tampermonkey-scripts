@@ -293,30 +293,9 @@
 
         if ( log ) console.log( htmlstring );
 
-        // Formatting
+        // Adding to markup
         $( '#body' ).after( htmlstring );
-        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'right': '350px', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
-        $( '.versions td' ).css({ 'line-height': '1.5em !important' });
-        $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
-        $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
-        $( '.versions td.green' ).css({ 'background-color': '#078e87' });
-        $( '.versions td.green.new-version' ).css({ 'background-color': '#2dd39c' });
-        $( '.versions td.yellow' ).css({ 'background-color': '#ebe463', 'color': '#666' });
-        $( '.versions td.yellow.new-version' ).css({ 'background-color': '#ebc863' });
-        $( '.row td:nth-child(6)' ).css({ 'border-right-width': '3px' });
-        $( '.row td:nth-child(7)' ).css({ 'border-right-width': '3px' });
-        $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
-        $( '.alwayson' ).css({ 'display': 'table-row' });
-        $( '#hider, #more' ).css({ 'cursor': 'pointer' });
-        $( '.hider-cell, .more-cell' ).css({ 'vertical-align': 'top' });
 
-        // Handle hover
-        if ( document.getElementById( 'plugin-versions' ) != null ) {
-            document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
-            //document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
-            document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
-            document.getElementById( 'more' ).addEventListener( 'click', showMore );
-        }
 
         // Compare current and user, and color it
         /*
@@ -388,16 +367,6 @@
             };
         }
 
-        //using closure to cache all child elements
-        var parent = document.getElementById( 'plugin-versions' );
-        parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
-
-        if(startHidden) {
-            var blockOne = document.getElementById('plugin-versions');
-            var startRight = -blockOne.offsetWidth + 100;
-            $('#plugin-versions').css({'right': startRight});
-        }
-
         //quick and dirty DFS children traversal,
         function traverseChildren( elem ) {
             var children = [];
@@ -414,6 +383,40 @@
                 }
             }
             return children;
+        }
+
+        // Formatting
+        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'right': '350px', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
+        $( '.versions td' ).css({ 'line-height': '1.5em !important' });
+        $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
+        $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
+        $( '.versions td.green' ).css({ 'background-color': '#078e87' });
+        $( '.versions td.green.new-version' ).css({ 'background-color': '#2dd39c' });
+        $( '.versions td.yellow' ).css({ 'background-color': '#ebe463', 'color': '#666' });
+        $( '.versions td.yellow.new-version' ).css({ 'background-color': '#ebc863' });
+        $( '.row td:nth-child(6)' ).css({ 'border-right-width': '3px' });
+        $( '.row td:nth-child(7)' ).css({ 'border-right-width': '3px' });
+        $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
+        $( '.alwayson' ).css({ 'display': 'table-row' });
+        $( '#hider, #more' ).css({ 'cursor': 'pointer' });
+        $( '.hider-cell, .more-cell' ).css({ 'vertical-align': 'top' });
+
+        //using closure to cache all child elements
+        var parent = document.getElementById( 'plugin-versions' );
+        parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
+
+        if(startHidden) {
+            var blockOne = document.getElementById('plugin-versions');
+            var startRight = -blockOne.offsetWidth + 100;
+            $('#plugin-versions').css({'right': startRight});
+        }
+
+        // Handle hover
+        if ( document.getElementById( 'plugin-versions' ) != null ) {
+            document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
+            //document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
+            document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
+            document.getElementById( 'more' ).addEventListener( 'click', showMore );
         }
 
     } // if ( typeof alreadydone == 'undefined')
