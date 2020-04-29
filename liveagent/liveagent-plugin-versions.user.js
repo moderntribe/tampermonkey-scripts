@@ -28,8 +28,11 @@
 (function() {
     'use strict';
 
+    // Enable logging
     var log = false;
-    var startHidden = false;
+
+    // Start hidden?
+    var startHidden = true;
 
     if ( log ) console.log ( alreadydone );
     if ( log ) console.log ( typeof alreadydone );
@@ -40,6 +43,9 @@
         var alreadydone = true;
 
         if ( log ) console.log ( typeof alreadydone );
+
+        // Define starting position of the container
+        var startRight = '350';
 
         /**
          * j      = counter
@@ -333,7 +339,7 @@
             if ( log ) console.log( 'right: ' + right );
             if ( log ) console.log( 'hideRight: ' + hideRight );
 
-            if ( block.offsetLeft + 100 > window.outerWidth ) {
+            if ( block.offsetLeft + 150 > window.outerWidth ) {
                 $( '#plugin-versions' ).css({ 'right': '350px' });
                 str.innerHTML = '[hide]';
             }
@@ -386,7 +392,7 @@
         }
 
         // Formatting
-        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'right': '350px', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
+        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
         $( '.versions td' ).css({ 'line-height': '1.5em !important' });
         $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
         $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
@@ -406,10 +412,9 @@
         parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
 
         if(startHidden) {
-            var blockOne = document.getElementById('plugin-versions');
-            var startRight = -blockOne.offsetWidth + 100;
-            $('#plugin-versions').css({'right': startRight});
+            startRight = -parent.offsetWidth + 100;
         }
+        $('#plugin-versions').css({'right': startRight});
 
         // Handle hover
         if ( document.getElementById( 'plugin-versions' ) != null ) {
