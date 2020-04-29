@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.3.0
+// @version      3.3.1
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -32,7 +32,7 @@
     var log = false;
 
     // Start hidden?
-    var startHidden = true;
+    var startHidden = false;
 
     if ( log ) console.log ( alreadydone );
     if ( log ) console.log ( typeof alreadydone );
@@ -431,10 +431,12 @@
     /**
      * === Changelog ===
      *
-     * 3.3.0 - 2020-04-29
+     * 3.3.1 - 2020-04-29
      * Updated version numbers up to this date (63-65)
      * Updated product icons
      * Added product icons for Woo and EDD
+     * Added the option to start the bar in a hidden stated
+     * Restructured the code a bit
      *
      * 3.2.0 - 2020-03-04
      * Updated version numbers up to this date (62)
