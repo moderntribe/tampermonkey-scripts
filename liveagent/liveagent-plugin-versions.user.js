@@ -175,15 +175,15 @@
         htmlstring += '<tr class="row first-row alwayson">' +
             '<td class="hider-cell"><span id="hider">[hide]</span></td>' +
             '<td class="more-cell" id="more"><span id="mmore">[more]</span></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/new-tec-icon.svg" title="TEC" alt="TEC" /></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/new-ecp-icon.svg" title="PRO" alt="PRO" /></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/new-fb-icon.svg" title="Filter Bar" alt="Filter Bar" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-tec-icon.svg" title="TEC" alt="The Events Calendar icon" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-ecp-icon.svg" title="ECP" alt="Events Calendar Pro icon" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-fb-icon.svg" title="Filter Bar" alt="Filter Bar icon" /></td>' +
             '<td class="blue">APM</td>' +
-            '<td class="yellow"><img src="https://andrasguseo.com/images/new-eb-icon.svg" title="Eventbrite" alt="Eventbrite" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/new-et-icon.svg" title="ET" alt="ET" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/new-etp-icon.svg" title="ET+" alt="ET+" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/new-ce-icon.svg" title="CommEvents" alt="CommEvents" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/new-ct-icon.svg" title="CommTix" alt="CommTix" /></td>' +
+            '<td class="yellow"><img src="https://andrasguseo.com/images/new-eb-icon.svg" title="Eventbrite Tickets" alt="Eventbrite Tickets icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-et-icon.svg" title="ET" alt="Event Tickets icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-etp-icon.svg" title="ET+" alt="Event Tickets Plus icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-ce-icon.svg" title="Community Events" alt="Community Events icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-ct-icon.svg" title="Community Tickets" alt="Community Tickets icon" /></td>' +
             '<td class="green">IW+</td>';
         /*    if ( ecmUsed != "-" ) {
                 htmlstring += '<td>';
@@ -191,8 +191,8 @@
                 htmlstring += '</td>';
             }*/
         // eCommerce in Header
-        htmlstring += '<td>WOO</td>';
-        htmlstring += '<td>EDD</td>';
+        htmlstring += '<td><img src="https://andrasguseo.com/images/woo-icon.png" title="WooCommerce" alt="WooCommerce icon" /></td>';
+        htmlstring += '<td><img src="https://andrasguseo.com/images/edd-headshot.png" title="Easy Digital Downloads" alt="Easy Digital Downloads icon" /></td>';
         htmlstring += '</tr>';
 
         // Go through the plugin history row by row
