@@ -38,14 +38,14 @@
     if ( log ) console.log ( typeof alreadydone );
 
     // Only run if it wasn't executed before
-    if ( typeof alreadydone == 'undefined') {
+    if ( typeof alreadydone == 'undefined' ) {
 
         var alreadydone = true;
 
-        if ( log ) console.log ( typeof alreadydone );
-
         // Define starting position of the container
-        var startRight = '350';
+        var startRight = '350px';
+
+        if ( log ) console.log ( typeof alreadydone );
 
         /**
          * j      = counter
@@ -180,7 +180,9 @@
 
         // Header row
         htmlstring += '<tr class="row first-row alwayson">' +
-            '<td class="hider-cell"><span id="hider">[hide]</span></td>' +
+            '<td class="hider-cell"><span id="hider">[';
+        htmlstring += startHidden ? 'show' : 'hide';
+        htmlstring += ']</span></td>' +
             '<td class="more-cell" id="more"><span id="mmore">[more]</span></td>' +
             '<td class="blue"><img src="https://andrasguseo.com/images/new-tec-icon.svg" title="TEC" alt="The Events Calendar icon" /></td>' +
             '<td class="blue"><img src="https://andrasguseo.com/images/new-ecp-icon.svg" title="ECP" alt="Events Calendar Pro icon" /></td>' +
