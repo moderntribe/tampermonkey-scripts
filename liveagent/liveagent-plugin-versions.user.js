@@ -416,6 +416,8 @@
      *
      * 3.3.0 - 2020-04-29
      * Updated version numbers up to this date (63-65)
+     * Updated product icons
+     * Added product icons for Woo and EDD
      *
      * 3.2.0 - 2020-03-04
      * Updated version numbers up to this date (62)
