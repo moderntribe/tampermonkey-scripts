@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.2.0
+// @version      3.3.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -123,6 +123,9 @@
             60: { name: "B20.02.02", date: "Feb 19",  tec: "5.0.2x",   pro: "5.0.2x",    fib: "4.9.2x",   apm: "4.5",  ebt: "4.6.3",  eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
             61: { name: "Y",         date: "Feb 24",  tec: "5.0.2.1x", pro: "5.0.2",     fib: "4.9.2",    apm: "4.5",  ebt: "4.6.4x", eti: "4.11.3.1",   etp: "4.11.2",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.20" },
             62: { name: "G20.02",    date: "Feb 26",  tec: "5.0.2.1",  pro: "5.0.2",     fib: "4.9.2",    apm: "4.5",  ebt: "4.6.4x", eti: "4.11.4x",    etp: "4.11.3x",   cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.2", edd: "2.9.21" },
+            63: { name: "G20.03",    date: "Mar 18",  tec: "5.0.2.1",  pro: "5.0.2",     fib: "4.9.2",    apm: "4.5",  ebt: "4.6.4",  eti: "4.11.5x",    etp: "4.11.4x",   cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.3", edd: "2.9.21" },
+            64: { name: "B20.03",    date: "Mar 23",  tec: "5.0.3x",   pro: "5.0.3x",    fib: "4.9.3x",   apm: "4.5",  ebt: "4.6.4",  eti: "4.11.5",     etp: "4.11.4",    cev: "4.6.7",     ctx: "4.7.2",    iwp: "1.0.3",  woo: "3.9.3", edd: "2.9.21" },
+            65: { name: "20.04",     date: "Apr 23",  tec: "5.1.0x",   pro: "5.1.0x",    fib: "4.10.0x",  apm: "4.5",  ebt: "4.6.4",  eti: "4.12.0x",    etp: "4.12.0x",   cev: "4.7.0x",    ctx: "4.7.3x",   iwp: "1.0.3",  woo: "4.0.1", edd: "2.9.23" },
         };
 
         //var pluginNames = ['tec', 'pro', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -172,15 +175,15 @@
         htmlstring += '<tr class="row first-row alwayson">' +
             '<td class="hider-cell"><span id="hider">[hide]</span></td>' +
             '<td class="more-cell" id="more"><span id="mmore">[more]</span></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-tec-icon.svg" title="TEC" alt="The Events Calendar icon" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-ecp-icon.svg" title="ECP" alt="Events Calendar Pro icon" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-fb-icon.svg" title="Filter Bar" alt="Filter Bar icon" /></td>' +
             '<td class="blue">APM</td>' +
-            '<td class="yellow"><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td>' +
+            '<td class="yellow"><img src="https://andrasguseo.com/images/new-eb-icon.svg" title="Eventbrite Tickets" alt="Eventbrite Tickets icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-et-icon.svg" title="ET" alt="Event Tickets icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-etp-icon.svg" title="ET+" alt="Event Tickets Plus icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-ce-icon.svg" title="Community Events" alt="Community Events icon" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-ct-icon.svg" title="Community Tickets" alt="Community Tickets icon" /></td>' +
             '<td class="green">IW+</td>';
         /*    if ( ecmUsed != "-" ) {
                 htmlstring += '<td>';
@@ -188,8 +191,8 @@
                 htmlstring += '</td>';
             }*/
         // eCommerce in Header
-        htmlstring += '<td>WOO</td>';
-        htmlstring += '<td>EDD</td>';
+        htmlstring += '<td><img src="https://andrasguseo.com/images/woo-icon.png" title="WooCommerce" alt="WooCommerce icon" /></td>';
+        htmlstring += '<td><img src="https://andrasguseo.com/images/edd-headshot.png" title="Easy Digital Downloads" alt="Easy Digital Downloads icon" /></td>';
         htmlstring += '</tr>';
 
         // Go through the plugin history row by row
@@ -410,6 +413,11 @@
 
     /**
      * === Changelog ===
+     *
+     * 3.3.0 - 2020-04-29
+     * Updated version numbers up to this date (63-65)
+     * Updated product icons
+     * Added product icons for Woo and EDD
      *
      * 3.2.0 - 2020-03-04
      * Updated version numbers up to this date (62)
