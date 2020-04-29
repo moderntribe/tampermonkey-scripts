@@ -172,15 +172,15 @@
         htmlstring += '<tr class="row first-row alwayson">' +
             '<td class="hider-cell"><span id="hider">[hide]</span></td>' +
             '<td class="more-cell" id="more"><span id="mmore">[more]</span></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/tec.png" title="TEC" alt="TEC" /></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/ecpro.png" title="PRO" alt="PRO" /></td>' +
-            '<td class="blue"><img src="https://andrasguseo.com/images/fb.png" title="Filter Bar" alt="Filter Bar" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-tec-icon.svg" title="TEC" alt="TEC" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-ecp-icon.svg" title="PRO" alt="PRO" /></td>' +
+            '<td class="blue"><img src="https://andrasguseo.com/images/new-fb-icon.svg" title="Filter Bar" alt="Filter Bar" /></td>' +
             '<td class="blue">APM</td>' +
-            '<td class="yellow"><img src="https://andrasguseo.com/images/ebt.png" title="Eventbrite" alt="Eventbrite" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/et.png" title="ET" alt="ET" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/et+.png" title="ET+" alt="ET+" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/ce.png" title="CommEvents" alt="CommEvents" /></td>' +
-            '<td class="green"><img src="https://andrasguseo.com/images/ct.png" title="CommTix" alt="CommTix" /></td>' +
+            '<td class="yellow"><img src="https://andrasguseo.com/images/new-eb-icon.svg" title="Eventbrite" alt="Eventbrite" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-et-icon.svg" title="ET" alt="ET" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-etp-icon.svg" title="ET+" alt="ET+" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-ce-icon.svg" title="CommEvents" alt="CommEvents" /></td>' +
+            '<td class="green"><img src="https://andrasguseo.com/images/new-ct-icon.svg" title="CommTix" alt="CommTix" /></td>' +
             '<td class="green">IW+</td>';
         /*    if ( ecmUsed != "-" ) {
                 htmlstring += '<td>';
