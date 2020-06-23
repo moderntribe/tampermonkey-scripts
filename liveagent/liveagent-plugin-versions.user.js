@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.3.1
+// @version      3.4.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -22,7 +22,7 @@
  *
  * Versioning:
  * First digit:  only changes when year changes. 2 = 2019; 3 = 2020
- * Second digit: increment when updating the script
+ * Second digit: increment when updating the script with plugin versions
  * Third digit:  increment when a bugfix or feature for the script
  */
 (function() {
@@ -136,7 +136,7 @@
             66: { name: "B20.05",    date: "May 11",  tec: "5.1.1x",   pro: "5.1.1x",    vev: "",         fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.0.1",   etp: "4.12.0",    cev: "4.7.0",     ctx: "4.7.3",    iwp: "1.0.3",  woo: "4.1.0", edd: "2.9.23" },
             67: { name: "G20.05",    date: "May 20",  tec: "5.1.1",    pro: "5.1.1",     vev: "",         fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.1.2x",  etp: "4.12.1x",   cev: "4.7.1.1x",  ctx: "4.7.4x",   iwp: "1.0.3",  woo: "4.1.1", edd: "2.9.23" },
             68: { name: "B20.05.2",  date: "May 27",  tec: "5.1.2x",   pro: "5.1.2x",    vev: "",         fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.1.2",   etp: "4.12.1",    cev: "4.7.1.1",   ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.1.1", edd: "2.9.23" },
-            69: { name: "B20.06",    date: "Jun 22",  tec: "5.1.3x",   pro: "5.1.2",     vev: "1.0.0.0x", fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.1.2",   etp: "4.12.1",    cev: "4.7.1.1",   ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.2.0", edd: "2.9.23" },
+            69: { name: "B20.06",    date: "Jun 22",  tec: "5.1.3x",   pro: "5.1.2",     vev: "1.0.0x",   fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.1.2",   etp: "4.12.1",    cev: "4.7.1.1",   ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.2.0", edd: "2.9.23" },
         };
 
         //var pluginNames = ['tec', 'pro', 'vev', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -436,6 +436,10 @@
 
     /**
      * === Changelog ===
+     *
+     * 3.4.0 - 2020-06-22
+     * Updated version numbers up to this date (66-69)
+     * Added Virtual Events
      *
      * 3.3.1 - 2020-04-29
      * Updated version numbers up to this date (63-65)
