@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.4.0
+// @version      3.5.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -137,6 +137,7 @@
             67: { name: "G20.05",    date: "May 20",  tec: "5.1.1",    pro: "5.1.1",     vev: "",         fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.1.2x",  etp: "4.12.1x",   cev: "4.7.1.1x",  ctx: "4.7.4x",   iwp: "1.0.3",  woo: "4.1.1", edd: "2.9.23" },
             68: { name: "B20.05.2",  date: "May 27",  tec: "5.1.2x",   pro: "5.1.2x",    vev: "",         fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.1.2",   etp: "4.12.1",    cev: "4.7.1.1",   ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.1.1", edd: "2.9.23" },
             69: { name: "B20.06",    date: "Jun 22",  tec: "5.1.3x",   pro: "5.1.2",     vev: "1.0.0x",   fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.1.2",   etp: "4.12.1",    cev: "4.7.1.1",   ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.2.0", edd: "2.9.23" },
+            70: { name: "20.06",     date: "Jun 24",  tec: "5.1.4x",   pro: "5.1.3x",    vev: "1.0.1x",   fib: "4.10.0",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.2x",    etp: "4.12.2x",   cev: "4.7.2x",    ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.2.0", edd: "2.9.23" },
         };
 
         //var pluginNames = ['tec', 'pro', 'vev', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -436,6 +437,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 3.5.0 - 2020-06-24
+     * Added new plugin versions (70)
      *
      * 3.4.0 - 2020-06-22
      * Updated version numbers up to this date (66-69)
