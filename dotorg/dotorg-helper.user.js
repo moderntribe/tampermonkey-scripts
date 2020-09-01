@@ -39,12 +39,12 @@
         'chikaibeneme',                 // Chika Ibeneme                - 2020-02-10
         'cliffpaulick',                 // Clifford Paulick
         'cliffseal',                    // Cliff Seal - Pardot
-        'cswebd3v'                      // Chris Swenson                - 2020-09-01
+        'cswebd3v',                     // Chris Swenson                - 2020-09-01
         'courane01',                    // Courtney Robertson
         'deblynprado',                  // Deblyn Prado
         'djbramer',                     // Dan Bramer
         'erishel',                      // Edward Rishel
-        'eugenekyale'                   // Eugene Kyale                 -2020-09-01
+        'eugenekyale',                  // Eugene Kyale                 -2020-09-01
         'geoffbel',                     // Geoffroy 'LeGeoff' Belanger
         'geoffgraham',                  // Geoff Graham
         'ggwicz',                       // George Gecewicz
