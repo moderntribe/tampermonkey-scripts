@@ -44,7 +44,7 @@
         'deblynprado',                  // Deblyn Prado
         'djbramer',                     // Dan Bramer
         'erishel',                      // Edward Rishel
-        'eugenekyale',                  // Eugene Kyale                 -2020-09-01
+        'eugenekyale',                  // Eugene Kyale                 - 2020-09-01
         'geoffbel',                     // Geoffroy 'LeGeoff' Belanger
         'geoffgraham',                  // Geoff Graham
         'ggwicz',                       // George Gecewicz
