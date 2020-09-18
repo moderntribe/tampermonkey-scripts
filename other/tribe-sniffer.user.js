@@ -6,6 +6,7 @@
 // @author       Andras Guseo
 // @include      https://*
 // @exclude      http*://*.local/wp-admin/*
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/other/tribe-sniffer.user.js
 // @grant        none
 // ==/UserScript==
 
