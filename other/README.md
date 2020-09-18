@@ -5,6 +5,9 @@ Release date: April 26, 2020
 ## Description
 This is a tool created for the Support Team at Modern Tribe | The Events Calendar.
 
+* tribe-sniffer.user.js - TamperMonkey script
+* tribe-sniffer.min.js - Bookmarklet script
+
 ## What does it do?
 The script adds a sniffer button to the lower right corner of each webpage.
 With clicking on the button on a WordPress site that is running our plugins the sniffer will check the following attributes on the page:
