@@ -18,6 +18,7 @@ These are some common Modern Tribe Tampermonkey scripts.
 * [LiveAgent](/liveagent)
 * [UserVoice](/uservoice)
 * [WP.org](/dotorg)
+* [Other](other)
 
 ## Old Scripts
 
