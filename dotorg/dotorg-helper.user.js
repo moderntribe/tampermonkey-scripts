@@ -28,7 +28,7 @@
 
     // MT team members
     var mtteam = [
-        'aguseo',                       // Andras Guseo
+        'aguseo',                       // Andras Guseo                 - 2016-04-25
         'alaasalama',                   // Alaa Salama                  - 2018-11-19 to 2020-08-31
         'barryhughes-1',                // Barry Hughes                 - xxxx-xx-xx to 2020-07-31
         'bordoni',                      // Gustavo Bordoni
@@ -45,9 +45,11 @@
         'djbramer',                     // Dan Bramer
         'erishel',                      // Edward Rishel                - 2018-03-12 to 2018-12-31	
         'eugenekyale',                  // Eugene Kyale                 - 2020-09-01
+        'eugenetribe',                  // Eugene Kyale                 - 2020-09-01
         'geoffbel',                     // Geoffroy 'LeGeoff' Belanger  - 2016-01-20
         'geoffgraham',                  // Geoff Graham
         'ggwicz',                       // George Gecewicz              - xxxx-xx-xx to 2017-xx-xx
+        'iammarta',                     // Marta Kozak                  - 2020-09-01
         'jaimemarchwinski',             // Jaime Marchwinski            - 2017-08-31
         'jentheo',                      // Jennifer Theodore            - 2017-05-08
         'jeremy80',                     // Jeremy Marchandeau           - 2018-03-26
