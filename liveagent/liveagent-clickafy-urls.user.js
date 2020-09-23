@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Clickafy URLs
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      2.0
 // @description  Make the Central and Jira issue tracker IDs, the user ID, the user's website, and the sandbox site URL clickable in LiveAgent
 // @author       Andras Guseo
 // @include      https://support.theeventscalendar.com/agent/*
@@ -15,148 +15,101 @@
 
     // If you set this to true you will see log messages in the console
     var log = false;
+    if ( log ) console.log('Starting Clickafy Script');
 
     // Run the script every 5 seconds. This is necessary due to the dynamic nature of LiveAgent
     var startScript = window.setInterval( clickableCentral, 5000);
 
+    var fields = ["Central ID", "Issue Tracker ID", "Site's URL", "WordPress ID", "Sandbox URL" ];
+    var field = "", url = "";
+
     function clickableCentral() {
 
         // Get the rows is an object
-        var rows = document.getElementsByClassName('DetailsFormfield');
+        var rows = document.getElementsByClassName('gwt-TextBox');
 
         // Walk the object
         for ( var i = 0; i < rows.length; i++ ) {
 
             // Get the HTML from the row
-            var row = rows[i].innerHTML;
+            field = rows[i].name;
 
-            // Get the starting position of the string 'Central ID'
-            var centralIdInReply      = row.search( "Central ID" );
-            var issueTrackerIdInReply = row.search( "Issue Tracker ID" );
-            var siteUrlInReply        = row.search( "Site's URL" );
-            var userIdInReply         = row.search( "WordPress ID" );
-            var sandboxUrlInReply     = row.search( "Sandbox URL" );
+            // If it's not a field we're looking for, then skip.
+            if ( fields.indexOf(field) < 0 ) {
+                if (log) console.log('Skipped. Field not in array: ' + field);
+                continue;
+            }
 
-            // Only run if we find the Central ID field
-            if( centralIdInReply >= 0 || issueTrackerIdInReply >= 0 || siteUrlInReply >= 0 || userIdInReply >= 0 || sandboxUrlInReply >= 0 ) {
+            // Create the id for the field
+            var id = field.toLowerCase().replace(' ', '-').replace("'", '');
+            if (log) console.log('ID: ' + id);
 
-                var url, label;
-                if( centralIdInReply >= 0 ) {
-                    url = '';
-                    label = 'Central ID';
+            // Check if the ID exists. If it exists it means we already created it, so skip.
+            if ( null != document.getElementById(id)) {
+                if (log) console.log('Skipped at ID: ' + id);
+                continue;
+            }
+
+            // Now we can start creating...
+
+            // Get the value of the field
+            var val = rows[i].value;
+            if (log) console.log(field + ': ' + val);
+
+            // If they are URLs, then use the value
+            if ( val.search('http') >= 0 ) {
+                if (log) console.log("Found 'http', using value as URL. . " + val);
+                url = val;
+            }
+            else if ( field == "Site's URL" ) {
+                if (log) console.log("Found Site's URL - " + val);
+                url = 'https://' + val;
+            }
+            else if ( field == "WordPress ID" ) {
+                if (log) console.log("Found WordPress ID - " + val);
+                url = 'https://theeventscalendar.com/wp-admin/user-edit.php?user_id=' + val;
+            }
+            else if ( field == "Issue Tracker ID" || field == "Central ID" ) {
+                if (log) console.log("Found Issue Tracker ID - " + val);
+                /* If it doesn't contain a dash, then it's Central */
+                if ( val.search( '-' ) < 0 ) {
+                    if (log) console.log("Found Central - " + val);
+                    url = 'https://central.tri.be/issues/';
                 }
-                else if( issueTrackerIdInReply >= 0 ) {
-                    url = '';
-                    label = "Issue Tracker ID";
+                /* Otherwise it is Jira */
+                else {
+                    if (log) console.log("Found Jira - " + val);
+                    url = 'https://moderntribe.atlassian.net/browse/';
                 }
-                else if( siteUrlInReply >= 0 ) {
-                    url = '';
-                    label = "Site's URL";
-                }
-                else if( userIdInReply >= 0 ) {
-                    url = '';
-                    label = "WordPress ID";
-                }
-                else if( sandboxUrlInReply >= 0 ) {
-                    url = '';
-                    label = "Sandbox URL";
-                }
+                url = url + val;
+            }
 
+            //Creating the container.
+            var linkContainer = document.createElement('span');
+            linkContainer.id = id;
+            linkContainer.innerHTML = '<a href="' + url + '" target="_blank" title="Open link in new window">👁️</a>';
+            linkContainer.style = 'position: absolute; right: 10px; z-index: 9;';
+            rows[i].parentNode.insertBefore(linkContainer, rows[i]);
 
-                if ( log ) console.log( 'Found ' + label + ' in row ' + i );
-
-                // Check if the link already exists
-                var isItClickafied = row.search( 'clickafied' );
-
-                // Only run if the link doesn't exist yet
-                if( isItClickafied < 0 ) {
-
-                    if( log ) console.log( label + ' not clickafied yet' );
-
-                    // Starting position of label ("Central ID" or "Site's URL" or "WordPress ID" or "Sandbox URL" )
-                    var startLabel = parseInt( row.search( label ) );
-
-                    // Starting position of div after label
-                    var startDiv = row.indexOf( '<div class="gwt-Label">', startLabel ); // length = 23
-
-                    // Starting position of the ID itself
-                    var startValue = startDiv + 23;
-
-                    // Starting position of </div> after starting div
-                    var endDiv = row.indexOf( '</div>', startDiv );
-
-                    // The value itself
-                    var value = row.substring( startValue, endDiv );
-                    if( log ) console.log( label + ' ' + value );
-
-                    if( centralIdInReply >= 0 ) {
-                        if ( value.search( 'http' ) < 0 ) {
-                            url = 'https://central.tri.be/issues/';
-                        }
-                        url += value.replace( '#', '' );
-                    }
-                    else if( issueTrackerIdInReply >= 0 ) {
-
-                        /* If field value is not a URL yet then... */
-                        if ( value.search( 'http' ) < 0 ) {
-                            /* If it doesn't contain a dash, then it's Central */
-                            if ( value.search( '-' ) < 0 ) {
-                                url = 'https://central.tri.be/issues/';
-                            }
-                            /* Otherwise it is Jira */
-                            else {
-                                url = 'https://moderntribe.atlassian.net/browse/';
-                            }
-                        }
-
-                        /* Remove hash character from URL (Usually Central ID) */
-                        url += value.replace( '#', '' );
-                    }
-                    else if( siteUrlInReply >= 0 || sandboxUrlInReply >= 0 ) {
-                        if( value.search( 'http' ) < 0 ) {
-                            url = 'http://' + value;
-                        }
-                        else {
-                            url = value;
-                        }
-                    }
-                    else if( userIdInReply >= 0 ) {
-                        url = 'https://theeventscalendar.com/wp-admin/user-edit.php?user_id=' + value;
-                    }
-
-                    if( log ) console.log( 'x ' + label + ' ' + value + ' ' + url );
-
-                    // The new clickafied Central ID
-                    var newValue = '<div class="gwt-Label"><a href="' + url + '" target="_blank" class="clickafied">' + value + '</a></div>';
-                    if( log ) console.log( newValue );
-
-                    // Replacing Central ID with the clickafied version
-                    row = row.replace( '<div class="gwt-Label">' + value + '</div>', newValue );
-
-                    // Replacing in code
-                    rows[i].innerHTML = row;
-
-                } // if( isItClickafied < 0 )
-
-                if( log ) console.log( label + ' already clickafied' );
-
-            } // if ( centralIdInReply >= 0 )
         } // for ( var i=0; i<rows.length; i++ )
     } //function clickableCentral
 
-/**
- * Changelog
- * 1.1 - 2020-01-14
- * - Fixed a glitch where the user's site URL was added to the Jira Issue Tracker URL
- *
- * 1.0 - 2020-01-07
- * - Adjusted to make it work with both Central and Jira ticket IDs
- * - Renamed file and updated download URL
- *
- * 0.5 - 2019-09-26
- * - The script now handles Sandbox URL as well
- *
- * 0.4 - 2019-09-06
- * - The script now correctly handles central tickets with full URL
- */
+    /**
+     * Changelog
+     * 2.0 - 2020-09-23
+     * - Re-wrote the script to make it work with updated LiveAgent fields
+     *
+     * 1.1 - 2020-01-14
+     * - Fixed a glitch where the user's site URL was added to the Jira Issue Tracker URL
+     *
+     * 1.0 - 2020-01-07
+     * - Adjusted to make it work with both Central and Jira ticket IDs
+     * - Renamed file and updated download URL
+     *
+     * 0.5 - 2019-09-26
+     * - The script now handles Sandbox URL as well
+     *
+     * 0.4 - 2019-09-06
+     * - The script now correctly handles central tickets with full URL
+     */
 })();
