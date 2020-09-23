@@ -10,18 +10,19 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     // If you set this to true you will see log messages in the console
     var log = false;
-    if ( log ) console.log('Starting Clickafy Script');
+    if (log) console.log('Starting Clickafy Script');
 
     // Run the script every 5 seconds. This is necessary due to the dynamic nature of LiveAgent
-    var startScript = window.setInterval( clickableCentral, 5000);
+    var startScript = window.setInterval(clickableCentral, 5000);
 
-    var fields = ["Central ID", "Issue Tracker ID", "Site's URL", "WordPress ID", "Sandbox URL" ];
-    var field = "", url = "";
+    var fields = ["Central ID", "Issue Tracker ID", "Site's URL", "WordPress ID", "Sandbox URL"];
+    var field = "",
+        url = "";
 
     function clickableCentral() {
 
@@ -29,13 +30,13 @@
         var rows = document.getElementsByClassName('gwt-TextBox');
 
         // Walk the object
-        for ( var i = 0; i < rows.length; i++ ) {
+        for (var i = 0; i < rows.length; i++) {
 
             // Get the HTML from the row
             field = rows[i].name;
 
             // If it's not a field we're looking for, then skip.
-            if ( fields.indexOf(field) < 0 ) {
+            if (fields.indexOf(field) < 0) {
                 if (log) console.log('Skipped. Field not in array: ' + field);
                 continue;
             }
@@ -45,7 +46,7 @@
             if (log) console.log('ID: ' + id);
 
             // Check if the ID exists. If it exists it means we already created it, so skip.
-            if ( null != document.getElementById(id)) {
+            if (null != document.getElementById(id)) {
                 if (log) console.log('Skipped at ID: ' + id);
                 continue;
             }
@@ -57,22 +58,19 @@
             if (log) console.log(field + ': ' + val);
 
             // If they are URLs, then use the value
-            if ( val.search('http') >= 0 ) {
+            if (val.search('http') >= 0) {
                 if (log) console.log("Found 'http', using value as URL. . " + val);
                 url = val;
-            }
-            else if ( field == "Site's URL" ) {
+            } else if (field == "Site's URL") {
                 if (log) console.log("Found Site's URL - " + val);
                 url = 'https://' + val;
-            }
-            else if ( field == "WordPress ID" ) {
+            } else if (field == "WordPress ID") {
                 if (log) console.log("Found WordPress ID - " + val);
                 url = 'https://theeventscalendar.com/wp-admin/user-edit.php?user_id=' + val;
-            }
-            else if ( field == "Issue Tracker ID" || field == "Central ID" ) {
+            } else if (field == "Issue Tracker ID" || field == "Central ID") {
                 if (log) console.log("Found Issue Tracker ID - " + val);
                 /* If it doesn't contain a dash, then it's Central */
-                if ( val.search( '-' ) < 0 ) {
+                if (val.search('-') < 0) {
                     if (log) console.log("Found Central - " + val);
                     url = 'https://central.tri.be/issues/';
                 }
