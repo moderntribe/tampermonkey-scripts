@@ -58,6 +58,7 @@
         'lucasbustamante',              // Lucas Bustamante             - 2020-03-30
         'mandraagora',                  // Wolf Bishop                  - 2020-03-04
         'masoodak',                     // Masood Khan                  - 2020-09-01
+        'matumu',                       // Marho Atumu                  - 2020-09-01
         'mitogh',                       // Crisoforo Hernandez
         'neillmcshea',                  // Neill McShae
         'nicosantos',                   // Nico Santos                  - 2015-xx-xx to 2019-xx-xx
