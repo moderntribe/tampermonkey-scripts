@@ -24,7 +24,7 @@
         var links = document.getElementsByTagName('link');
         var prods = ['WordPress','TEC V1', 'TEC V2', 'ECP','Filter Bar','ET','ET+','WooCommerce'];
         var csss = ['wp-block-library-css','tribe-events-calendar-style-css','tribe-events-views-v2-skeleton-css','tribe-events-calendar-pro-style-css','tribe-filterbar-styles-css','event-tickets-tickets-css-css','event-tickets-plus-tickets-css-css','woocommerce-general-css'];
-        var caching = ['WP-Super-Cache','WP Fastest Cache','W3 Total Cache','Hummingbird','WP Rocket','Endurance Page Cache','LiteSpeed Cache'];
+        var caching = ['WP-Super-Cache','WP Fastest Cache','W3 Total Cache','Hummingbird','WP Rocket','Endurance Page Cache','LiteSpeed Cache','WP Super Minify'];
         var cachingACU = ['wpacu-combined-css-body-1','wpacu-combined-js-body-group-1'];
         var prevSib=document.lastChild.previousSibling.nodeValue;
         var lastChi=document.lastChild.nodeValue;
