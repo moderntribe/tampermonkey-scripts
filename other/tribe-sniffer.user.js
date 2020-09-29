@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Tribe Sniffer
 // @namespace    http://tampermonkey.net/
-// @version      1.2.0
+// @version      1.3.0
 // @description  Trying to find out what's running on a WordPress site with The Events Calendar.
 // @author       Andras Guseo
 // @include      https://*
 // @exclude      http*://*.local/wp-admin/*
-// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/other/tribe-sniffer.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -26,11 +25,13 @@
         var prods = ['WordPress','TEC V1', 'TEC V2', 'ECP','Filter Bar','ET','ET+','WooCommerce'];
         var csss = ['wp-block-library-css','tribe-events-calendar-style-css','tribe-events-views-v2-skeleton-css','tribe-events-calendar-pro-style-css','tribe-filterbar-styles-css','event-tickets-tickets-css-css','event-tickets-plus-tickets-css-css','woocommerce-general-css'];
         var caching = ['WP-Super-Cache','WP Fastest Cache','W3 Total Cache','Hummingbird','WP Rocket','Endurance Page Cache','LiteSpeed Cache'];
+        var cachingACU = ['wpacu-combined-css-body-1','wpacu-combined-js-body-group-1'];
         var prevSib=document.lastChild.previousSibling.nodeValue;
         var lastChi=document.lastChild.nodeValue;
         var i,sorc,cacher='not found',theme='';
         var ecsb=document.getElementsByClassName('ecs-events');
         var ect=document.getElementById('ect-events-list-content');
+        var metas=document.getElementsByTagName('meta');
 
         msg = 'Single event view: ';
         if(sng.length>0){
@@ -125,7 +126,19 @@
             }
         }
 
-        msg+='\n------\nCaching:\n';
+        for(i=0;i<metas.length;i++) {
+            // Skip if meta is not 'generator'
+            if (metas[i].name!='generator') continue;
+
+            if (metas[i].content.search('WooCommerce')>=0) {
+                msg+='\n' + metas[i].content;
+            }
+            if (metas[i].content.search('WPML')>=0) {
+                msg+='\n' + metas[i].content;
+            }
+        }
+
+        msg+='\n------\nCaching / Minification:\n';
 
         if(prevSib!=null){
             for(i=0;i<caching.length;i++){
@@ -139,6 +152,12 @@
                 if(lastChi.search(caching[i])>0){
                     cacher=caching[i];
                 }
+            }
+        }
+        for(i=0;i<cachingACU.length;i++) {
+            if(null!=document.getElementById(cachingACU[i])) {
+                cacher="Asset CleanUp: Page Speed Booster";
+                break;
             }
         }
         msg+=cacher;
