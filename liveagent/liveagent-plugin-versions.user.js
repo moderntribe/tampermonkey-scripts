@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.6.0
+// @version      3.7.0
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -142,7 +142,8 @@
             72: { name: "G20.07",    date: "Jul 28",     tec: "5.1.5",     pro: "5.1.4",     vev: "1.0.2.1",  fib: "4.10.1",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.3.1x",  etp: "4.12.3x",   cev: "4.7.3x",    ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.3.1", edd: "2.9.23" },
             73: { name: "B20.08",    date: "Aug 24",     tec: "5.1.6x",    pro: "5.1.4",     vev: "1.0.3x",   fib: "4.10.1",   apm: "4.5",  ebt: "4.6.5",  eti: "4.12.3.1",   etp: "4.12.3",    cev: "4.7.3",     ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.4.1", edd: "2.9.24" },
             74: { name: "G20.08",    date: "Aug 26",     tec: "5.1.6",     pro: "5.1.4",     vev: "1.0.3",    fib: "4.10.1",   apm: "4.5",  ebt: "4.6.5",  eti: "5.0.0.1x",   etp: "5.0.0x",    cev: "4.8.0x",    ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.4.1", edd: "2.9.24" },
-            //75: { name: "G20.08",    date: "Aug 26",     tec: "5.1.6",     pro: "5.1.4",     vev: "1.0.3",    fib: "4.10.1",   apm: "4.5",  ebt: "4.6.5",  eti: "5.0.0.1x",   etp: "5.0.0x",    cev: "4.8.0x",    ctx: "4.7.4",    iwp: "1.0.3",  woo: "4.5.0", edd: "2.9.25" },
+            75: { name: "G20.09",    date: "Sep 21",     tec: "5.1.6",     pro: "5.1.4",     vev: "1.0.3",    fib: "4.10.1",   apm: "4.5",  ebt: "4.6.5",  eti: "5.0.1x",     etp: "5.0.1x",    cev: "4.8.1x",    ctx: "4.7.5x",   iwp: "1.0.3",  woo: "4.5.2", edd: "2.9.25" },
+            76: { name: "B20.09",    date: "Sep 29",     tec: "5.2.0x",    pro: "5.1.5x",    vev: "1.0.4x",   fib: "5.0.0x",   apm: "4.5",  ebt: "4.6.5",  eti: "5.0.1",      etp: "5.0.1",     cev: "4.8.1",     ctx: "4.7.5",    iwp: "1.0.3",  woo: "4.5.2", edd: "2.9.25" },
         };
 
         //var pluginNames = ['tec', 'pro', 'vev', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
@@ -442,6 +443,9 @@
 
     /**
      * === Changelog ===
+     *
+     * 3.7.0 - 2020-09-29
+     * Added new plugin versions (75-76)
      *
      * 3.6.0 - 2020-09-07
      * Added new plugin versions (71-74)
