@@ -30,17 +30,20 @@ With clicking on the button on a WordPress site that is running our plugins the 
  * ET version
  * ET+ version
  * WooCommerce version
+ * WPML
  
  ### Is a caching plugin in use?
- The sniffer checks for the presence of the following caching plugins:
+The sniffer checks for the presence of the following caching plugins:
+* Asset CleanUp: Page Speed Booster
 * Autoptimize
-* WP-Super-Cache
-* WP Fastest Cache
-* W3 Total Cache
-* Hummingbird
-* WP Rocket
-* LiteSpeed Cache
 * Endurance Page Cache
+* Hummingbird
+* LiteSpeed Cache
+* WP Fastest Cache
+* WP Rocket
+* WP-Super-Cache
+* WP Super Minify
+* W3 Total Cache
 
 ## How to use it
 This tool can be used as a TamperMonkey script or as a bookmarklet.
@@ -82,6 +85,12 @@ This is what you will approximately get when clicking the button.
 ![image](https://user-images.githubusercontent.com/2614506/80293451-c7af0380-875f-11ea-9a86-270b167ea58e.png)
 
 ## Changelog
+1.3.0 - 2020-09-29
+* Improved WooCommerce version recognition
+* Added Asset CleanUp: Page Speed Booster to the caching plugin list
+* Added WP Super Minify to the caching plugin list
+* Added WPML recognition
+
 1.2.0 - 2020-09-18
 * Made it work like a TamperMonkey script. The script will now add a button at the bottom right corner of every page
 * Improved 3rd party shortcode detection
