@@ -9,7 +9,7 @@ These are some common Modern Tribe Tampermonkey scripts.
 1. Copy the source
 1. Open Tampermonkey in your browser and click the Add Script tab (icon with a plus symbol)
 1. Paste the source into the script window and hit save
-1. Viola!
+1. Voila!
 
 ## Scripts
 
