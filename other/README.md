@@ -1,6 +1,7 @@
 # Tribe Sniffer
 Author: Andras Guseo  
-Release date: April 26, 2020
+Current version: 2.0.0  
+Release date: November 26, 2020
 
 ## Description
 This is a tool created for the Support Team at Modern Tribe | The Events Calendar.
@@ -21,15 +22,15 @@ With clicking on the button on a WordPress site that is running our plugins the 
   * The Events Calendar Shortcode & Block
   * The Events Calendar Shortcode and Templates Addon
   
- ### Environment
- * Theme used 
- * WordPress version
- * TEC version
- * ECP version
- * Filter Bar version
- * ET version
- * ET+ version
- * WooCommerce version
+ ### Environment and version numbers
+ * Theme 
+ * WordPress
+ * The Events Calendar
+ * Events Calendar Pro
+ * Filter Bar
+ * Event Tickets
+ * Event Tickets Plus
+ * WooCommerce
  * WPML
  
  ### Is a caching plugin in use?
@@ -39,6 +40,7 @@ The sniffer checks for the presence of the following caching plugins:
 * Endurance Page Cache
 * Hummingbird
 * LiteSpeed Cache
+* Swift Performance Caching Plugin
 * WP Fastest Cache
 * WP Rocket
 * WP-Super-Cache
@@ -46,12 +48,13 @@ The sniffer checks for the presence of the following caching plugins:
 * W3 Total Cache
 
 ## How to use it
-This tool can be used as a TamperMonkey script or as a bookmarklet.
+This tool can be used as a TamperMonkey script.
+The old bookmarklet version (1.3) still works but is no longer being maintained. 
 
 ### Install as a TamperMonkey script
 As you would any other Tampermonkey Scripts. Please refer to the readme file in the [root of this repository](https://github.com/moderntribe/tampermonkey-scripts/blob/master/README.md).
 
-### Quick deploy as a bookmarklet
+### Quick deploy as a bookmarklet (version 1.3)
 
 1. Copy the one-line script from `tribe-sniffer.min.js` to your clipboard.
 2. In your preferred browser create a new bookmark button on the bookmark bar.
@@ -80,11 +83,15 @@ Here are the steps to create a bookmarklet from the code:
 
 ## Sample screenshot
 
-This is what you will approximately get when clicking the button.
- 
-![image](https://user-images.githubusercontent.com/2614506/80293451-c7af0380-875f-11ea-9a86-270b167ea58e.png)
+![image](https://dl.dropboxusercontent.com/s/7kgeotpxg3ff95n/shot_201126_113741.jpg)
 
 ## Changelog
+2.0.0 - 2020-11-26
+* Refactored the script from ground up. It works now fully as a TamperMonkey script.
+* Added Divi version number recognition
+* Added Filter Bar updated design version recognition
+* Added Swift Performance Caching Plugin to the plugin list
+
 1.3.0 - 2020-09-29
 * Improved WooCommerce version recognition
 * Added Asset CleanUp: Page Speed Booster to the caching plugin list
