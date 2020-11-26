@@ -10,6 +10,7 @@
 // @exclude      https://theeventscalendar.ladesk.com/*
 // @exclude      https://theeventscalendar.com/*
 // @exclude      *google*
+// @downloadURL  https://github.com/moderntribe/tampermonkey-scripts/raw/master/other/tribe-sniffer.user.js
 // @grant        none
 // @run-at document-end
 // ==/UserScript==
