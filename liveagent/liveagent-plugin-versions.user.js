@@ -280,43 +280,12 @@
 
             } // end for ( j = 0; j < pluginNames.length; j++ )
 
-            // eCommerce usage - temporarily disabled
-            /*if ( ecmUsed != "-" ) {
-                // eCommerce versions
-                htmlstring += '<td';
-                htmlstring += '>';
-                if ( ecmUsed == "woo" ) {
-                    htmlstring += pluginHistory[number].woo;
-                    userEcmVer = pluginVersions.woo.version
-                }
-                else if ( ecmUsed == "edd" ) {
-                    htmlstring += pluginHistory[number].edd;
-                    userEcmVer = pluginVersions.edd.version
-                }
-                else {
-                    htmlstring += '-';
-                }
-                htmlstring += '</td>';
-            } // end if ( ecmUsed != "-" )
-            */
-
             // Close the row
             htmlstring += '</tr>';
 
         } // end for( var number in pluginHistory )
 
         htmlstring += '</tbody>';
-
-        // Row of user's version numbers - temporarily disabled
-        /*
-        htmlstring += '<tr class="row last-row alwayson userrow"><td>user</td><td>' + $( '#bbps_extra_info .displayname' ).html() + '</td><td id="usertecver">' + pluginVersions.tec.version + '</td><td id="userprover">' + pluginVersions.pro.version + '</td><td id="useretiver">' + pluginVersions.eti.version + '</td><td id="useretpver">' + pluginVersions.etp.version + '</td><td id="userebtver">' + pluginVersions.ebt.version + '</td><td id="usercevver">' + pluginVersions.cev.version + '</td><td id="userctxver">' + pluginVersions.ctx.version + '</td><td id="userfibver">' + pluginVersions.fib.version + '</td><td id="userapmver">' + pluginVersions.apm.version + '</td><td id="useriwpver">' + pluginVersions.iwp.version + '</td>';
-        if ( ecmUsed != "-" ) {
-            htmlstring += '<td id="userecmver">' + userEcmVer + '</td>';
-        }
-
-        // Close the row of user versions
-        htmlstring += '</tr>';
-        */
 
         // Close the table and the container
         htmlstring += '</table>';
@@ -327,32 +296,23 @@
         // Adding to markup
         $( '#body' ).after( htmlstring );
 
-
-        // Compare current and user, and color it
-        /*
-        for( var plugin in pluginVersions ) {
-            // This is the for-cycle for named arrays
-            if ( pluginVersions.hasOwnProperty( plugin ) && pluginVersions[plugin].version != "-" ) {
-                if ( $( pluginVersions[plugin].curr ).html() == pluginVersions[plugin].version ) {
-                    $( pluginVersions[plugin].user ).css({ 'color': '#2dd39c', 'font-weight': 'bold' });
-                }
-                else {
-                    $( pluginVersions[plugin].user ).css({ 'color': '#e4554a', 'font-weight': 'bold' });
-                }
-            }
-        }
-        */
-
         /* Hover/unhover actions */
-        function showRows() {
-            $( '.show' ).css({ 'display': 'table-row ' });
+        function moreLess() {
+            var more = document.getElementById( 'mmore' );
+            var bodyHeight = document.getElementById('pluginversions-tbody').clientHeight;
+
+            if (bodyHeight >= 300) {
+                $( '#pluginversions-tbody' ).css({ 'height': '60px' });
+                more.innerHTML = '[more]';
+                document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
+            }
+            else {
+                $( '#pluginversions-tbody' ).css({ 'height': '300px' });
+                more.innerHTML = '[less]';
+            }
+
         }
-        function hideRows() {
-            $( '.row' ).css({ 'display': 'none' });
-            $( '.alwayson' ).css({ 'display': 'table-row' });
-            // We need to set rowCounter back to the initial value.
-            //rowCounter = 2;
-        }
+
         function hideBlock() {
             var block = document.getElementById( 'plugin-versions' );
             var str   = document.getElementById( 'hider' );
@@ -373,48 +333,6 @@
                 str.innerHTML = '[show]';
             }
         }
-        // Show xMore more lines with every click
-        function showMore() {
-            if ( log ) console.log( rowCounter );
-            if ( rowNumber >= rowCounter ) {
-                var which = rowNumber - rowCounter;
-                $( '.versions tr:nth-child(n+'+which+')' ).css({ 'display': 'table-row ' });
-                rowCounter = rowCounter+xMore;
-            }
-        }
-
-        // Prevent onMouseOut when hovering over child
-        // Source: https://stackoverflow.com/questions/4697758/prevent-onmouseout-when-hovering-child-element-of-the-parent-absolute-div-withou
-        function makeMouseOutFn( elem ){
-            var list = traverseChildren( elem );
-            return function onMouseOut( event ) {
-                var e = event.toElement || event.relatedTarget;
-                if ( !!~list.indexOf( e ) ) {
-                    return;
-                }
-                //alert('MouseOut');
-                // handle mouse event here!
-                hideRows();
-            };
-        }
-
-        //quick and dirty DFS children traversal,
-        function traverseChildren( elem ) {
-            var children = [];
-            var q = [];
-            q.push( elem );
-            while ( q.length > 0 ) {
-                var elem = q.pop();
-                children.push( elem );
-                pushAll( elem.children );
-            }
-            function pushAll( elemArray ) {
-                for( var i=0; i < elemArray.length; i++ ) {
-                    q.push( elemArray[i] );
-                }
-            }
-            return children;
-        }
 
         // Formatting
 //        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
@@ -434,7 +352,6 @@
 
         //using closure to cache all child elements
         var parent = document.getElementById( 'plugin-versions' );
-        //parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
 
         document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
 
@@ -444,13 +361,10 @@
         $('#plugin-versions').css({'right': startRight});
 
         // Handle hover
-        /*        if ( document.getElementById( 'plugin-versions' ) != null ) {
-					document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
-					//document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
-					document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
-					document.getElementById( 'more' ).addEventListener( 'click', showMore );
-				}
-		*/
+        if ( document.getElementById( 'plugin-versions' ) != null ) {
+            document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
+            document.getElementById( 'more' ).addEventListener( 'click', moreLess );
+        }
 
     } // if ( typeof alreadydone == 'undefined')
 
