@@ -449,6 +449,9 @@
     /**
      * === Changelog ===
      *
+     * 3.9.0 - 2020-12-07
+     * Added new plugin versions (80-81)
+     *
      * 3.8.0 - 2020-10-26
      * Added new plugin versions (77-79)
      *
