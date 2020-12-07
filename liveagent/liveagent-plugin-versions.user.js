@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LiveAgent - Latest plugin versions
 // @namespace    https://theeventscalendar.com/
-// @version      3.9.0
+// @version      3.9.0beta
 // @description  Display our plugins' latest version numbers.
 // @author       Andras Guseo
 // @include      https://theeventscalendar.ladesk.com/agent/*
@@ -192,11 +192,11 @@
          */
         var htmlstring = '<div id="plugin-versions">';
 
-        htmlstring += '<style>.versions td { padding: 0 5px !important; border-right: 1px solid white;line-height: 1.5em !important; font-size: 110% !important; } .versions td.new-version{ } .versions td img {width: 30px !important;} .versions tr.first-row td {text-align: center;}</style>';
+        htmlstring += '<style>#plugin-versions { z-index: 2; position: fixed; top: 0; background-color: rgb(62, 72, 73); color: rgb(242, 241, 240); transition-duration: 1000ms; transition-timing-function: ease-in-out; right: 350px; min-width: 800px; } #versions-table { width: 100%; } .versions th { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; } .versions td { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; } .versions td.new-version { } .versions td img, .versions th img { width: 30px !important; } .versions tr.first-row td { text-align: center; } .alwayson { text-align: center; } .versions td { line-height: 1.5em !important; } .versions td.blue { background-color: #157f9d; } .versions td.blue.new-version { background-color: #1ca8c7; } .versions td.green { background-color: #078e87; } .versions td.green.new-version { background-color: #2dd39c; } .versions td.yellow { background-color: #ebe463; color: #666; } .versions td.yellow.new-version { background-color: #ebc863; } .row th:nth-child(6), .row td:nth-child(6) { border-right-width: 3px; } .row th:nth-child(7), .row td:nth-child(7) { border-right-width: 3px; } .row { /*display: none;*/ text-align: center; } .alwayson {} #hider, #more { cursor: pointer; } .hider-cell, .more-cell { vertical-align: top; } #plugin-versions table { width: 100%; } #plugin-versions thead, #plugin-versions tbody, #plugin-versions tr, #plugin-versions td, #plugin-versions th { display: block; } #plugin-versions tr:after { display: block; visibility: hidden; clear: both; content: " "; } #plugin-versions thead th, #plugin-versions thead td { height: 30px; /*text-align: left;*/ } #plugin-versions tbody { height: 60px; overflow-y: auto; } #plugin-versions thead { overflow-y: scroll; /* fallback */ } #plugin-versions tbody td, #plugin-versions thead th, #plugin-versions thead td { width: calc((100 * 1%) / 15); float: left; white-space: nowrap; }</style>';
         htmlstring += '<table width="100%" class="versions" id="versions-table" cellpadding="0" cellspacing="0">';
 
         // Header row
-        htmlstring += '<tr class="row first-row alwayson">' +
+        htmlstring += '<thead><tr class="row first-row alwayson">' +
             '<td class="hider-cell"><span id="hider">[';
         htmlstring += startHidden ? 'show' : 'hide';
         htmlstring += ']</span></td>' +
@@ -220,9 +220,12 @@
         // eCommerce in Header
         htmlstring += '<td><img src="https://andrasguseo.com/images/woo-icon.png" title="WooCommerce" alt="WooCommerce icon" /></td>';
         htmlstring += '<td><img src="https://andrasguseo.com/images/edd-headshot.png" title="Easy Digital Downloads" alt="Easy Digital Downloads icon" /></td>';
-        htmlstring += '</tr>';
+        htmlstring += '</tr></thead>';
+
+        htmlstring += '<tbody id="pluginversions-tbody">';
 
         // Go through the plugin history row by row
+
         for( var number in pluginHistory ) {
 
             if ( log ) console.log('Number: ' + number + ' ' + rowNumber );
@@ -302,6 +305,8 @@
 
         } // end for( var number in pluginHistory )
 
+        htmlstring += '</tbody>';
+
         // Row of user's version numbers - temporarily disabled
         /*
         htmlstring += '<tr class="row last-row alwayson userrow"><td>user</td><td>' + $( '#bbps_extra_info .displayname' ).html() + '</td><td id="usertecver">' + pluginVersions.tec.version + '</td><td id="userprover">' + pluginVersions.pro.version + '</td><td id="useretiver">' + pluginVersions.eti.version + '</td><td id="useretpver">' + pluginVersions.etp.version + '</td><td id="userebtver">' + pluginVersions.ebt.version + '</td><td id="usercevver">' + pluginVersions.cev.version + '</td><td id="userctxver">' + pluginVersions.ctx.version + '</td><td id="userfibver">' + pluginVersions.fib.version + '</td><td id="userapmver">' + pluginVersions.apm.version + '</td><td id="useriwpver">' + pluginVersions.iwp.version + '</td>';
@@ -346,7 +351,7 @@
             $( '.row' ).css({ 'display': 'none' });
             $( '.alwayson' ).css({ 'display': 'table-row' });
             // We need to set rowCounter back to the initial value.
-            rowCounter = 2;
+            //rowCounter = 2;
         }
         function hideBlock() {
             var block = document.getElementById( 'plugin-versions' );
@@ -412,24 +417,26 @@
         }
 
         // Formatting
-        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
-        $( '.versions td' ).css({ 'line-height': '1.5em !important' });
-        $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
-        $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
-        $( '.versions td.green' ).css({ 'background-color': '#078e87' });
-        $( '.versions td.green.new-version' ).css({ 'background-color': '#2dd39c' });
-        $( '.versions td.yellow' ).css({ 'background-color': '#ebe463', 'color': '#666' });
-        $( '.versions td.yellow.new-version' ).css({ 'background-color': '#ebc863' });
-        $( '.row td:nth-child(6)' ).css({ 'border-right-width': '3px' });
-        $( '.row td:nth-child(7)' ).css({ 'border-right-width': '3px' });
-        $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
-        $( '.alwayson' ).css({ 'display': 'table-row' });
-        $( '#hider, #more' ).css({ 'cursor': 'pointer' });
-        $( '.hider-cell, .more-cell' ).css({ 'vertical-align': 'top' });
+//        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
+//        $( '.versions td' ).css({ 'line-height': '1.5em !important' });
+//        $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
+//        $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
+//        $( '.versions td.green' ).css({ 'background-color': '#078e87' });
+//        $( '.versions td.green.new-version' ).css({ 'background-color': '#2dd39c' });
+//        $( '.versions td.yellow' ).css({ 'background-color': '#ebe463', 'color': '#666' });
+//        $( '.versions td.yellow.new-version' ).css({ 'background-color': '#ebc863' });
+//        $( '.row td:nth-child(6)' ).css({ 'border-right-width': '3px' });
+//        $( '.row td:nth-child(7)' ).css({ 'border-right-width': '3px' });
+//        $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
+//        $( '.alwayson' ).css({ 'display': 'table-row' });
+//        $( '#hider, #more' ).css({ 'cursor': 'pointer' });
+//        $( '.hider-cell, .more-cell' ).css({ 'vertical-align': 'top' });
 
         //using closure to cache all child elements
         var parent = document.getElementById( 'plugin-versions' );
-        parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
+        //parent.addEventListener( 'mouseout', makeMouseOutFn( parent ), true);
+
+        document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
 
         if(startHidden) {
             startRight = -parent.offsetWidth + 100;
@@ -437,12 +444,13 @@
         $('#plugin-versions').css({'right': startRight});
 
         // Handle hover
-        if ( document.getElementById( 'plugin-versions' ) != null ) {
-            document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
-            //document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
-            document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
-            document.getElementById( 'more' ).addEventListener( 'click', showMore );
-        }
+        /*        if ( document.getElementById( 'plugin-versions' ) != null ) {
+					document.getElementById( 'plugin-versions' ).addEventListener( 'mouseover', showRows );
+					//document.getElementById( 'plugin-versions' ).addEventListener( 'mouseout', hideRows );
+					document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
+					document.getElementById( 'more' ).addEventListener( 'click', showMore );
+				}
+		*/
 
     } // if ( typeof alreadydone == 'undefined')
 
