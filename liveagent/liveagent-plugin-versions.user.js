@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         LiveAgent - Latest plugin versions
+// @name         LiveAgent - Latest plugin versions scroll
 // @namespace    https://theeventscalendar.com/
 // @version      3.9.0beta
 // @description  Display our plugins' latest version numbers.
@@ -33,6 +33,8 @@
 
     // Start hidden?
     var startHidden = false;
+
+    var secondColumnWidth = 70;
 
     if ( log ) console.log ( alreadydone );
     if ( log ) console.log ( typeof alreadydone );
@@ -192,7 +194,34 @@
          */
         var htmlstring = '<div id="plugin-versions">';
 
-        htmlstring += '<style>#plugin-versions { z-index: 2; position: fixed; top: 0; background-color: rgb(62, 72, 73); color: rgb(242, 241, 240); transition-duration: 1000ms; transition-timing-function: ease-in-out; right: 350px; min-width: 800px; } #versions-table { width: 100%; } .versions th { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; } .versions td { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; } .versions td.new-version { } .versions td img, .versions th img { width: 30px !important; } .versions tr.first-row td { text-align: center; } .alwayson { text-align: center; } .versions td { line-height: 1.5em !important; } .versions td.blue { background-color: #157f9d; } .versions td.blue.new-version { background-color: #1ca8c7; } .versions td.green { background-color: #078e87; } .versions td.green.new-version { background-color: #2dd39c; } .versions td.yellow { background-color: #ebe463; color: #666; } .versions td.yellow.new-version { background-color: #ebc863; } .row th:nth-child(6), .row td:nth-child(6) { border-right-width: 3px; } .row th:nth-child(7), .row td:nth-child(7) { border-right-width: 3px; } .row { /*display: none;*/ text-align: center; } .alwayson {} #hider, #more { cursor: pointer; } .hider-cell, .more-cell { vertical-align: top; } #plugin-versions table { width: 100%; } #plugin-versions thead, #plugin-versions tbody, #plugin-versions tr, #plugin-versions td, #plugin-versions th { display: block; } #plugin-versions tr:after { display: block; visibility: hidden; clear: both; content: " "; } #plugin-versions thead th, #plugin-versions thead td { height: 30px; /*text-align: left;*/ } #plugin-versions tbody { height: 60px; overflow-y: auto; } #plugin-versions thead { overflow-y: scroll; /* fallback */ } #plugin-versions tbody td, #plugin-versions thead th, #plugin-versions thead td { width: calc((100 * 1%) / 15); float: left; white-space: nowrap; }</style>';
+        htmlstring += '<style>' +
+            '#plugin-versions { z-index: 2; position: fixed; top: 0; background-color: rgb(62, 72, 73); color: rgb(242, 241, 240); transition-duration: 1000ms; transition-timing-function: ease-in-out; right: 350px; min-width: 800px; }' +
+            '#versions-table { width: 100%; }' +
+            //'.versions th { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; }' +
+            '.versions td { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; }' +
+            '.versions td img, .versions th img { width: 30px !important; }' +
+            '.versions tr.first-row td { text-align: center; }' +
+            '.alwayson { text-align: center; }' +
+            '.versions td { line-height: 1.5em !important; }' +
+            '.versions td.blue { background-color: #157f9d; }' +
+            '.versions td.blue.new-version { background-color: #1ca8c7; }' +
+            '.versions td.green { background-color: #078e87; }' +
+            '.versions td.green.new-version { background-color: #2dd39c; }' +
+            '.versions td.yellow { background-color: #ebe463; color: #666; }' +
+            '.versions td.yellow.new-version { background-color: #ebc863; }' +
+            '.row th:nth-child(6), .row td:nth-child(6) { border-right-width: 3px; }' +
+            '.row th:nth-child(7), .row td:nth-child(7) { border-right-width: 3px; }' +
+            '.row { /*display: none;*/ text-align: center; }' +
+            '#hider, #more { cursor: pointer; }' +
+            '.hider-cell, .more-cell { vertical-align: top; }' +
+            '#plugin-versions table { width: 100%; }' +
+            '#plugin-versions thead, #plugin-versions tbody, #plugin-versions tr, #plugin-versions td, #plugin-versions th { display: block; }' +
+            '#plugin-versions tr:after { display: block; visibility: hidden; clear: both; content: " "; }' +
+            '#plugin-versions thead th, #plugin-versions thead td { height: 34px; }' +
+            '#plugin-versions tbody { height: 60px; overflow-y: auto; }' +
+            '#plugin-versions thead { overflow-y: scroll; /* fallback */ }' +
+            '#plugin-versions tbody td, #plugin-versions thead th, #plugin-versions thead td { width: calc((100 * 1%) / 15); float: left; white-space: nowrap; }' +
+            '</style>';
         htmlstring += '<table width="100%" class="versions" id="versions-table" cellpadding="0" cellspacing="0">';
 
         // Header row
@@ -212,11 +241,7 @@
             '<td class="green"><img src="https://andrasguseo.com/images/new-ce-icon.svg" title="Community Events" alt="Community Events icon" /></td>' +
             '<td class="green"><img src="https://andrasguseo.com/images/new-ct-icon.svg" title="Community Tickets" alt="Community Tickets icon" /></td>' +
             '<td class="green">IW+</td>';
-        /*    if ( ecmUsed != "-" ) {
-                htmlstring += '<td>';
-                htmlstring += ecmUsed.toUpperCase();
-                htmlstring += '</td>';
-            }*/
+
         // eCommerce in Header
         htmlstring += '<td><img src="https://andrasguseo.com/images/woo-icon.png" title="WooCommerce" alt="WooCommerce icon" /></td>';
         htmlstring += '<td><img src="https://andrasguseo.com/images/edd-headshot.png" title="Easy Digital Downloads" alt="Easy Digital Downloads icon" /></td>';
