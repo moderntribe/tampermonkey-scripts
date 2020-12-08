@@ -20,7 +20,7 @@ The script has to be manually updated with new version numbers after a new relea
 You can customize the script with adjusting the following variables:  
 * `log` - Boolean, to enable logging in the console for troubleshooting. Default: _false_
 * `startHidden` - Boolean, whether the table should be hidden or visible on load. Default: _true_
-* `startRight` - String, e.g. '350px'. Defines the starting position of the table, which is the distance from the right edge of the browser window. Default: _350px_
+* `startRight` - Integer, to set the starting position of the table, which is the distance from the right edge of the browser window. Default: _350_
 * `secondColumnWidth` - Integer, to set the width of the first two columns of the table. Default: _70_
 * `initialRows` - Integer, to set how many rows should be shown on load and on collapsing the table. Default: _1_
 * `scrollOnCollapse` - Boolean, whether the plugin versions should scroll to the most recent version (the bottom of the table) on collapse. Default: _true_
