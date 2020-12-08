@@ -38,7 +38,7 @@
 
     // Define starting position of the container
     // The distance from the right edge of the screen
-    var startRight = '350px';
+    var startRight = 350;
 
     // Define the width of the first 2 columns (in pixels)
     var secondColumnWidth = 70;
@@ -197,7 +197,7 @@
         var htmlstring = '<div id="plugin-versions">';
 
         htmlstring += '<style>' +
-            '#plugin-versions { z-index: 2; position: fixed; top: 0; background-color: rgb(62, 72, 73); color: rgb(242, 241, 240); transition-duration: 1000ms; transition-timing-function: ease-in-out; right: ' + startRight + '; min-width: 860px; }' +
+            '#plugin-versions { z-index: 2; position: fixed; top: 0; background-color: rgb(62, 72, 73); color: rgb(242, 241, 240); transition-duration: 1000ms; transition-timing-function: ease-in-out; right: ' + startRight + 'px; min-width: 860px; }' +
             '#plugin-versions table { width: 100%; }' +
             '.versions td { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; }' +
             '.versions td img { width: 30px !important; }' +
@@ -256,7 +256,7 @@
 
         for( var number in pluginHistory ) {
 
-            if ( log ) console.log('Number: ' + number + ' ' + rowNumber );
+            //if ( log ) console.log('Number: ' + number + ' ' + rowNumber );
 
             htmlstring += '<tr class="row';
             // For the last row add additional classes
@@ -293,7 +293,7 @@
                     htmlstring += 'green'
                 }
 
-                if( log ) console.log( 'this: ' + number + '-' + pN );
+                //if( log ) console.log( 'this: ' + number + '-' + pN );
 
                 // If plugin version number has 'x', then it's a new release, so add extra class
                 if( pluginHistory[number][pN].includes( "x" ) ) {
@@ -319,7 +319,7 @@
         htmlstring += '</table>';
         htmlstring += '</div>';
 
-        if ( log ) console.log( htmlstring );
+        //if ( log ) console.log( htmlstring );
 
         // Adding to markup
         $( '#body' ).after( htmlstring );
@@ -340,7 +340,6 @@
                 $( '#pluginversions-tbody' ).css({ 'height': expandedHeight + 'px' });
                 more.innerHTML = '[less]';
             }
-
         }
 
         /**
@@ -351,11 +350,12 @@
             var str   = document.getElementById( 'hider' );
             var right = window.outerWidth-block.offsetLeft;
             var hideRight = -block.offsetWidth + 55;
-            if ( log ) console.log( 'block.offsetLeft: ' + block.offsetLeft );
-            if ( log ) console.log( 'block.offsetWidth: ' + block.offsetWidth );
-            if ( log ) console.log( 'window.outerWidth: ' + window.outerWidth );
-            if ( log ) console.log( 'right: ' + right );
-            if ( log ) console.log( 'hideRight: ' + hideRight );
+            if ( log ) console.log( 'Left edge of container (block.offsetLeft): ' + block.offsetLeft );
+            if ( log ) console.log( 'Width of container (block.offsetWidth): ' + block.offsetWidth );
+            if ( log ) console.log( 'Right edge of browser (window.outerWidth): ' + window.outerWidth );
+            if ( log ) console.log( 'How much the container sticks in (Right edge of browser minus Left edge of container. right): ' + right );
+            if ( log ) console.log( 'Minus ( Width of container + 55) (hideRight): ' + hideRight );
+            if ( log ) console.log( 'startRight: ' + startRight );
 
             if ( block.offsetLeft + 150 > window.outerWidth ) {
                 $( '#plugin-versions' ).css({ 'right': startRight });
@@ -390,9 +390,9 @@
 
         // Hide if we are starting hidden
         if ( startHidden ) {
-            startRight = -parent.offsetWidth + 100;
+            var startHiddenRight = -parent.offsetWidth + 55;
+            $('#plugin-versions').css({ 'right': startHiddenRight });
         }
-        $('#plugin-versions').css({'right': startRight});
 
         // Handle actions
         if ( document.getElementById( 'plugin-versions' ) != null ) {
@@ -404,6 +404,10 @@
 
     /**
      * === Changelog ===
+     *
+     * TBD - TBD
+     * Added scrollbar styling for webkit based browsers
+     * Fixed a bug where if the block would start hidden it would not open any more
      *
      * 3.9.1 - 2020-12-08
      * Usability improvements & code cleanup
