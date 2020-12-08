@@ -81,18 +81,18 @@
          * - if it is a hotfix, then creating a new line is not needed, just update the version number in the last line (See Event Tickets (eti) in line 12)
          */
         var pluginHistory = {
-            0: { name: "",           date: "",           tec: "",          pro: "",          vev: "",         fib: "",         apm: "",     ebt: "",       eti: "",           etp: "",          cev: "",          ctx: "",         iwp: "",       woo: "",      edd: "" },
-            1: { name: "M18.01",     date: "Jan 7",      tec: "4.6.9.1x",  pro: "4.4.21",    vev: "-",        fib: "4.5.2",    apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3",      etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            2: { name: "M18.02",     date: "Jan 22",     tec: "4.6.10.2x", pro: "4.4.22x",   vev: "-",        fib: "4.5.3x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3",      etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            3: { name: "M18.03",     date: "Feb 14",     tec: "4.6.11.2x", pro: "4.4.23x",   vev: "-",        fib: "4.5.3",    apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3.1x",   etp: "4.6.2",     cev: "4.5.9x",    ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            4: { name: "M18.04",     date: "Mar 8",      tec: "4.6.12.1x", pro: "4.4.24.2x", vev: "-",        fib: "4.5.4x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3.1",    etp: "4.6.2",     cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            5: { name: "TC",         date: "Mar 13",     tec: "4.6.12.1",  pro: "4.4.24.2",  vev: "-",        fib: "4.5.4",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7x",       etp: "4.7x",      cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "",      edd: "" },
-            6: { name: "M18.05",     date: "Mar 28",     tec: "4.6.13.1x", pro: "4.4.24.2",  vev: "-",        fib: "4.5.4",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7.1x",     etp: "4.7.1x",    cev: "4.5.10x",   ctx: "4.5.4x",   iwp: "1.0.2",  woo: "",      edd: "" },
-            7: { name: "M18.06",     date: "Apr 4",      tec: "4.6.14.2x", pro: "4.4.25x",   vev: "-",        fib: "4.5.5x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.7.2x",     etp: "4.7.2x",    cev: "4.5.11x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            8: { name: "M18.07",     date: "May 9",      tec: "4.6.15.1x", pro: "4.4.26x",   vev: "-",        fib: "4.5.5",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7.2",      etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            9: { name: "TEC",        date: "May 16",     tec: "4.6.16.1x", pro: "4.4.26",    vev: "-",        fib: "4.5.5",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7.2",      etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            10: { name: "M18.08",    date: "May 29",     tec: "4.6.17.1x", pro: "4.4.27x",   vev: "-",        fib: "4.5.6x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.7.3.1x",   etp: "4.7.3x",    cev: "4.5.12x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
-            11: { name: "ETR",       date: "Jun 4",      tec: "4.6.18.1x", pro: "4.4.27",    vev: "-",        fib: "4.5.6",    apm: "4.4",  ebt: "4.5x",   eti: "4.7.3.1",    etp: "4.7.3",     cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "",      edd: "" },
+            0: { name: "",           date: "",           tec: "",          pro: "",          vev: "",         fib: "",         apm: "",     ebt: "",       eti: "",           etp: "",          cev: "",          ctx: "",         iwp: "",       woo: "",      edd: ""  },
+            1: { name: "M18.01",     date: "Jan 7",      tec: "4.6.9.1x",  pro: "4.4.21",    vev: "-",        fib: "4.5.2",    apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3",      etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            2: { name: "M18.02",     date: "Jan 22",     tec: "4.6.10.2x", pro: "4.4.22x",   vev: "-",        fib: "4.5.3x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3",      etp: "4.6.2",     cev: "4.5.8",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            3: { name: "M18.03",     date: "Feb 14",     tec: "4.6.11.2x", pro: "4.4.23x",   vev: "-",        fib: "4.5.3",    apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3.1x",   etp: "4.6.2",     cev: "4.5.9x",    ctx: "4.5.3",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            4: { name: "M18.04",     date: "Mar 8",      tec: "4.6.12.1x", pro: "4.4.24.2x", vev: "-",        fib: "4.5.4x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.6.3.1",    etp: "4.6.2",     cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            5: { name: "TC",         date: "Mar 13",     tec: "4.6.12.1",  pro: "4.4.24.2",  vev: "-",        fib: "4.5.4",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7x",       etp: "4.7x",      cev: "4.5.9",     ctx: "4.5.3",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            6: { name: "M18.05",     date: "Mar 28",     tec: "4.6.13.1x", pro: "4.4.24.2",  vev: "-",        fib: "4.5.4",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7.1x",     etp: "4.7.1x",    cev: "4.5.10x",   ctx: "4.5.4x",   iwp: "1.0.2",  woo: "-",     edd: "-" },
+            7: { name: "M18.06",     date: "Apr 4",      tec: "4.6.14.2x", pro: "4.4.25x",   vev: "-",        fib: "4.5.5x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.7.2x",     etp: "4.7.2x",    cev: "4.5.11x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            8: { name: "M18.07",     date: "May 9",      tec: "4.6.15.1x", pro: "4.4.26x",   vev: "-",        fib: "4.5.5",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7.2",      etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            9: { name: "TEC",        date: "May 16",     tec: "4.6.16.1x", pro: "4.4.26",    vev: "-",        fib: "4.5.5",    apm: "4.4",  ebt: "4.4.9",  eti: "4.7.2",      etp: "4.7.2",     cev: "4.5.11",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            10: { name: "M18.08",    date: "May 29",     tec: "4.6.17.1x", pro: "4.4.27x",   vev: "-",        fib: "4.5.6x",   apm: "4.4",  ebt: "4.4.9",  eti: "4.7.3.1x",   etp: "4.7.3x",    cev: "4.5.12x",   ctx: "4.5.4",    iwp: "1.0.2",  woo: "-",     edd: "-" },
+            11: { name: "ETR",       date: "Jun 4",      tec: "4.6.18.1x", pro: "4.4.27",    vev: "-",        fib: "4.5.6",    apm: "4.4",  ebt: "4.5x",   eti: "4.7.3.1",    etp: "4.7.3",     cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "-",     edd: "-" },
             12: { name: "M18.09",    date: "Jun 20",     tec: "4.6.19.1x", pro: "4.4.28x",   vev: "-",        fib: "4.5.6",    apm: "4.4",  ebt: "4.5.1x", eti: "4.7.4.1x",   etp: "4.7.4x",    cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "3.4.3", edd: "2.9.3" },
             13: { name: "M18.10",    date: "Jul 9",      tec: "4.6.20.2x", pro: "4.4.29.2x", vev: "-",        fib: "4.5.6",    apm: "4.4",  ebt: "4.5.1",  eti: "4.7.5.1x",   etp: "4.7.5x",    cev: "4.5.12",    ctx: "4.5.4",    iwp: "1.0.2",  woo: "3.4.3", edd: "2.9.3" },
             14: { name: "M18.11",    date: "Aug 1",      tec: "4.6.21.1x", pro: "4.4.30.1x", vev: "-",        fib: "4.5.7x",   apm: "4.4",  ebt: "4.5.2x", eti: "4.7.6x",     etp: "4.7.6x",    cev: "4.5.13x",   ctx: "4.5.5x",   iwp: "1.0.2",  woo: "3.4.4", edd: "2.9.6" },
@@ -370,16 +370,20 @@
         function scrollToBottom() {
             var bodyHeight = document.getElementById('pluginversions-tbody').clientHeight;
             if ( bodyHeight > initialRowsHeight ) {
-                document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
+                scrollToBottomAction();
                 setTimeout( scrollToBottom, 1);
             }
+        }
+
+        function scrollToBottomAction() {
+            document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
         }
 
         //using closure to cache all child elements
         var parent = document.getElementById( 'plugin-versions' );
 
         // Scrolling to bottom on load
-        scrollToBottom();
+        scrollToBottomAction();
 
         // Hide if we are starting hidden
         if ( startHidden ) {
