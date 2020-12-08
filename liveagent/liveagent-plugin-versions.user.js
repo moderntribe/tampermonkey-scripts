@@ -37,6 +37,7 @@
     var startHidden = false;
 
     // Define starting position of the container
+    // The distance from the right edge of the screen
     var startRight = '350px';
 
     // Define the width of the first 2 columns (in pixels)
@@ -45,7 +46,7 @@
     // Define how many rows should be shown on load and when table is collapsed
     var initialRows = 1;
 
-    // Scroll to the last (most actual) row on collapse
+    // Define whether table should scroll to the last (most actual) row on collapse
     var scrollOnCollapse = true;
 
     // Height of the table (in pixels) when expanded
@@ -65,13 +66,9 @@
         if ( log ) console.log ( typeof alreadydone );
 
         /**
-         * j      = counter
-         * Left for the future
-         * pname  = plugin name + plugin name length = start of version number
-         * pby    = start of by | end of version number
-         * pver   = version number string
+         * j - counter
          */
-        var j, pname, pby, pver;
+        var j;
 
         /**
          * Defining our plugin version history
@@ -168,18 +165,8 @@
             81: { name: "B20.11",    date: "Dec 2",      tec: "5.3.0x"  ,  pro: "5.2.0x",    vev: "1.1.2x",   fib: "5.0.2x",   apm: "4.5",  ebt: "4.6.6x", eti: "5.0.3.1" ,   etp: "5.1.0.2" ,  cev: "4.8.2" ,    ctx: "4.7.7" ,   iwp: "1.0.3",  woo: "4.6.1", edd: "2.9.26" },
         };
 
-        //var pluginNames = ['tec', 'pro', 'vev', 'fib', 'ebt', 'apm', 'eti', 'etp', 'cev', 'ctx', 'iwp'];
-
         // The number of releases (the length of the object)
         var rowNumber = Object.keys(pluginHistory).length;
-
-        // This will show one more line on the first click.
-        // It is 2 b/c the object starts with 0 but the nth-child starts with 1.
-        // After hiding this is set back to the initial value.
-        var rowCounter = 2;
-
-        // Show this many more lines with every subsequent click.
-        var xMore = 3;
 
         // Added Woo and EDD for static version
         var pluginNames = ['tec', 'pro', 'vev', 'fib', 'apm', 'ebt', 'eti', 'etp', 'cev', 'ctx', 'iwp', 'woo', 'edd'];
@@ -334,7 +321,9 @@
         // Adding to markup
         $( '#body' ).after( htmlstring );
 
-        /* Hover/unhover actions */
+        /**
+         * Expand / collapse table
+         */
         function moreLess() {
             var more = document.getElementById( 'mmore' );
             var bodyHeight = document.getElementById('pluginversions-tbody').clientHeight;
@@ -351,6 +340,9 @@
 
         }
 
+        /**
+         * Hide / show table
+         */
         function hideBlock() {
             var block = document.getElementById( 'plugin-versions' );
             var str   = document.getElementById( 'hider' );
@@ -372,6 +364,9 @@
             }
         }
 
+        /**
+         * Scroll to the bottom of the version numbers on collapse
+         */
         function scrollToBottom() {
             var bodyHeight = document.getElementById('pluginversions-tbody').clientHeight;
             if ( bodyHeight > initialRowsHeight ) {
@@ -380,34 +375,19 @@
             }
         }
 
-
-        // Formatting
-//        $( '#plugin-versions' ).css({ 'z-index': '2', 'position': 'fixed', 'top': '0', 'background-color': '#3e4849', 'color': '#f2f1f0', 'transition-duration': '1000ms', 'transition-timing-function': 'ease-in-out' });
-//        $( '.versions td' ).css({ 'line-height': '1.5em !important' });
-//        $( '.versions td.blue' ).css({ 'background-color': '#157f9d' });
-//        $( '.versions td.blue.new-version' ).css({ 'background-color': '#1ca8c7' });
-//        $( '.versions td.green' ).css({ 'background-color': '#078e87' });
-//        $( '.versions td.green.new-version' ).css({ 'background-color': '#2dd39c' });
-//        $( '.versions td.yellow' ).css({ 'background-color': '#ebe463', 'color': '#666' });
-//        $( '.versions td.yellow.new-version' ).css({ 'background-color': '#ebc863' });
-//        $( '.row td:nth-child(6)' ).css({ 'border-right-width': '3px' });
-//        $( '.row td:nth-child(7)' ).css({ 'border-right-width': '3px' });
-//        $( '.row' ).css({ 'display': 'none', 'text-align': 'center' });
-//        $( '.alwayson' ).css({ 'display': 'table-row' });
-//        $( '#hider, #more' ).css({ 'cursor': 'pointer' });
-//        $( '.hider-cell, .more-cell' ).css({ 'vertical-align': 'top' });
-
         //using closure to cache all child elements
         var parent = document.getElementById( 'plugin-versions' );
 
-        document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
+        // Scrolling to bottom on load
+        scrollToBottom();
 
-        if(startHidden) {
+        // Hide if we are starting hidden
+        if ( startHidden ) {
             startRight = -parent.offsetWidth + 100;
         }
         $('#plugin-versions').css({'right': startRight});
 
-        // Handle hover
+        // Handle actions
         if ( document.getElementById( 'plugin-versions' ) != null ) {
             document.getElementById( 'hider' ).addEventListener( 'click', hideBlock );
             document.getElementById( 'more' ).addEventListener( 'click', moreLess );
