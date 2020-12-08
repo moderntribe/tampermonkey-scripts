@@ -28,14 +28,30 @@
 (function() {
     'use strict';
 
+//== SETUP ==//
+
     // Enable logging
     var log = false;
 
     // Start hidden?
     var startHidden = false;
 
+    // Define starting position of the container
+    var startRight = '350px';
+
+    // Define the width of the first 2 columns (in pixels)
     var secondColumnWidth = 70;
 
+    // Define how many rows should be shown on load and when table is collapsed
+    var initialRows = 1;
+
+    // Scroll to the last (most actual) row on collapse
+    var scrollOnCollapse = true;
+
+    // Height of the table (in pixels) when expanded
+    var expandedHeight = 300;
+
+//== START ==//
     if ( log ) console.log ( alreadydone );
     if ( log ) console.log ( typeof alreadydone );
 
@@ -44,8 +60,7 @@
 
         var alreadydone = true;
 
-        // Define starting position of the container
-        var startRight = '350px';
+        var initialRowsHeight = initialRows * 20;
 
         if ( log ) console.log ( typeof alreadydone );
 
@@ -195,7 +210,7 @@
         var htmlstring = '<div id="plugin-versions">';
 
         htmlstring += '<style>' +
-            '#plugin-versions { z-index: 2; position: fixed; top: 0; background-color: rgb(62, 72, 73); color: rgb(242, 241, 240); transition-duration: 1000ms; transition-timing-function: ease-in-out; right: 350px; min-width: 860px; }' +
+            '#plugin-versions { z-index: 2; position: fixed; top: 0; background-color: rgb(62, 72, 73); color: rgb(242, 241, 240); transition-duration: 1000ms; transition-timing-function: ease-in-out; right: ' + startRight + '; min-width: 860px; }' +
             '#plugin-versions table { width: 100%; }' +
             '.versions td { padding: 0 5px !important; border-right: 1px solid white; line-height: 1.5em !important; font-size: 110% !important; }' +
             '.versions td img { width: 30px !important; }' +
@@ -215,7 +230,7 @@
             '#plugin-versions thead, #plugin-versions tbody, #plugin-versions tr, #plugin-versions td { display: block; }' +
             '#plugin-versions tr:after { display: block; visibility: hidden; clear: both; content: " "; }' +
             '#plugin-versions thead td { height: 34px; }' +
-            '#plugin-versions tbody { height: 60px; overflow-y: scroll; scrollbar-width: thin; scrollbar-color: orange rgb(62, 72, 73); transition-property: height; transition-duration: 0.5s; transition-timing-function: ease-in-out; }' +
+            '#plugin-versions tbody { height: ' + initialRowsHeight + 'px; overflow-y: scroll; scrollbar-width: thin; scrollbar-color: orange rgb(62, 72, 73); transition-property: height; transition-duration: 0.5s; transition-timing-function: ease-in-out; }' +
             '#plugin-versions thead { overflow-y: scroll; scrollbar-width: thin; scrollbar-color: rgb(62, 72, 73) rgb(62, 72, 73); }' +
             '#plugin-versions td { width: ' + secondColumnWidth + 'px; float: left; white-space: nowrap; }' +
             '#plugin-versions td:nth-child(n+3) { width: calc((100% - ' + 2 * secondColumnWidth + 'px) / 13); }' +
@@ -324,15 +339,13 @@
             var more = document.getElementById( 'mmore' );
             var bodyHeight = document.getElementById('pluginversions-tbody').clientHeight;
 
-            if (bodyHeight >= 300) {
-                $( '#pluginversions-tbody' ).css({ 'height': '60px' });
+            if ( bodyHeight >= expandedHeight ) {
+                $( '#pluginversions-tbody' ).css({ 'height': initialRowsHeight + 'px' });
                 more.innerHTML = '[more]';
-                //setTimeout( scrollToBottom, 600);
-                scrollToBottom();
-                //document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
+                if ( scrollOnCollapse ) scrollToBottom();
             }
             else {
-                $( '#pluginversions-tbody' ).css({ 'height': '300px' });
+                $( '#pluginversions-tbody' ).css({ 'height': expandedHeight + 'px' });
                 more.innerHTML = '[less]';
             }
 
@@ -350,7 +363,7 @@
             if ( log ) console.log( 'hideRight: ' + hideRight );
 
             if ( block.offsetLeft + 150 > window.outerWidth ) {
-                $( '#plugin-versions' ).css({ 'right': '350px' });
+                $( '#plugin-versions' ).css({ 'right': startRight });
                 str.innerHTML = '[hide]';
             }
             else {
@@ -361,7 +374,7 @@
 
         function scrollToBottom() {
             var bodyHeight = document.getElementById('pluginversions-tbody').clientHeight;
-            if (bodyHeight > 60) {
+            if ( bodyHeight > initialRowsHeight ) {
                 document.getElementById('pluginversions-tbody').scrollTop=document.getElementById('pluginversions-tbody').scrollHeight;
                 setTimeout( scrollToBottom, 1);
             }
