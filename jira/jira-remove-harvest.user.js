@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Jira: Remove Harvest time tracking widget
 // @namespace    https://moderntribe.atlassian.net/
-// @version      0.0.1
+// @version      0.0.2
 // @description  Customize and remove modules from Edit Screen
 // @author       Modern Tribe Products
-// @include      https://moderntribe.atlassian.net/browse/*
+// @include      https://moderntribe.atlassian.net/*
 // @grant        GM_addStyle
 // @downloadURL  https://raw.githubusercontent.com/moderntribe/tampermonkey-scripts/master/jira/jira-remove-harvest.user.js
 // @run-at       document-start
@@ -14,5 +14,4 @@
 	'use strict';
 
 	GM_addStyle( '#harvest__toggle-timer { display: none; }' );
-
 })();
